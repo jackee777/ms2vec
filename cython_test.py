@@ -1825,15 +1825,15 @@ if __name__ == "__main__":
     corpus = LineSentence(args.train)
 
     model = Word2Vec(
-        corpus, size=args.size, min_count=args.min_count, workers=args.threads,
+        corpus, size=5, min_count=args.min_count, workers=args.threads,
         window=args.window, sample=args.sample, sg=skipgram, hs=args.hs,
-        negative=args.negative, cbow_mean=1, iter=5, max_sense=3
+        negative=args.negative, cbow_mean=1, iter=1, max_sense=3
     )
 
     print(model.wv.vectors[0])
     print(model.senses)
     if args.output:
-        outfile = args.outpute
+        outfile = args.output
         model.wv.save_word2vec_format(outfile, model.senses, args.sense, binary=args.binary)
     else:
         outfile = args.train
