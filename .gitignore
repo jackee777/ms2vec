@@ -3,3 +3,6 @@ globalvec.txt
 normal_word2vec.model*
 result
 text8
+.idea
+.ipynb_checkpoints
+__pycache__
