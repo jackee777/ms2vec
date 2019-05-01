@@ -3,7 +3,7 @@ from Cython.Build import cythonize
 import numpy
 
 setup(
-    name="test",
-    ext_modules=cythonize("word2vec_inner.pyx"),
+    name="MS2vec",
+    ext_modules=cythonize("MultiSense2vec_inner.pyx"),
     include_dirs=[numpy.get_include()],
 )
