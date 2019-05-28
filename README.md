@@ -1,2 +1,2 @@
-# MS2vec
+# ms2vec
 
