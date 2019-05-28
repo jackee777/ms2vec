@@ -132,8 +132,8 @@ import itertools
 import warnings
 
 from gensim.utils import keep_vocab_item, call_on_class_only
-from gensim.models.keyedvectors import Vocab, Word2VecKeyedVectors
-from gensim.models.base_any2vec import BaseWordEmbeddingsModel
+from ms2vec.keyedvectors import Vocab, MultiSense2VecKeyedVectors
+from ms2vec.base_any2vec import BaseWordEmbeddingsModel
 
 try:
     from queue import Queue, Empty
@@ -166,7 +166,7 @@ except ImportError:
     def train_batch_sg(model, sentences, alpha, work=None, compute_loss=False):
         """Update skip-gram model by training on a sequence of sentences.
 
-        Called internally from :meth:`~gensim.models.word2vec.Word2Vec.train`.
+        Called internallyM from :meth:`~gensim.models.word2vec.Word2Vec.train`.
 
         Warnings
         --------
@@ -622,7 +622,7 @@ def score_cbow_pair(model, word, l1):
     return sum(lprob)
 
 
-class Word2Vec(BaseWordEmbeddingsModel):
+class MultiSense2Vec(BaseWordEmbeddingsModel):
     """Train, use and evaluate neural networks described in https://code.google.com/p/word2vec/.
 
     Once you're finished training a model (=no more updates, only querying)
@@ -639,16 +639,16 @@ class Word2Vec(BaseWordEmbeddingsModel):
 
     Attributes
     ----------
-    wv : :class:`~gensim.models.keyedvectors.Word2VecKeyedVectors`
+    wv : :class:`~gensim.models.keyedvectors.MultiSense2VecKeyedVectors`
         This object essentially contains the mapping between words and embeddings. After training, it can be used
         directly to query those embeddings in various ways. See the module level docstring for examples.
 
-    vocabulary : :class:`~gensim.models.word2vec.Word2VecVocab`
+    vocabulary : :class:`~gensim.models.ms2vec.MultiSense2VecVocab`
         This object represents the vocabulary (sometimes called Dictionary in gensim) of the model.
         Besides keeping track of all unique words, this object provides extra functionality, such as
         constructing a huffman tree (frequent words are closer to the root), or discarding extremely rare words.
 
-    trainables : :class:`~gensim.models.word2vec.Word2VecTrainables`
+    trainables : :class:`~gensim.models.ms2vec.MultiSense2VecTrainables`
         This object represents the inner shallow neural network used to train the embeddings. The semantics of the
         network differ slightly in the two available training modes (CBOW or SG) but you can think of it as a NN with
         a single projection and hidden layer which we train on the corpus. The weights are then used as our embeddings
@@ -660,7 +660,7 @@ class Word2Vec(BaseWordEmbeddingsModel):
                  max_vocab_size=None, sample=1e-3, seed=1, workers=3, min_alpha=0.0001,
                  sg=0, hs=0, negative=5, ns_exponent=0.75, cbow_mean=1, hashfxn=hash, iter=5, null_word=0,
                  trim_rule=None, sorted_vocab=1, batch_words=MAX_WORDS_IN_BATCH, compute_loss=False, callbacks=(),
-                 max_final_vocab=None):
+                 max_final_vocab=None, max_sense_num=3, min_sense_count=10, delimiter="--"):
         """
 
         Parameters
@@ -721,6 +721,12 @@ class Word2Vec(BaseWordEmbeddingsModel):
             Limits the vocab to a target vocab size by automatically picking a matching min_count. If the specified
             min_count is more than the calculated min_count, the specified min_count will be used.
             Set to `None` if not required.
+        max_sense_num : int, optional
+            Limits the sense For MultiSense2Vec
+        min_sense_count : int, optional
+            min_count that words have a sense For MultiSense2Vec
+        delimiter : int, optional
+            the delimiter For MultiSense2Vec
         sample : float, optional
             The threshold for configuring which higher-frequency words are randomly downsampled,
             useful range is (0, 1e-5).
@@ -766,21 +772,24 @@ class Word2Vec(BaseWordEmbeddingsModel):
 
         """
         self.max_final_vocab = max_final_vocab
+        self.max_sense_num = max_sense_num
+        self.min_sense_count = min_sense_count
+        self.delimiter = delimiter
 
         self.callbacks = callbacks
         self.load = call_on_class_only
 
-        self.wv = Word2VecKeyedVectors(size)
-        self.vocabulary = Word2VecVocab(
+        self.wv = MultiSense2VecKeyedVectors(size)
+        self.vocabulary = MultiSense2VecVocab(
             max_vocab_size=max_vocab_size, min_count=min_count, sample=sample, sorted_vocab=bool(sorted_vocab),
             null_word=null_word, max_final_vocab=max_final_vocab, ns_exponent=ns_exponent)
-        self.trainables = Word2VecTrainables(seed=seed, vector_size=size, hashfxn=hashfxn)
+        self.trainables = MultiSense2VecTrainables(seed=seed, vector_size=size, hashfxn=hashfxn)
 
-        super(Word2Vec, self).__init__(
+        super(MultiSense2Vec, self).__init__(
             sentences=sentences, corpus_file=corpus_file, workers=workers, vector_size=size, epochs=iter,
             callbacks=callbacks, batch_words=batch_words, trim_rule=trim_rule, sg=sg, alpha=alpha, window=window,
             seed=seed, hs=hs, negative=negative, cbow_mean=cbow_mean, min_alpha=min_alpha, compute_loss=compute_loss,
-            fast_version=FAST_VERSION)
+            fast_version=FAST_VERSION, max_sense_num=max_sense_num, min_sense_count=min_sense_count, delimiter=delimiter)
 
     def _do_train_epoch(self, corpus_file, thread_id, offset, cython_vocab, thread_private_mem, cur_epoch,
                         total_examples=None, total_words=None, **kwargs):
@@ -904,7 +913,7 @@ class Word2Vec(BaseWordEmbeddingsModel):
             (1, 30)
 
         """
-        return super(Word2Vec, self).train(
+        return super(MultiSense2Vec, self).train(
             sentences=sentences, corpus_file=corpus_file, total_examples=total_examples, total_words=total_words,
             epochs=epochs, start_alpha=start_alpha, end_alpha=end_alpha, word_count=word_count,
             queue_factor=queue_factor, report_delay=report_delay, compute_loss=compute_loss, callbacks=callbacks)
@@ -1536,7 +1545,7 @@ def _scan_vocab_worker(stream, progress_queue, max_vocab_size=None, trim_rule=No
     return vocab
 
 
-class Word2VecVocab(utils.SaveLoad):
+class MultiSense2VecVocab(utils.SaveLoad):
     """Vocabulary used by :class:`~gensim.models.word2vec.Word2Vec`."""
     def __init__(
             self, max_vocab_size=None, min_count=5, sample=1e-3, sorted_vocab=True, null_word=0,
@@ -1607,7 +1616,8 @@ class Word2VecVocab(utils.SaveLoad):
 
     def prepare_vocab(
             self, hs, negative, wv, update=False, keep_raw_vocab=False, trim_rule=None,
-            min_count=None, sample=None, dry_run=False):
+            min_count=None, sample=None, dry_run=False, max_sense_num=3, min_sense_count=10,
+            delimiter="--"):
         """Apply vocabulary settings for `min_count` (discarding less-frequent words)
         and `sample` (controlling the downsampling of more-frequent words).
 
@@ -1660,6 +1670,10 @@ class Word2VecVocab(utils.SaveLoad):
                     if not dry_run:
                         wv.vocab[word] = Vocab(count=v, index=len(wv.index2word))
                         wv.index2word.append(word)
+                        if v >= min_sense_count:
+                            for sense_num in range(max_sense_num):
+                                wv.vocab[word+delimiter+str(sense_num)] = Vocab(count=v, index=len(wv.index2word))
+                                wv.index2word.append(word+delimiter+str(sense_num))
                 else:
                     drop_unique += 1
                     drop_total += v
@@ -1861,7 +1875,7 @@ def _assign_binary_codes(vocab):
     logger.info("built huffman tree with maximum node depth %i", max_depth)
 
 
-class Word2VecTrainables(utils.SaveLoad):
+class MultiSense2VecTrainables(utils.SaveLoad):
     """Represents the inner shallow neural network used to train :class:`~gensim.models.word2vec.Word2Vec`."""
     def __init__(self, vector_size=100, seed=1, hashfxn=hash):
         self.hashfxn = hashfxn
