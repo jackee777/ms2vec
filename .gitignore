@@ -1,4 +1,5 @@
 vec.txt
+gensim/
 globalvec.txt
 normal_word2vec.model*
 result
