@@ -1887,7 +1887,7 @@ class Word2VecTrainables(utils.SaveLoad):
         self.vectors_lockf = ones(len(wv.vocab), dtype=REAL)  # zeros suppress learning
 
 
-# Example: ./word2vec.py -train data.txt -output vec.txt -size 200 -window 5 -sample 1e-4 \
+# Example: ./ms2vec.py -train data.txt -output vec.txt -size 200 -window 5 -sample 1e-4 \
 # -negative 5 -hs 0 -binary 0 -cbow 1 -iter 3
 if __name__ == "__main__":
     import argparse
