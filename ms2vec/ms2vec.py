@@ -155,10 +155,10 @@ from six.moves import range
 logger = logging.getLogger(__name__)
 
 try:
-    from gensim import make_except
-    #from gensim.models.word2vec_inner import train_batch_sg, train_batch_cbow
-    #from gensim.models.word2vec_inner import score_sentence_sg, score_sentence_cbow
-    #from gensim.models.word2vec_inner import FAST_VERSION, MAX_WORDS_IN_BATCH
+    #from gensim import make_except
+    from word2vec_inner import train_batch_sg, train_batch_cbow
+    from word2vec_inner import score_sentence_sg, score_sentence_cbow
+    from word2vec_inner import FAST_VERSION, MAX_WORDS_IN_BATCH
 
 except ImportError:
     # failed... fall back to plain numpy (20-80x slower training than the above)
