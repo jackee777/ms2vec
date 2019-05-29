@@ -142,7 +142,8 @@ except ImportError:
 
 from numpy import exp, dot, zeros, random, dtype, float32 as REAL,\
     uint32, seterr, array, uint8, vstack, fromstring, sqrt,\
-    empty, sum as np_sum, ones, logaddexp, log, outer
+    empty, sum as np_sum, ones, logaddexp, log, outer, average, \
+    argmax
 
 from scipy.special import expit
 
@@ -154,9 +155,10 @@ from six.moves import range
 logger = logging.getLogger(__name__)
 
 try:
-    from gensim.models.word2vec_inner import train_batch_sg, train_batch_cbow
-    from gensim.models.word2vec_inner import score_sentence_sg, score_sentence_cbow
-    from gensim.models.word2vec_inner import FAST_VERSION, MAX_WORDS_IN_BATCH
+    from gensim import make_except
+    #from gensim.models.word2vec_inner import train_batch_sg, train_batch_cbow
+    #from gensim.models.word2vec_inner import score_sentence_sg, score_sentence_cbow
+    #from gensim.models.word2vec_inner import FAST_VERSION, MAX_WORDS_IN_BATCH
 
 except ImportError:
     # failed... fall back to plain numpy (20-80x slower training than the above)
@@ -193,6 +195,7 @@ except ImportError:
             and were not discarded by negative sampling).
 
         """
+        print("batch")
         result = 0
         for sentence in sentences:
             word_vocabs = [model.wv.vocab[w] for w in sentence if w in model.wv.vocab
@@ -200,13 +203,36 @@ except ImportError:
             for pos, word in enumerate(word_vocabs):
                 reduced_window = model.random.randint(model.window)  # `b` in the original word2vec code
 
+                # select_cluster
+                center_cluster = -1
+                cluster_index = []
+                for cand_index in range(word.index+1, word.index+4):
+                    if cand_index < len(model.wv.is_global) \
+                            and model.wv.is_global[cand_index] != model.wv.max_sense_num:
+                            cluster_index.append(cand_index)
+                if len(cluster_index) != 0:
+                    context_index = []
+                    start = max(0, pos - model.window + reduced_window)
+                    for pos2, word2 in enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start):
+                        context_index.append(word2.index)
+                    window_context_vector = average(model.wv.syn0[context_index], axis=0)
+                    cluster_vector = model.wv.cluster_vectors[cluster_index]
+                    center_cluster = argmax(window_context_vector @ cluster_vector.T)
+
+                # update cluster
+                if center_cluster != -1:
+                    model.wv.cluster_vectors[word.index + center_cluster + 1] = \
+                        model.wv.cluster_vectors[word.index + center_cluster + 1] + \
+                        model.wv.syn0[word.index + center_cluster + 1]
+
                 # now go over all words from the (reduced) window, predicting each one in turn
                 start = max(0, pos - model.window + reduced_window)
                 for pos2, word2 in enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start):
                     # don't train on the `word` itself
                     if pos2 != pos:
                         train_sg_pair(
-                            model, model.wv.index2word[word.index], word2.index, alpha, compute_loss=compute_loss
+                            model, model.wv.index2word[word.index], center_cluster,
+                            word2.index, alpha, compute_loss=compute_loss
                         )
 
             result += len(word_vocabs)
@@ -285,6 +311,7 @@ except ImportError:
             The probability assigned to this sentence by the Skip-Gram model.
 
         """
+        print("sentence")
         log_prob_sentence = 0.0
         if model.negative:
             raise RuntimeError("scoring is only available for HS=True")
@@ -362,7 +389,7 @@ except ImportError:
         raise RuntimeError("Training with corpus_file argument is not supported")
 
 
-def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_hidden=True,
+def train_sg_pair(model, word, cluster_center, context_index, alpha, learn_vectors=True, learn_hidden=True,
                   context_vectors=None, context_locks=None, compute_loss=False, is_ft=False):
     """Train the passed model instance on a word and its context, using the Skip-gram algorithm.
 
@@ -372,6 +399,8 @@ def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_h
         The model to be trained.
     word : str
         The label (predicted) word.
+    cluster_center: int
+        The center of index
     context_index : list of int
         The vocabulary indices of the words in the context.
     alpha : float
@@ -396,12 +425,21 @@ def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_h
         Error vector to be back-propagated.
 
     """
+    print("pair")
+    # For multisense
+    # select l1 for each sense
+    #   need cluster vector is finish
+    #   select cluster
+    #   update cluster vector
+    # calc l1 sense vector and l2 global vector
+    # update l1 global and sense vector and l2 global vector
     if context_vectors is None:
         if is_ft:
             context_vectors_vocab = model.wv.syn0_vocab
             context_vectors_ngrams = model.wv.syn0_ngrams
         else:
             context_vectors = model.wv.syn0
+
     if context_locks is None:
         if is_ft:
             context_locks_vocab = model.syn0_vocab_lockf
@@ -419,8 +457,14 @@ def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_h
         if context_index:
             l1 = np_sum([l1_vocab, l1_ngrams], axis=0) / len(context_index)
     else:
-        l1 = context_vectors[context_index]  # input word (NN input/projection layer)
-        lock_factor = context_locks[context_index]
+        #l1 = context_vectors[context_index]  # input word (NN input/projection layer)
+        #lock_factor = context_locks[context_index]
+        if cluster_center == -1:
+            l1 = context_vectors[predict_word.index]  # input word (NN input/projection layer)
+            lock_factor = context_locks[predict_word.index]
+        else:
+            l1 = context_vectors[predict_word.index + cluster_center + 1]  # input word (NN input/projection layer)
+            lock_factor = context_locks[predict_word.index + cluster_center + 1]
 
     neu1e = zeros(l1.shape)
 
@@ -442,17 +486,18 @@ def train_sg_pair(model, word, context_index, alpha, learn_vectors=True, learn_h
 
     if model.negative:
         # use this word (label = 1) + `negative` other random words not from this sentence (label = 0)
-        word_indices = [predict_word.index]
+        word_indices = [context_index]
         while len(word_indices) < model.negative + 1:
             w = model.cum_table.searchsorted(model.random.randint(model.cum_table[-1]))
-            if w != predict_word.index:
+            #print("negative word", model.wv.index2word[w])
+            if w != context_index:
                 word_indices.append(w)
-        l2b = model.syn1neg[word_indices]  # 2d matrix, k+1 x layer1_size
+        l2b = context_vectors[word_indices]  # 2d matrix, k+1 x layer1_size
         prod_term = dot(l1, l2b.T)
         fb = expit(prod_term)  # propagate hidden -> output
         gb = (model.neg_labels - fb) * alpha  # vector of error gradients multiplied by the learning rate
         if learn_hidden:
-            model.syn1neg[word_indices] += outer(gb, l1)  # learn hidden -> output
+            context_vectors[word_indices] += outer(gb, l1)  # learn hidden -> output
         neu1e += dot(gb, l2b)  # save error
 
         # loss component corresponding to negative sampling
@@ -779,10 +824,12 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
         self.callbacks = callbacks
         self.load = call_on_class_only
 
-        self.wv = MultiSense2VecKeyedVectors(size)
+        self.wv = MultiSense2VecKeyedVectors(size, max_sense_num=max_sense_num,
+                                             min_sense_count=min_sense_count, delimiter=delimiter)
         self.vocabulary = MultiSense2VecVocab(
             max_vocab_size=max_vocab_size, min_count=min_count, sample=sample, sorted_vocab=bool(sorted_vocab),
-            null_word=null_word, max_final_vocab=max_final_vocab, ns_exponent=ns_exponent)
+            null_word=null_word, max_final_vocab=max_final_vocab, ns_exponent=ns_exponent,
+            min_sense_count=min_sense_count, delimiter=delimiter) # 不要かも
         self.trainables = MultiSense2VecTrainables(seed=seed, vector_size=size, hashfxn=hashfxn)
 
         super(MultiSense2Vec, self).__init__(
@@ -1549,7 +1596,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
     """Vocabulary used by :class:`~gensim.models.word2vec.Word2Vec`."""
     def __init__(
             self, max_vocab_size=None, min_count=5, sample=1e-3, sorted_vocab=True, null_word=0,
-            max_final_vocab=None, ns_exponent=0.75):
+            max_final_vocab=None, ns_exponent=0.75, min_sense_count=10, delimiter="--"):
         self.max_vocab_size = max_vocab_size
         self.min_count = min_count
         self.sample = sample
@@ -1559,6 +1606,8 @@ class MultiSense2VecVocab(utils.SaveLoad):
         self.raw_vocab = None
         self.max_final_vocab = max_final_vocab
         self.ns_exponent = ns_exponent
+        self.min_sense_count=min_sense_count
+        self.delimiter = delimiter
 
     def _scan_vocab(self, sentences, progress_per, trim_rule):
         sentence_no = -1
@@ -1611,13 +1660,19 @@ class MultiSense2VecVocab(utils.SaveLoad):
         if len(wv.vectors):
             raise RuntimeError("cannot sort vocabulary after model weights already initialized.")
         wv.index2word.sort(key=lambda word: wv.vocab[word].count, reverse=True)
+
+        sense_num = int(wv.max_sense_num)
         for i, word in enumerate(wv.index2word):
             wv.vocab[word].index = i
+            if wv.vocab[word].count < wv.min_sense_count or sense_num == -1:
+                sense_num = int(wv.max_sense_num)
+            wv.is_global.append(sense_num)
+            sense_num -= 1
+
 
     def prepare_vocab(
             self, hs, negative, wv, update=False, keep_raw_vocab=False, trim_rule=None,
-            min_count=None, sample=None, dry_run=False, max_sense_num=3, min_sense_count=10,
-            delimiter="--"):
+            min_count=None, sample=None, dry_run=False):
         """Apply vocabulary settings for `min_count` (discarding less-frequent words)
         and `sample` (controlling the downsampling of more-frequent words).
 
@@ -1670,10 +1725,10 @@ class MultiSense2VecVocab(utils.SaveLoad):
                     if not dry_run:
                         wv.vocab[word] = Vocab(count=v, index=len(wv.index2word))
                         wv.index2word.append(word)
-                        if v >= min_sense_count:
-                            for sense_num in range(max_sense_num):
-                                wv.vocab[word+delimiter+str(sense_num)] = Vocab(count=v, index=len(wv.index2word))
-                                wv.index2word.append(word+delimiter+str(sense_num))
+                        if v >= wv.min_sense_count:
+                            for sense_num in range(wv.max_sense_num):
+                                wv.vocab[word+wv.delimiter+str(sense_num)] = Vocab(count=v, index=len(wv.index2word))
+                                wv.index2word.append(word+wv.delimiter+str(sense_num))
                 else:
                     drop_unique += 1
                     drop_total += v
@@ -1807,11 +1862,16 @@ class MultiSense2VecVocab(utils.SaveLoad):
         # compute sum of all power (Z in paper)
         train_words_pow = 0.0
         for word_index in range(vocab_size):
-            train_words_pow += wv.vocab[wv.index2word[word_index]].count**self.ns_exponent
+            if wv.is_global[word_index] == wv.max_sense_num:
+                train_words_pow += wv.vocab[wv.index2word[word_index]].count**self.ns_exponent
         cumulative = 0.0
         for word_index in range(vocab_size):
-            cumulative += wv.vocab[wv.index2word[word_index]].count**self.ns_exponent
-            self.cum_table[word_index] = round(cumulative / train_words_pow * domain)
+            if wv.is_global[word_index] == wv.max_sense_num:
+                cumulative += wv.vocab[wv.index2word[word_index]].count**self.ns_exponent
+                self.cum_table[word_index] = round(cumulative / train_words_pow * domain)
+            else:
+                self.cum_table[word_index] = 0
+
         if len(self.cum_table) > 0:
             assert self.cum_table[-1] == domain
 
@@ -1900,10 +1960,14 @@ class MultiSense2VecTrainables(utils.SaveLoad):
         """Reset all projection weights to an initial (untrained) state, but keep the existing vocabulary."""
         logger.info("resetting layer weights")
         wv.vectors = empty((len(wv.vocab), wv.vector_size), dtype=REAL)
+        wv.cluster_vectors = empty((len(wv.vocab), wv.vector_size), dtype=REAL)
         # randomize weights vector by vector, rather than materializing a huge random matrix in RAM at once
         for i in range(len(wv.vocab)):
             # construct deterministic seed from word AND seed argument
             wv.vectors[i] = self.seeded_vector(wv.index2word[i] + str(self.seed), wv.vector_size)
+        for i in range(len(wv.vocab)):
+            # construct deterministic seed from word AND seed argument
+            wv.cluster_vectors[i] = self.seeded_vector(wv.index2word[i] + "cluster"+ str(self.seed), wv.vector_size)
         if hs:
             self.syn1 = zeros((len(wv.vocab), self.layer1_size), dtype=REAL)
         if negative:

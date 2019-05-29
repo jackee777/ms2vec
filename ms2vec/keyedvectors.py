@@ -215,6 +215,7 @@ class BaseKeyedVectors(utils.SaveLoad):
     """Abstract base class / interface for various types of word vectors."""
     def __init__(self, vector_size):
         self.vectors = zeros((0, vector_size))
+        self.cluster_vectors = zeros((0, vector_size))
         self.vocab = {}
         self.vector_size = vector_size
         self.index2entity = []
@@ -375,11 +376,16 @@ class BaseKeyedVectors(utils.SaveLoad):
 
 class WordEmbeddingsKeyedVectors(BaseKeyedVectors):
     """Class containing common methods for operations over word vectors."""
-    def __init__(self, vector_size):
+    def __init__(self, vector_size, max_sense_num=3,
+                 min_sense_count=10, delimiter="--"):
         super(WordEmbeddingsKeyedVectors, self).\
             __init__(vector_size=vector_size)
         self.vectors_norm = None
         self.index2word = []
+        self.is_global = []
+        self.max_sense_num = max_sense_num
+        self.min_sense_count = min_sense_count
+        self.delimiter = delimiter
 
     @property
     @deprecated("Attribute will be removed in 4.0.0, use self instead")

@@ -944,9 +944,9 @@ class BaseWordEmbeddingsModel(BaseAny2VecModel):
         self.corpus_total_words = total_words
         report_values = self.vocabulary.prepare_vocab(
             self.hs, self.negative, self.wv, update=update, keep_raw_vocab=keep_raw_vocab,
-            trim_rule=trim_rule, max_sense_num=self.max_sense_num, min_sense_count=self.min_sense_count,
-            delimiter=self.delimiter, **kwargs)
-        report_values['memory'] = self.estimate_memory(vocab_size=report_values['num_retained_words'])
+            trim_rule=trim_rule, **kwargs)
+        report_values['memory'] = self.estimate_memory(vocab_size=None)
+        #report_values['memory'] = self.estimate_memory(vocab_size=report_values['num_retained_words'])
         self.trainables.prepare_weights(self.hs, self.negative, self.wv, update=update, vocabulary=self.vocabulary)
 
     def build_vocab_from_freq(self, word_freq, keep_raw_vocab=False, corpus_count=None, trim_rule=None, update=False):
@@ -1019,6 +1019,7 @@ class BaseWordEmbeddingsModel(BaseAny2VecModel):
         report = report or {}
         report['vocab'] = vocab_size * (700 if self.hs else 500)
         report['vectors'] = vocab_size * self.vector_size * dtype(REAL).itemsize
+        report['cluster_vectors'] = vocab_size * self.vector_size * dtype(REAL).itemsize
         if self.hs:
             report['syn1'] = vocab_size * self.trainables.layer1_size * dtype(REAL).itemsize
         if self.negative:
