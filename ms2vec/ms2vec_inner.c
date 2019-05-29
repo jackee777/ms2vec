@@ -9,12 +9,12 @@
         "include_dirs": [
             "./ms2vec"
         ],
-        "name": "word2vec_inner",
+        "name": "ms2vec_inner",
         "sources": [
-            "./ms2vec/word2vec_inner.pyx"
+            "./ms2vec/ms2vec_inner.pyx"
         ]
     },
-    "module_name": "word2vec_inner"
+    "module_name": "ms2vec_inner"
 }
 END: Cython Metadata */
 
@@ -608,8 +608,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__word2vec_inner
-#define __PYX_HAVE_API__word2vec_inner
+#define __PYX_HAVE__ms2vec_inner
+#define __PYX_HAVE_API__ms2vec_inner
 /* Early includes */
 #include <string.h>
 #include <stdio.h>
@@ -847,7 +847,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "ms2vec\\word2vec_inner.pyx",
+  "ms2vec\\ms2vec_inner.pyx",
   "__init__.pxd",
   "type.pxd",
 };
@@ -1053,14 +1053,14 @@ typedef npy_double __pyx_t_5numpy_double_t;
  */
 typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 
-/* "word2vec_inner.pxd":19
+/* "ms2vec_inner.pxd":19
  *     void* PyCObject_AsVoidPtr(object obj)
  * 
  * ctypedef np.float32_t REAL_t             # <<<<<<<<<<<<<<
  * 
  * # BLAS routine signatures
  */
-typedef __pyx_t_5numpy_float32_t __pyx_t_14word2vec_inner_REAL_t;
+typedef __pyx_t_5numpy_float32_t __pyx_t_12ms2vec_inner_REAL_t;
 /* Declarations.proto */
 #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
@@ -1123,89 +1123,89 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
  * cdef inline object PyArray_MultiIterNew1(a):
  */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
-struct __pyx_t_14word2vec_inner_Word2VecConfig;
-struct __pyx_opt_args_14word2vec_inner_init_w2v_config;
+struct __pyx_t_12ms2vec_inner_Word2VecConfig;
+struct __pyx_opt_args_12ms2vec_inner_init_w2v_config;
 
-/* "word2vec_inner.pxd":22
+/* "ms2vec_inner.pxd":22
  * 
  * # BLAS routine signatures
  * ctypedef void (*scopy_ptr) (const int *N, const float *X, const int *incX, float *Y, const int *incY) nogil             # <<<<<<<<<<<<<<
  * ctypedef void (*saxpy_ptr) (const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY) nogil
  * ctypedef float (*sdot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil
  */
-typedef void (*__pyx_t_14word2vec_inner_scopy_ptr)(int const *, float const *, int const *, float *, int const *);
+typedef void (*__pyx_t_12ms2vec_inner_scopy_ptr)(int const *, float const *, int const *, float *, int const *);
 
-/* "word2vec_inner.pxd":23
+/* "ms2vec_inner.pxd":23
  * # BLAS routine signatures
  * ctypedef void (*scopy_ptr) (const int *N, const float *X, const int *incX, float *Y, const int *incY) nogil
  * ctypedef void (*saxpy_ptr) (const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY) nogil             # <<<<<<<<<<<<<<
  * ctypedef float (*sdot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil
  * ctypedef double (*dsdot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil
  */
-typedef void (*__pyx_t_14word2vec_inner_saxpy_ptr)(int const *, float const *, float const *, int const *, float *, int const *);
+typedef void (*__pyx_t_12ms2vec_inner_saxpy_ptr)(int const *, float const *, float const *, int const *, float *, int const *);
 
-/* "word2vec_inner.pxd":24
+/* "ms2vec_inner.pxd":24
  * ctypedef void (*scopy_ptr) (const int *N, const float *X, const int *incX, float *Y, const int *incY) nogil
  * ctypedef void (*saxpy_ptr) (const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY) nogil
  * ctypedef float (*sdot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil             # <<<<<<<<<<<<<<
  * ctypedef double (*dsdot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil
  * ctypedef double (*snrm2_ptr) (const int *N, const float *X, const int *incX) nogil
  */
-typedef float (*__pyx_t_14word2vec_inner_sdot_ptr)(int const *, float const *, int const *, float const *, int const *);
+typedef float (*__pyx_t_12ms2vec_inner_sdot_ptr)(int const *, float const *, int const *, float const *, int const *);
 
-/* "word2vec_inner.pxd":25
+/* "ms2vec_inner.pxd":25
  * ctypedef void (*saxpy_ptr) (const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY) nogil
  * ctypedef float (*sdot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil
  * ctypedef double (*dsdot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil             # <<<<<<<<<<<<<<
  * ctypedef double (*snrm2_ptr) (const int *N, const float *X, const int *incX) nogil
  * ctypedef void (*sscal_ptr) (const int *N, const float *alpha, const float *X, const int *incX) nogil
  */
-typedef double (*__pyx_t_14word2vec_inner_dsdot_ptr)(int const *, float const *, int const *, float const *, int const *);
+typedef double (*__pyx_t_12ms2vec_inner_dsdot_ptr)(int const *, float const *, int const *, float const *, int const *);
 
-/* "word2vec_inner.pxd":26
+/* "ms2vec_inner.pxd":26
  * ctypedef float (*sdot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil
  * ctypedef double (*dsdot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil
  * ctypedef double (*snrm2_ptr) (const int *N, const float *X, const int *incX) nogil             # <<<<<<<<<<<<<<
  * ctypedef void (*sscal_ptr) (const int *N, const float *alpha, const float *X, const int *incX) nogil
  * 
  */
-typedef double (*__pyx_t_14word2vec_inner_snrm2_ptr)(int const *, float const *, int const *);
+typedef double (*__pyx_t_12ms2vec_inner_snrm2_ptr)(int const *, float const *, int const *);
 
-/* "word2vec_inner.pxd":27
+/* "ms2vec_inner.pxd":27
  * ctypedef double (*dsdot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil
  * ctypedef double (*snrm2_ptr) (const int *N, const float *X, const int *incX) nogil
  * ctypedef void (*sscal_ptr) (const int *N, const float *alpha, const float *X, const int *incX) nogil             # <<<<<<<<<<<<<<
  * 
  * cdef scopy_ptr scopy
  */
-typedef void (*__pyx_t_14word2vec_inner_sscal_ptr)(int const *, float const *, float const *, int const *);
+typedef void (*__pyx_t_12ms2vec_inner_sscal_ptr)(int const *, float const *, float const *, int const *);
 
-/* "word2vec_inner.pxd":44
+/* "ms2vec_inner.pxd":44
  * 
  * # function implementations swapped based on BLAS detected in word2vec_inner.pyx init()
  * ctypedef REAL_t (*our_dot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil             # <<<<<<<<<<<<<<
  * ctypedef void (*our_saxpy_ptr) (const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY) nogil
  * 
  */
-typedef __pyx_t_14word2vec_inner_REAL_t (*__pyx_t_14word2vec_inner_our_dot_ptr)(int const *, float const *, int const *, float const *, int const *);
+typedef __pyx_t_12ms2vec_inner_REAL_t (*__pyx_t_12ms2vec_inner_our_dot_ptr)(int const *, float const *, int const *, float const *, int const *);
 
-/* "word2vec_inner.pxd":45
+/* "ms2vec_inner.pxd":45
  * # function implementations swapped based on BLAS detected in word2vec_inner.pyx init()
  * ctypedef REAL_t (*our_dot_ptr) (const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil
  * ctypedef void (*our_saxpy_ptr) (const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY) nogil             # <<<<<<<<<<<<<<
  * 
  * cdef our_dot_ptr our_dot
  */
-typedef void (*__pyx_t_14word2vec_inner_our_saxpy_ptr)(int const *, float const *, float const *, int const *, float *, int const *);
+typedef void (*__pyx_t_12ms2vec_inner_our_saxpy_ptr)(int const *, float const *, float const *, int const *, float *, int const *);
 
-/* "word2vec_inner.pxd":51
+/* "ms2vec_inner.pxd":51
  * 
  * 
  * cdef struct Word2VecConfig:             # <<<<<<<<<<<<<<
  *     int hs, negative, sample, compute_loss, size, window, cbow_mean, workers
  *     REAL_t running_training_loss, alpha
  */
-struct __pyx_t_14word2vec_inner_Word2VecConfig {
+struct __pyx_t_12ms2vec_inner_Word2VecConfig {
   int hs;
   int negative;
   int sample;
@@ -1214,31 +1214,31 @@ struct __pyx_t_14word2vec_inner_Word2VecConfig {
   int window;
   int cbow_mean;
   int workers;
-  __pyx_t_14word2vec_inner_REAL_t running_training_loss;
-  __pyx_t_14word2vec_inner_REAL_t alpha;
-  __pyx_t_14word2vec_inner_REAL_t *syn0;
-  __pyx_t_14word2vec_inner_REAL_t *word_locks;
-  __pyx_t_14word2vec_inner_REAL_t *work;
-  __pyx_t_14word2vec_inner_REAL_t *neu1;
+  __pyx_t_12ms2vec_inner_REAL_t running_training_loss;
+  __pyx_t_12ms2vec_inner_REAL_t alpha;
+  __pyx_t_12ms2vec_inner_REAL_t *syn0;
+  __pyx_t_12ms2vec_inner_REAL_t *word_locks;
+  __pyx_t_12ms2vec_inner_REAL_t *work;
+  __pyx_t_12ms2vec_inner_REAL_t *neu1;
   int codelens[0x2710];
   __pyx_t_5numpy_uint32_t indexes[0x2710];
   __pyx_t_5numpy_uint32_t reduced_windows[0x2710];
   int sentence_idx[(0x2710 + 1)];
-  __pyx_t_14word2vec_inner_REAL_t *syn1;
+  __pyx_t_12ms2vec_inner_REAL_t *syn1;
   __pyx_t_5numpy_uint32_t *points[0x2710];
   __pyx_t_5numpy_uint8_t *codes[0x2710];
-  __pyx_t_14word2vec_inner_REAL_t *syn1neg;
+  __pyx_t_12ms2vec_inner_REAL_t *syn1neg;
   __pyx_t_5numpy_uint32_t *cum_table;
   unsigned PY_LONG_LONG cum_table_len;
   unsigned PY_LONG_LONG next_random;
 };
 
-/* "word2vec_inner.pxd":125
+/* "ms2vec_inner.pxd":125
  * 
  * 
  * cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1=*)             # <<<<<<<<<<<<<<
  */
-struct __pyx_opt_args_14word2vec_inner_init_w2v_config {
+struct __pyx_opt_args_12ms2vec_inner_init_w2v_config {
   int __pyx_n;
   PyObject *_neu1;
 };
@@ -1799,37 +1799,37 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, cha
 
 /* Module declarations from 'libc.math' */
 
-/* Module declarations from 'word2vec_inner' */
-static __pyx_t_14word2vec_inner_scopy_ptr __pyx_v_14word2vec_inner_scopy;
-static __pyx_t_14word2vec_inner_saxpy_ptr __pyx_v_14word2vec_inner_saxpy;
-static __pyx_t_14word2vec_inner_sdot_ptr __pyx_v_14word2vec_inner_sdot;
-static __pyx_t_14word2vec_inner_dsdot_ptr __pyx_v_14word2vec_inner_dsdot;
-static __pyx_t_14word2vec_inner_snrm2_ptr __pyx_v_14word2vec_inner_snrm2;
-static __pyx_t_14word2vec_inner_sscal_ptr __pyx_v_14word2vec_inner_sscal;
-static __pyx_t_14word2vec_inner_REAL_t __pyx_v_14word2vec_inner_EXP_TABLE[0x3E8];
-static __pyx_t_14word2vec_inner_our_dot_ptr __pyx_v_14word2vec_inner_our_dot;
-static __pyx_t_14word2vec_inner_our_saxpy_ptr __pyx_v_14word2vec_inner_our_saxpy;
-static __pyx_t_14word2vec_inner_REAL_t __pyx_v_14word2vec_inner_LOG_TABLE[0x3E8];
-static int __pyx_v_14word2vec_inner_ONE;
-static __pyx_t_14word2vec_inner_REAL_t __pyx_v_14word2vec_inner_ONEF;
-static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_double(int const *, float const *, int const *, float const *, int const *); /*proto*/
-static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_float(int const *, float const *, int const *, float const *, int const *); /*proto*/
-static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_noblas(int const *, float const *, int const *, float const *, int const *); /*proto*/
-static void __pyx_f_14word2vec_inner_our_saxpy_noblas(int const *, float const *, float const *, int const *, float *, int const *); /*proto*/
-static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(__pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, unsigned PY_LONG_LONG, unsigned PY_LONG_LONG); /*proto*/
-static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_random_int32(unsigned PY_LONG_LONG *); /*proto*/
-static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int const , __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const , __pyx_t_14word2vec_inner_REAL_t const , __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_14word2vec_inner_REAL_t *); /*proto*/
-static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(int const , __pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const , __pyx_t_5numpy_uint32_t const , __pyx_t_14word2vec_inner_REAL_t const , __pyx_t_14word2vec_inner_REAL_t *, unsigned PY_LONG_LONG, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_14word2vec_inner_REAL_t *); /*proto*/
-static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int *, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const *, __pyx_t_14word2vec_inner_REAL_t const , __pyx_t_14word2vec_inner_REAL_t *, int, int, int, int, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_14word2vec_inner_REAL_t *); /*proto*/
-static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg(int const , __pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, int *, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const *, __pyx_t_14word2vec_inner_REAL_t const , __pyx_t_14word2vec_inner_REAL_t *, int, int, int, int, unsigned PY_LONG_LONG, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_14word2vec_inner_REAL_t *); /*proto*/
-static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2vec_inner_Word2VecConfig *, PyObject *, PyObject *, PyObject *, PyObject *, struct __pyx_opt_args_14word2vec_inner_init_w2v_config *__pyx_optional_args); /*proto*/
-static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int const , __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const , __pyx_t_14word2vec_inner_REAL_t *); /*proto*/
-static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int *, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const *, __pyx_t_14word2vec_inner_REAL_t *, int, int, int, int); /*proto*/
-#define __Pyx_MODULE_NAME "word2vec_inner"
-extern int __pyx_module_is_main_word2vec_inner;
-int __pyx_module_is_main_word2vec_inner = 0;
+/* Module declarations from 'ms2vec_inner' */
+static __pyx_t_12ms2vec_inner_scopy_ptr __pyx_v_12ms2vec_inner_scopy;
+static __pyx_t_12ms2vec_inner_saxpy_ptr __pyx_v_12ms2vec_inner_saxpy;
+static __pyx_t_12ms2vec_inner_sdot_ptr __pyx_v_12ms2vec_inner_sdot;
+static __pyx_t_12ms2vec_inner_dsdot_ptr __pyx_v_12ms2vec_inner_dsdot;
+static __pyx_t_12ms2vec_inner_snrm2_ptr __pyx_v_12ms2vec_inner_snrm2;
+static __pyx_t_12ms2vec_inner_sscal_ptr __pyx_v_12ms2vec_inner_sscal;
+static __pyx_t_12ms2vec_inner_REAL_t __pyx_v_12ms2vec_inner_EXP_TABLE[0x3E8];
+static __pyx_t_12ms2vec_inner_our_dot_ptr __pyx_v_12ms2vec_inner_our_dot;
+static __pyx_t_12ms2vec_inner_our_saxpy_ptr __pyx_v_12ms2vec_inner_our_saxpy;
+static __pyx_t_12ms2vec_inner_REAL_t __pyx_v_12ms2vec_inner_LOG_TABLE[0x3E8];
+static int __pyx_v_12ms2vec_inner_ONE;
+static __pyx_t_12ms2vec_inner_REAL_t __pyx_v_12ms2vec_inner_ONEF;
+static __pyx_t_12ms2vec_inner_REAL_t __pyx_f_12ms2vec_inner_our_dot_double(int const *, float const *, int const *, float const *, int const *); /*proto*/
+static __pyx_t_12ms2vec_inner_REAL_t __pyx_f_12ms2vec_inner_our_dot_float(int const *, float const *, int const *, float const *, int const *); /*proto*/
+static __pyx_t_12ms2vec_inner_REAL_t __pyx_f_12ms2vec_inner_our_dot_noblas(int const *, float const *, int const *, float const *, int const *); /*proto*/
+static void __pyx_f_12ms2vec_inner_our_saxpy_noblas(int const *, float const *, float const *, int const *, float *, int const *); /*proto*/
+static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_12ms2vec_inner_bisect_left(__pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, unsigned PY_LONG_LONG, unsigned PY_LONG_LONG); /*proto*/
+static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_12ms2vec_inner_random_int32(unsigned PY_LONG_LONG *); /*proto*/
+static void __pyx_f_12ms2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int const , __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const , __pyx_t_12ms2vec_inner_REAL_t const , __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_12ms2vec_inner_REAL_t *); /*proto*/
+static unsigned PY_LONG_LONG __pyx_f_12ms2vec_inner_w2v_fast_sentence_sg_neg(int const , __pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const , __pyx_t_5numpy_uint32_t const , __pyx_t_12ms2vec_inner_REAL_t const , __pyx_t_12ms2vec_inner_REAL_t *, unsigned PY_LONG_LONG, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_12ms2vec_inner_REAL_t *); /*proto*/
+static void __pyx_f_12ms2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int *, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const *, __pyx_t_12ms2vec_inner_REAL_t const , __pyx_t_12ms2vec_inner_REAL_t *, int, int, int, int, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_12ms2vec_inner_REAL_t *); /*proto*/
+static unsigned PY_LONG_LONG __pyx_f_12ms2vec_inner_w2v_fast_sentence_cbow_neg(int const , __pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, int *, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const *, __pyx_t_12ms2vec_inner_REAL_t const , __pyx_t_12ms2vec_inner_REAL_t *, int, int, int, int, unsigned PY_LONG_LONG, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_12ms2vec_inner_REAL_t *); /*proto*/
+static PyObject *__pyx_f_12ms2vec_inner_init_w2v_config(struct __pyx_t_12ms2vec_inner_Word2VecConfig *, PyObject *, PyObject *, PyObject *, PyObject *, struct __pyx_opt_args_12ms2vec_inner_init_w2v_config *__pyx_optional_args); /*proto*/
+static void __pyx_f_12ms2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int const , __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const , __pyx_t_12ms2vec_inner_REAL_t *); /*proto*/
+static void __pyx_f_12ms2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int *, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const *, __pyx_t_12ms2vec_inner_REAL_t *, int, int, int, int); /*proto*/
+#define __Pyx_MODULE_NAME "ms2vec_inner"
+extern int __pyx_module_is_main_ms2vec_inner;
+int __pyx_module_is_main_ms2vec_inner = 0;
 
-/* Implementation of 'word2vec_inner' */
+/* Implementation of 'ms2vec_inner' */
 static PyObject *__pyx_builtin_ImportError;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_enumerate;
@@ -1910,10 +1910,10 @@ static const char __pyx_k_vector_size[] = "vector_size";
 static const char __pyx_k_FAST_VERSION[] = "FAST_VERSION";
 static const char __pyx_k_RuntimeError[] = "RuntimeError";
 static const char __pyx_k_compute_loss[] = "compute_loss";
+static const char __pyx_k_ms2vec_inner[] = "ms2vec_inner";
 static const char __pyx_k_sentence_len[] = "sentence_len";
 static const char __pyx_k_vectors_lockf[] = "vectors_lockf";
 static const char __pyx_k_train_batch_sg[] = "train_batch_sg";
-static const char __pyx_k_word2vec_inner[] = "word2vec_inner";
 static const char __pyx_k_effective_words[] = "effective_words";
 static const char __pyx_k_train_batch_cbow[] = "train_batch_cbow";
 static const char __pyx_k_scipy_linalg_blas[] = "scipy.linalg.blas";
@@ -1923,7 +1923,7 @@ static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_effective_sentences[] = "effective_sentences";
 static const char __pyx_k_score_sentence_cbow[] = "score_sentence_cbow";
 static const char __pyx_k_running_training_loss[] = "running_training_loss";
-static const char __pyx_k_ms2vec_word2vec_inner_pyx[] = "ms2vec\\word2vec_inner.pyx";
+static const char __pyx_k_ms2vec_ms2vec_inner_pyx[] = "ms2vec\\ms2vec_inner.pyx";
 static const char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C contiguous";
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
 static const char __pyx_k_unknown_dtype_code_in_numpy_pxd[] = "unknown dtype code in numpy.pxd (%d)";
@@ -1972,7 +1972,8 @@ static PyObject *__pyx_n_s_j;
 static PyObject *__pyx_n_s_k;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_model;
-static PyObject *__pyx_kp_s_ms2vec_word2vec_inner_pyx;
+static PyObject *__pyx_n_s_ms2vec_inner;
+static PyObject *__pyx_kp_s_ms2vec_ms2vec_inner_pyx;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_kp_u_ndarray_is_not_C_contiguous;
 static PyObject *__pyx_kp_u_ndarray_is_not_Fortran_contiguou;
@@ -2024,17 +2025,16 @@ static PyObject *__pyx_n_s_vocab;
 static PyObject *__pyx_n_s_vocabulary;
 static PyObject *__pyx_n_s_window;
 static PyObject *__pyx_n_s_word;
-static PyObject *__pyx_n_s_word2vec_inner;
 static PyObject *__pyx_n_s_work;
 static PyObject *__pyx_n_s_workers;
 static PyObject *__pyx_n_s_wv;
 static PyObject *__pyx_n_s_x;
 static PyObject *__pyx_n_s_y;
-static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentences, PyObject *__pyx_v_alpha, PyObject *__pyx_v__work, PyObject *__pyx_v_compute_loss); /* proto */
-static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentences, PyObject *__pyx_v_alpha, PyObject *__pyx_v__work, PyObject *__pyx_v__neu1, PyObject *__pyx_v_compute_loss); /* proto */
-static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentence, PyObject *__pyx_v__work); /* proto */
-static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentence, PyObject *__pyx_v__work, PyObject *__pyx_v__neu1); /* proto */
-static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_12ms2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentences, PyObject *__pyx_v_alpha, PyObject *__pyx_v__work, PyObject *__pyx_v_compute_loss); /* proto */
+static PyObject *__pyx_pf_12ms2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentences, PyObject *__pyx_v_alpha, PyObject *__pyx_v__work, PyObject *__pyx_v__neu1, PyObject *__pyx_v_compute_loss); /* proto */
+static PyObject *__pyx_pf_12ms2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentence, PyObject *__pyx_v__work); /* proto */
+static PyObject *__pyx_pf_12ms2vec_inner_6score_sentence_cbow(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentence, PyObject *__pyx_v__work, PyObject *__pyx_v__neu1); /* proto */
+static PyObject *__pyx_pf_12ms2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static PyObject *__pyx_int_0;
@@ -2062,7 +2062,7 @@ static PyObject *__pyx_codeobj__17;
 static PyObject *__pyx_codeobj__19;
 /* Late includes */
 
-/* "word2vec_inner.pyx":51
+/* "ms2vec_inner.pyx":51
  * 
  * # for when fblas.sdot returns a double
  * cdef REAL_t our_dot_double(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:             # <<<<<<<<<<<<<<
@@ -2070,20 +2070,20 @@ static PyObject *__pyx_codeobj__19;
  * 
  */
 
-static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_double(int const *__pyx_v_N, float const *__pyx_v_X, int const *__pyx_v_incX, float const *__pyx_v_Y, int const *__pyx_v_incY) {
-  __pyx_t_14word2vec_inner_REAL_t __pyx_r;
+static __pyx_t_12ms2vec_inner_REAL_t __pyx_f_12ms2vec_inner_our_dot_double(int const *__pyx_v_N, float const *__pyx_v_X, int const *__pyx_v_incX, float const *__pyx_v_Y, int const *__pyx_v_incY) {
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_r;
 
-  /* "word2vec_inner.pyx":52
+  /* "ms2vec_inner.pyx":52
  * # for when fblas.sdot returns a double
  * cdef REAL_t our_dot_double(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:
  *     return <REAL_t>dsdot(N, X, incX, Y, incY)             # <<<<<<<<<<<<<<
  * 
  * # for when fblas.sdot returns a float
  */
-  __pyx_r = ((__pyx_t_14word2vec_inner_REAL_t)__pyx_v_14word2vec_inner_dsdot(__pyx_v_N, __pyx_v_X, __pyx_v_incX, __pyx_v_Y, __pyx_v_incY));
+  __pyx_r = ((__pyx_t_12ms2vec_inner_REAL_t)__pyx_v_12ms2vec_inner_dsdot(__pyx_v_N, __pyx_v_X, __pyx_v_incX, __pyx_v_Y, __pyx_v_incY));
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":51
+  /* "ms2vec_inner.pyx":51
  * 
  * # for when fblas.sdot returns a double
  * cdef REAL_t our_dot_double(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:             # <<<<<<<<<<<<<<
@@ -2096,7 +2096,7 @@ static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_double(i
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":55
+/* "ms2vec_inner.pyx":55
  * 
  * # for when fblas.sdot returns a float
  * cdef REAL_t our_dot_float(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:             # <<<<<<<<<<<<<<
@@ -2104,20 +2104,20 @@ static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_double(i
  * 
  */
 
-static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_float(int const *__pyx_v_N, float const *__pyx_v_X, int const *__pyx_v_incX, float const *__pyx_v_Y, int const *__pyx_v_incY) {
-  __pyx_t_14word2vec_inner_REAL_t __pyx_r;
+static __pyx_t_12ms2vec_inner_REAL_t __pyx_f_12ms2vec_inner_our_dot_float(int const *__pyx_v_N, float const *__pyx_v_X, int const *__pyx_v_incX, float const *__pyx_v_Y, int const *__pyx_v_incY) {
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_r;
 
-  /* "word2vec_inner.pyx":56
+  /* "ms2vec_inner.pyx":56
  * # for when fblas.sdot returns a float
  * cdef REAL_t our_dot_float(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:
  *     return <REAL_t>sdot(N, X, incX, Y, incY)             # <<<<<<<<<<<<<<
  * 
  * # for when no blas available
  */
-  __pyx_r = ((__pyx_t_14word2vec_inner_REAL_t)__pyx_v_14word2vec_inner_sdot(__pyx_v_N, __pyx_v_X, __pyx_v_incX, __pyx_v_Y, __pyx_v_incY));
+  __pyx_r = ((__pyx_t_12ms2vec_inner_REAL_t)__pyx_v_12ms2vec_inner_sdot(__pyx_v_N, __pyx_v_X, __pyx_v_incX, __pyx_v_Y, __pyx_v_incY));
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":55
+  /* "ms2vec_inner.pyx":55
  * 
  * # for when fblas.sdot returns a float
  * cdef REAL_t our_dot_float(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:             # <<<<<<<<<<<<<<
@@ -2130,7 +2130,7 @@ static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_float(in
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":59
+/* "ms2vec_inner.pyx":59
  * 
  * # for when no blas available
  * cdef REAL_t our_dot_noblas(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:             # <<<<<<<<<<<<<<
@@ -2138,22 +2138,22 @@ static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_float(in
  *     cdef int i
  */
 
-static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_noblas(int const *__pyx_v_N, float const *__pyx_v_X, CYTHON_UNUSED int const *__pyx_v_incX, float const *__pyx_v_Y, CYTHON_UNUSED int const *__pyx_v_incY) {
+static __pyx_t_12ms2vec_inner_REAL_t __pyx_f_12ms2vec_inner_our_dot_noblas(int const *__pyx_v_N, float const *__pyx_v_X, CYTHON_UNUSED int const *__pyx_v_incX, float const *__pyx_v_Y, CYTHON_UNUSED int const *__pyx_v_incY) {
   int __pyx_v_i;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_a;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_r;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_a;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_r;
   int __pyx_t_1;
 
-  /* "word2vec_inner.pyx":63
+  /* "ms2vec_inner.pyx":63
  *     cdef int i
  *     cdef REAL_t a
  *     a = <REAL_t>0.0             # <<<<<<<<<<<<<<
  *     for i from 0 <= i < N[0] by 1:
  *         a += X[i] * Y[i]
  */
-  __pyx_v_a = ((__pyx_t_14word2vec_inner_REAL_t)0.0);
+  __pyx_v_a = ((__pyx_t_12ms2vec_inner_REAL_t)0.0);
 
-  /* "word2vec_inner.pyx":64
+  /* "ms2vec_inner.pyx":64
  *     cdef REAL_t a
  *     a = <REAL_t>0.0
  *     for i from 0 <= i < N[0] by 1:             # <<<<<<<<<<<<<<
@@ -2163,7 +2163,7 @@ static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_noblas(i
   __pyx_t_1 = (__pyx_v_N[0]);
   for (__pyx_v_i = 0; __pyx_v_i < __pyx_t_1; __pyx_v_i+=1) {
 
-    /* "word2vec_inner.pyx":65
+    /* "ms2vec_inner.pyx":65
  *     a = <REAL_t>0.0
  *     for i from 0 <= i < N[0] by 1:
  *         a += X[i] * Y[i]             # <<<<<<<<<<<<<<
@@ -2173,7 +2173,7 @@ static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_noblas(i
     __pyx_v_a = (__pyx_v_a + ((__pyx_v_X[__pyx_v_i]) * (__pyx_v_Y[__pyx_v_i])));
   }
 
-  /* "word2vec_inner.pyx":66
+  /* "ms2vec_inner.pyx":66
  *     for i from 0 <= i < N[0] by 1:
  *         a += X[i] * Y[i]
  *     return a             # <<<<<<<<<<<<<<
@@ -2183,7 +2183,7 @@ static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_noblas(i
   __pyx_r = __pyx_v_a;
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":59
+  /* "ms2vec_inner.pyx":59
  * 
  * # for when no blas available
  * cdef REAL_t our_dot_noblas(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:             # <<<<<<<<<<<<<<
@@ -2196,7 +2196,7 @@ static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_noblas(i
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":69
+/* "ms2vec_inner.pyx":69
  * 
  * # for when no blas available
  * cdef void our_saxpy_noblas(const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY) nogil:             # <<<<<<<<<<<<<<
@@ -2204,11 +2204,11 @@ static __pyx_t_14word2vec_inner_REAL_t __pyx_f_14word2vec_inner_our_dot_noblas(i
  *     for i from 0 <= i < N[0] by 1:
  */
 
-static void __pyx_f_14word2vec_inner_our_saxpy_noblas(int const *__pyx_v_N, float const *__pyx_v_alpha, float const *__pyx_v_X, int const *__pyx_v_incX, float *__pyx_v_Y, int const *__pyx_v_incY) {
+static void __pyx_f_12ms2vec_inner_our_saxpy_noblas(int const *__pyx_v_N, float const *__pyx_v_alpha, float const *__pyx_v_X, int const *__pyx_v_incX, float *__pyx_v_Y, int const *__pyx_v_incY) {
   int __pyx_v_i;
   int __pyx_t_1;
 
-  /* "word2vec_inner.pyx":71
+  /* "ms2vec_inner.pyx":71
  * cdef void our_saxpy_noblas(const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY) nogil:
  *     cdef int i
  *     for i from 0 <= i < N[0] by 1:             # <<<<<<<<<<<<<<
@@ -2218,7 +2218,7 @@ static void __pyx_f_14word2vec_inner_our_saxpy_noblas(int const *__pyx_v_N, floa
   __pyx_t_1 = (__pyx_v_N[0]);
   for (__pyx_v_i = 0; __pyx_v_i < __pyx_t_1; __pyx_v_i+=1) {
 
-    /* "word2vec_inner.pyx":72
+    /* "ms2vec_inner.pyx":72
  *     cdef int i
  *     for i from 0 <= i < N[0] by 1:
  *         Y[i * (incY[0])] = (alpha[0]) * X[i * (incX[0])] + Y[i * (incY[0])]             # <<<<<<<<<<<<<<
@@ -2228,7 +2228,7 @@ static void __pyx_f_14word2vec_inner_our_saxpy_noblas(int const *__pyx_v_N, floa
     (__pyx_v_Y[(__pyx_v_i * (__pyx_v_incY[0]))]) = (((__pyx_v_alpha[0]) * (__pyx_v_X[(__pyx_v_i * (__pyx_v_incX[0]))])) + (__pyx_v_Y[(__pyx_v_i * (__pyx_v_incY[0]))]));
   }
 
-  /* "word2vec_inner.pyx":69
+  /* "ms2vec_inner.pyx":69
  * 
  * # for when no blas available
  * cdef void our_saxpy_noblas(const int *N, const float *alpha, const float *X, const int *incX, float *Y, const int *incY) nogil:             # <<<<<<<<<<<<<<
@@ -2239,7 +2239,7 @@ static void __pyx_f_14word2vec_inner_our_saxpy_noblas(int const *__pyx_v_N, floa
   /* function exit code */
 }
 
-/* "word2vec_inner.pyx":74
+/* "ms2vec_inner.pyx":74
  *         Y[i * (incY[0])] = (alpha[0]) * X[i * (incX[0])] + Y[i * (incY[0])]
  * 
  * cdef void w2v_fast_sentence_sg_hs(             # <<<<<<<<<<<<<<
@@ -2247,22 +2247,22 @@ static void __pyx_f_14word2vec_inner_our_saxpy_noblas(int const *__pyx_v_N, floa
  *     REAL_t *syn0, REAL_t *syn1, const int size,
  */
 
-static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint32_t const *__pyx_v_word_point, __pyx_t_5numpy_uint8_t const *__pyx_v_word_code, int const __pyx_v_codelen, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn1, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const __pyx_v_word2_index, __pyx_t_14word2vec_inner_REAL_t const __pyx_v_alpha, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_work, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_word_locks, int const __pyx_v__compute_loss, __pyx_t_14word2vec_inner_REAL_t *__pyx_v__running_training_loss_param) {
+static void __pyx_f_12ms2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint32_t const *__pyx_v_word_point, __pyx_t_5numpy_uint8_t const *__pyx_v_word_code, int const __pyx_v_codelen, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn1, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const __pyx_v_word2_index, __pyx_t_12ms2vec_inner_REAL_t const __pyx_v_alpha, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_work, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_word_locks, int const __pyx_v__compute_loss, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v__running_training_loss_param) {
   PY_LONG_LONG __pyx_v_b;
   PY_LONG_LONG __pyx_v_row1;
   PY_LONG_LONG __pyx_v_row2;
   PY_LONG_LONG __pyx_v_sgn;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_f;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_g;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_f_dot;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_lprob;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_f;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_g;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_f_dot;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_lprob;
   int __pyx_t_1;
   int __pyx_t_2;
   PY_LONG_LONG __pyx_t_3;
   int __pyx_t_4;
   int __pyx_t_5;
 
-  /* "word2vec_inner.pyx":115
+  /* "ms2vec_inner.pyx":115
  * 
  *     cdef long long a, b
  *     cdef long long row1 = word2_index * size, row2, sgn             # <<<<<<<<<<<<<<
@@ -2271,16 +2271,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
   __pyx_v_row1 = (__pyx_v_word2_index * __pyx_v_size);
 
-  /* "word2vec_inner.pyx":118
+  /* "ms2vec_inner.pyx":118
  *     cdef REAL_t f, g, f_dot, lprob
  * 
  *     memset(work, 0, size * cython.sizeof(REAL_t))             # <<<<<<<<<<<<<<
  *     for b in range(codelen):
  *         row2 = word_point[b] * size
  */
-  (void)(memset(__pyx_v_work, 0, (__pyx_v_size * (sizeof(__pyx_t_14word2vec_inner_REAL_t)))));
+  (void)(memset(__pyx_v_work, 0, (__pyx_v_size * (sizeof(__pyx_t_12ms2vec_inner_REAL_t)))));
 
-  /* "word2vec_inner.pyx":119
+  /* "ms2vec_inner.pyx":119
  * 
  *     memset(work, 0, size * cython.sizeof(REAL_t))
  *     for b in range(codelen):             # <<<<<<<<<<<<<<
@@ -2292,7 +2292,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_b = __pyx_t_3;
 
-    /* "word2vec_inner.pyx":120
+    /* "ms2vec_inner.pyx":120
  *     memset(work, 0, size * cython.sizeof(REAL_t))
  *     for b in range(codelen):
  *         row2 = word_point[b] * size             # <<<<<<<<<<<<<<
@@ -2301,16 +2301,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
     __pyx_v_row2 = ((__pyx_v_word_point[__pyx_v_b]) * __pyx_v_size);
 
-    /* "word2vec_inner.pyx":121
+    /* "ms2vec_inner.pyx":121
  *     for b in range(codelen):
  *         row2 = word_point[b] * size
  *         f_dot = our_dot(&size, &syn0[row1], &ONE, &syn1[row2], &ONE)             # <<<<<<<<<<<<<<
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue
  */
-    __pyx_v_f_dot = __pyx_v_14word2vec_inner_our_dot((&__pyx_v_size), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_f_dot = __pyx_v_12ms2vec_inner_our_dot((&__pyx_v_size), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":122
+    /* "ms2vec_inner.pyx":122
  *         row2 = word_point[b] * size
  *         f_dot = our_dot(&size, &syn0[row1], &ONE, &syn1[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -2328,7 +2328,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":123
+      /* "ms2vec_inner.pyx":123
  *         f_dot = our_dot(&size, &syn0[row1], &ONE, &syn1[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue             # <<<<<<<<<<<<<<
@@ -2337,7 +2337,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
       goto __pyx_L3_continue;
 
-      /* "word2vec_inner.pyx":122
+      /* "ms2vec_inner.pyx":122
  *         row2 = word_point[b] * size
  *         f_dot = our_dot(&size, &syn0[row1], &ONE, &syn1[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -2346,16 +2346,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
     }
 
-    /* "word2vec_inner.pyx":124
+    /* "ms2vec_inner.pyx":124
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue
  *         f = EXP_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
  *         g = (1 - word_code[b] - f) * alpha
  * 
  */
-    __pyx_v_f = (__pyx_v_14word2vec_inner_EXP_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
+    __pyx_v_f = (__pyx_v_12ms2vec_inner_EXP_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
 
-    /* "word2vec_inner.pyx":125
+    /* "ms2vec_inner.pyx":125
  *             continue
  *         f = EXP_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *         g = (1 - word_code[b] - f) * alpha             # <<<<<<<<<<<<<<
@@ -2364,7 +2364,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
     __pyx_v_g = (((1 - (__pyx_v_word_code[__pyx_v_b])) - __pyx_v_f) * __pyx_v_alpha);
 
-    /* "word2vec_inner.pyx":127
+    /* "ms2vec_inner.pyx":127
  *         g = (1 - word_code[b] - f) * alpha
  * 
  *         if _compute_loss == 1:             # <<<<<<<<<<<<<<
@@ -2374,7 +2374,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
     __pyx_t_4 = ((__pyx_v__compute_loss == 1) != 0);
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":128
+      /* "ms2vec_inner.pyx":128
  * 
  *         if _compute_loss == 1:
  *             sgn = (-1)**word_code[b]  # ch function: 0-> 1, 1 -> -1             # <<<<<<<<<<<<<<
@@ -2383,7 +2383,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
       __pyx_v_sgn = __Pyx_pow_long(-1L, ((long)(__pyx_v_word_code[__pyx_v_b])));
 
-      /* "word2vec_inner.pyx":129
+      /* "ms2vec_inner.pyx":129
  *         if _compute_loss == 1:
  *             sgn = (-1)**word_code[b]  # ch function: 0-> 1, 1 -> -1
  *             lprob = -1*sgn*f_dot             # <<<<<<<<<<<<<<
@@ -2392,7 +2392,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
       __pyx_v_lprob = ((-1LL * __pyx_v_sgn) * __pyx_v_f_dot);
 
-      /* "word2vec_inner.pyx":130
+      /* "ms2vec_inner.pyx":130
  *             sgn = (-1)**word_code[b]  # ch function: 0-> 1, 1 -> -1
  *             lprob = -1*sgn*f_dot
  *             if lprob <= -MAX_EXP or lprob >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -2410,7 +2410,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
       __pyx_L10_bool_binop_done:;
       if (__pyx_t_4) {
 
-        /* "word2vec_inner.pyx":131
+        /* "ms2vec_inner.pyx":131
  *             lprob = -1*sgn*f_dot
  *             if lprob <= -MAX_EXP or lprob >= MAX_EXP:
  *                 continue             # <<<<<<<<<<<<<<
@@ -2419,7 +2419,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
         goto __pyx_L3_continue;
 
-        /* "word2vec_inner.pyx":130
+        /* "ms2vec_inner.pyx":130
  *             sgn = (-1)**word_code[b]  # ch function: 0-> 1, 1 -> -1
  *             lprob = -1*sgn*f_dot
  *             if lprob <= -MAX_EXP or lprob >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -2428,16 +2428,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
       }
 
-      /* "word2vec_inner.pyx":132
+      /* "ms2vec_inner.pyx":132
  *             if lprob <= -MAX_EXP or lprob >= MAX_EXP:
  *                 continue
  *             lprob = LOG_TABLE[<int>((lprob + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - lprob
  * 
  */
-      __pyx_v_lprob = (__pyx_v_14word2vec_inner_LOG_TABLE[((int)((__pyx_v_lprob + 6.0) * ((0x3E8 / 6) / 2)))]);
+      __pyx_v_lprob = (__pyx_v_12ms2vec_inner_LOG_TABLE[((int)((__pyx_v_lprob + 6.0) * ((0x3E8 / 6) / 2)))]);
 
-      /* "word2vec_inner.pyx":133
+      /* "ms2vec_inner.pyx":133
  *                 continue
  *             lprob = LOG_TABLE[<int>((lprob + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - lprob             # <<<<<<<<<<<<<<
@@ -2446,7 +2446,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
       (__pyx_v__running_training_loss_param[0]) = ((__pyx_v__running_training_loss_param[0]) - __pyx_v_lprob);
 
-      /* "word2vec_inner.pyx":127
+      /* "ms2vec_inner.pyx":127
  *         g = (1 - word_code[b] - f) * alpha
  * 
  *         if _compute_loss == 1:             # <<<<<<<<<<<<<<
@@ -2455,36 +2455,36 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  */
     }
 
-    /* "word2vec_inner.pyx":135
+    /* "ms2vec_inner.pyx":135
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - lprob
  * 
  *         our_saxpy(&size, &g, &syn1[row2], &ONE, work, &ONE)             # <<<<<<<<<<<<<<
  *         our_saxpy(&size, &g, &syn0[row1], &ONE, &syn1[row2], &ONE)
  * 
  */
-    __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE), __pyx_v_work, (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE), __pyx_v_work, (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":136
+    /* "ms2vec_inner.pyx":136
  * 
  *         our_saxpy(&size, &g, &syn1[row2], &ONE, work, &ONE)
  *         our_saxpy(&size, &g, &syn0[row1], &ONE, &syn1[row2], &ONE)             # <<<<<<<<<<<<<<
  * 
  *     our_saxpy(&size, &word_locks[word2_index], work, &ONE, &syn0[row1], &ONE)
  */
-    __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE));
     __pyx_L3_continue:;
   }
 
-  /* "word2vec_inner.pyx":138
+  /* "ms2vec_inner.pyx":138
  *         our_saxpy(&size, &g, &syn0[row1], &ONE, &syn1[row2], &ONE)
  * 
  *     our_saxpy(&size, &word_locks[word2_index], work, &ONE, &syn0[row1], &ONE)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&(__pyx_v_word_locks[__pyx_v_word2_index])), __pyx_v_work, (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_14word2vec_inner_ONE));
+  __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&(__pyx_v_word_locks[__pyx_v_word2_index])), __pyx_v_work, (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_12ms2vec_inner_ONE));
 
-  /* "word2vec_inner.pyx":74
+  /* "ms2vec_inner.pyx":74
  *         Y[i * (incY[0])] = (alpha[0]) * X[i * (incX[0])] + Y[i * (incY[0])]
  * 
  * cdef void w2v_fast_sentence_sg_hs(             # <<<<<<<<<<<<<<
@@ -2495,7 +2495,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
   /* function exit code */
 }
 
-/* "word2vec_inner.pyx":142
+/* "ms2vec_inner.pyx":142
  * 
  * # to support random draws from negative-sampling cum_table
  * cdef inline unsigned long long bisect_left(np.uint32_t *a, unsigned long long x, unsigned long long lo, unsigned long long hi) nogil:             # <<<<<<<<<<<<<<
@@ -2503,12 +2503,12 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs(__pyx_t_5numpy_uint
  *     while hi > lo:
  */
 
-static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(__pyx_t_5numpy_uint32_t *__pyx_v_a, unsigned PY_LONG_LONG __pyx_v_x, unsigned PY_LONG_LONG __pyx_v_lo, unsigned PY_LONG_LONG __pyx_v_hi) {
+static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_12ms2vec_inner_bisect_left(__pyx_t_5numpy_uint32_t *__pyx_v_a, unsigned PY_LONG_LONG __pyx_v_x, unsigned PY_LONG_LONG __pyx_v_lo, unsigned PY_LONG_LONG __pyx_v_hi) {
   unsigned PY_LONG_LONG __pyx_v_mid;
   unsigned PY_LONG_LONG __pyx_r;
   int __pyx_t_1;
 
-  /* "word2vec_inner.pyx":144
+  /* "ms2vec_inner.pyx":144
  * cdef inline unsigned long long bisect_left(np.uint32_t *a, unsigned long long x, unsigned long long lo, unsigned long long hi) nogil:
  *     cdef unsigned long long mid
  *     while hi > lo:             # <<<<<<<<<<<<<<
@@ -2519,7 +2519,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(
     __pyx_t_1 = ((__pyx_v_hi > __pyx_v_lo) != 0);
     if (!__pyx_t_1) break;
 
-    /* "word2vec_inner.pyx":145
+    /* "ms2vec_inner.pyx":145
  *     cdef unsigned long long mid
  *     while hi > lo:
  *         mid = (lo + hi) >> 1             # <<<<<<<<<<<<<<
@@ -2528,7 +2528,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(
  */
     __pyx_v_mid = ((__pyx_v_lo + __pyx_v_hi) >> 1);
 
-    /* "word2vec_inner.pyx":146
+    /* "ms2vec_inner.pyx":146
  *     while hi > lo:
  *         mid = (lo + hi) >> 1
  *         if a[mid] >= x:             # <<<<<<<<<<<<<<
@@ -2538,7 +2538,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(
     __pyx_t_1 = (((__pyx_v_a[__pyx_v_mid]) >= __pyx_v_x) != 0);
     if (__pyx_t_1) {
 
-      /* "word2vec_inner.pyx":147
+      /* "ms2vec_inner.pyx":147
  *         mid = (lo + hi) >> 1
  *         if a[mid] >= x:
  *             hi = mid             # <<<<<<<<<<<<<<
@@ -2547,7 +2547,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(
  */
       __pyx_v_hi = __pyx_v_mid;
 
-      /* "word2vec_inner.pyx":146
+      /* "ms2vec_inner.pyx":146
  *     while hi > lo:
  *         mid = (lo + hi) >> 1
  *         if a[mid] >= x:             # <<<<<<<<<<<<<<
@@ -2557,7 +2557,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(
       goto __pyx_L5;
     }
 
-    /* "word2vec_inner.pyx":149
+    /* "ms2vec_inner.pyx":149
  *             hi = mid
  *         else:
  *             lo = mid + 1             # <<<<<<<<<<<<<<
@@ -2570,7 +2570,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(
     __pyx_L5:;
   }
 
-  /* "word2vec_inner.pyx":150
+  /* "ms2vec_inner.pyx":150
  *         else:
  *             lo = mid + 1
  *     return lo             # <<<<<<<<<<<<<<
@@ -2580,7 +2580,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(
   __pyx_r = __pyx_v_lo;
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":142
+  /* "ms2vec_inner.pyx":142
  * 
  * # to support random draws from negative-sampling cum_table
  * cdef inline unsigned long long bisect_left(np.uint32_t *a, unsigned long long x, unsigned long long lo, unsigned long long hi) nogil:             # <<<<<<<<<<<<<<
@@ -2593,7 +2593,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":154
+/* "ms2vec_inner.pyx":154
  * # this quick & dirty RNG apparently matches Java's (non-Secure)Random
  * # note this function side-effects next_random to set up the next number
  * cdef inline unsigned long long random_int32(unsigned long long *next_random) nogil:             # <<<<<<<<<<<<<<
@@ -2601,11 +2601,11 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_bisect_left(
  *     next_random[0] = (next_random[0] * <unsigned long long>25214903917ULL + 11) & 281474976710655ULL
  */
 
-static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_random_int32(unsigned PY_LONG_LONG *__pyx_v_next_random) {
+static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_12ms2vec_inner_random_int32(unsigned PY_LONG_LONG *__pyx_v_next_random) {
   unsigned PY_LONG_LONG __pyx_v_this_random;
   unsigned PY_LONG_LONG __pyx_r;
 
-  /* "word2vec_inner.pyx":155
+  /* "ms2vec_inner.pyx":155
  * # note this function side-effects next_random to set up the next number
  * cdef inline unsigned long long random_int32(unsigned long long *next_random) nogil:
  *     cdef unsigned long long this_random = next_random[0] >> 16             # <<<<<<<<<<<<<<
@@ -2614,7 +2614,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_random_int32
  */
   __pyx_v_this_random = ((__pyx_v_next_random[0]) >> 16);
 
-  /* "word2vec_inner.pyx":156
+  /* "ms2vec_inner.pyx":156
  * cdef inline unsigned long long random_int32(unsigned long long *next_random) nogil:
  *     cdef unsigned long long this_random = next_random[0] >> 16
  *     next_random[0] = (next_random[0] * <unsigned long long>25214903917ULL + 11) & 281474976710655ULL             # <<<<<<<<<<<<<<
@@ -2623,7 +2623,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_random_int32
  */
   (__pyx_v_next_random[0]) = ((((__pyx_v_next_random[0]) * ((unsigned PY_LONG_LONG)25214903917ULL)) + 11) & 281474976710655ULL);
 
-  /* "word2vec_inner.pyx":157
+  /* "ms2vec_inner.pyx":157
  *     cdef unsigned long long this_random = next_random[0] >> 16
  *     next_random[0] = (next_random[0] * <unsigned long long>25214903917ULL + 11) & 281474976710655ULL
  *     return this_random             # <<<<<<<<<<<<<<
@@ -2633,7 +2633,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_random_int32
   __pyx_r = __pyx_v_this_random;
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":154
+  /* "ms2vec_inner.pyx":154
  * # this quick & dirty RNG apparently matches Java's (non-Secure)Random
  * # note this function side-effects next_random to set up the next number
  * cdef inline unsigned long long random_int32(unsigned long long *next_random) nogil:             # <<<<<<<<<<<<<<
@@ -2646,7 +2646,7 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_random_int32
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":159
+/* "ms2vec_inner.pyx":159
  *     return this_random
  * 
  * cdef unsigned long long w2v_fast_sentence_sg_neg(             # <<<<<<<<<<<<<<
@@ -2654,15 +2654,15 @@ static CYTHON_INLINE unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_random_int32
  *     REAL_t *syn0, REAL_t *syn1neg, const int size, const np.uint32_t word_index,
  */
 
-static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(int const __pyx_v_negative, __pyx_t_5numpy_uint32_t *__pyx_v_cum_table, unsigned PY_LONG_LONG __pyx_v_cum_table_len, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn1neg, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const __pyx_v_word_index, __pyx_t_5numpy_uint32_t const __pyx_v_word2_index, __pyx_t_14word2vec_inner_REAL_t const __pyx_v_alpha, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_work, unsigned PY_LONG_LONG __pyx_v_next_random, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_word_locks, int const __pyx_v__compute_loss, __pyx_t_14word2vec_inner_REAL_t *__pyx_v__running_training_loss_param) {
+static unsigned PY_LONG_LONG __pyx_f_12ms2vec_inner_w2v_fast_sentence_sg_neg(int const __pyx_v_negative, __pyx_t_5numpy_uint32_t *__pyx_v_cum_table, unsigned PY_LONG_LONG __pyx_v_cum_table_len, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn1neg, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const __pyx_v_word_index, __pyx_t_5numpy_uint32_t const __pyx_v_word2_index, __pyx_t_12ms2vec_inner_REAL_t const __pyx_v_alpha, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_work, unsigned PY_LONG_LONG __pyx_v_next_random, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_word_locks, int const __pyx_v__compute_loss, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v__running_training_loss_param) {
   PY_LONG_LONG __pyx_v_row1;
   PY_LONG_LONG __pyx_v_row2;
   unsigned PY_LONG_LONG __pyx_v_modulo;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_f;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_g;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_label;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_f_dot;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_log_e_f_dot;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_f;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_g;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_label;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_f_dot;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_log_e_f_dot;
   __pyx_t_5numpy_uint32_t __pyx_v_target_index;
   int __pyx_v_d;
   unsigned PY_LONG_LONG __pyx_r;
@@ -2671,9 +2671,9 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
   int __pyx_t_3;
   int __pyx_t_4;
   int __pyx_t_5;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_t_6;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_t_6;
 
-  /* "word2vec_inner.pyx":209
+  /* "ms2vec_inner.pyx":209
  *     """
  *     cdef long long a
  *     cdef long long row1 = word2_index * size, row2             # <<<<<<<<<<<<<<
@@ -2682,7 +2682,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
   __pyx_v_row1 = (__pyx_v_word2_index * __pyx_v_size);
 
-  /* "word2vec_inner.pyx":210
+  /* "ms2vec_inner.pyx":210
  *     cdef long long a
  *     cdef long long row1 = word2_index * size, row2
  *     cdef unsigned long long modulo = 281474976710655ULL             # <<<<<<<<<<<<<<
@@ -2691,16 +2691,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
   __pyx_v_modulo = 281474976710655ULL;
 
-  /* "word2vec_inner.pyx":215
+  /* "ms2vec_inner.pyx":215
  *     cdef int d
  * 
  *     memset(work, 0, size * cython.sizeof(REAL_t))             # <<<<<<<<<<<<<<
  * 
  *     for d in range(negative+1):
  */
-  (void)(memset(__pyx_v_work, 0, (__pyx_v_size * (sizeof(__pyx_t_14word2vec_inner_REAL_t)))));
+  (void)(memset(__pyx_v_work, 0, (__pyx_v_size * (sizeof(__pyx_t_12ms2vec_inner_REAL_t)))));
 
-  /* "word2vec_inner.pyx":217
+  /* "ms2vec_inner.pyx":217
  *     memset(work, 0, size * cython.sizeof(REAL_t))
  * 
  *     for d in range(negative+1):             # <<<<<<<<<<<<<<
@@ -2712,7 +2712,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_d = __pyx_t_3;
 
-    /* "word2vec_inner.pyx":218
+    /* "ms2vec_inner.pyx":218
  * 
  *     for d in range(negative+1):
  *         if d == 0:             # <<<<<<<<<<<<<<
@@ -2722,7 +2722,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
     __pyx_t_4 = ((__pyx_v_d == 0) != 0);
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":219
+      /* "ms2vec_inner.pyx":219
  *     for d in range(negative+1):
  *         if d == 0:
  *             target_index = word_index             # <<<<<<<<<<<<<<
@@ -2731,16 +2731,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
       __pyx_v_target_index = __pyx_v_word_index;
 
-      /* "word2vec_inner.pyx":220
+      /* "ms2vec_inner.pyx":220
  *         if d == 0:
  *             target_index = word_index
  *             label = ONEF             # <<<<<<<<<<<<<<
  *         else:
  *             target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
  */
-      __pyx_v_label = __pyx_v_14word2vec_inner_ONEF;
+      __pyx_v_label = __pyx_v_12ms2vec_inner_ONEF;
 
-      /* "word2vec_inner.pyx":218
+      /* "ms2vec_inner.pyx":218
  * 
  *     for d in range(negative+1):
  *         if d == 0:             # <<<<<<<<<<<<<<
@@ -2750,7 +2750,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
       goto __pyx_L5;
     }
 
-    /* "word2vec_inner.pyx":222
+    /* "ms2vec_inner.pyx":222
  *             label = ONEF
  *         else:
  *             target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)             # <<<<<<<<<<<<<<
@@ -2758,9 +2758,9 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  *             if target_index == word_index:
  */
     /*else*/ {
-      __pyx_v_target_index = __pyx_f_14word2vec_inner_bisect_left(__pyx_v_cum_table, ((__pyx_v_next_random >> 16) % (__pyx_v_cum_table[(__pyx_v_cum_table_len - 1)])), 0, __pyx_v_cum_table_len);
+      __pyx_v_target_index = __pyx_f_12ms2vec_inner_bisect_left(__pyx_v_cum_table, ((__pyx_v_next_random >> 16) % (__pyx_v_cum_table[(__pyx_v_cum_table_len - 1)])), 0, __pyx_v_cum_table_len);
 
-      /* "word2vec_inner.pyx":223
+      /* "ms2vec_inner.pyx":223
  *         else:
  *             target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
  *             next_random = (next_random * <unsigned long long>25214903917ULL + 11) & modulo             # <<<<<<<<<<<<<<
@@ -2769,7 +2769,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
       __pyx_v_next_random = (((__pyx_v_next_random * ((unsigned PY_LONG_LONG)25214903917ULL)) + 11) & __pyx_v_modulo);
 
-      /* "word2vec_inner.pyx":224
+      /* "ms2vec_inner.pyx":224
  *             target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
  *             next_random = (next_random * <unsigned long long>25214903917ULL + 11) & modulo
  *             if target_index == word_index:             # <<<<<<<<<<<<<<
@@ -2779,7 +2779,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
       __pyx_t_4 = ((__pyx_v_target_index == __pyx_v_word_index) != 0);
       if (__pyx_t_4) {
 
-        /* "word2vec_inner.pyx":225
+        /* "ms2vec_inner.pyx":225
  *             next_random = (next_random * <unsigned long long>25214903917ULL + 11) & modulo
  *             if target_index == word_index:
  *                 continue             # <<<<<<<<<<<<<<
@@ -2788,7 +2788,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
         goto __pyx_L3_continue;
 
-        /* "word2vec_inner.pyx":224
+        /* "ms2vec_inner.pyx":224
  *             target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
  *             next_random = (next_random * <unsigned long long>25214903917ULL + 11) & modulo
  *             if target_index == word_index:             # <<<<<<<<<<<<<<
@@ -2797,18 +2797,18 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
       }
 
-      /* "word2vec_inner.pyx":226
+      /* "ms2vec_inner.pyx":226
  *             if target_index == word_index:
  *                 continue
  *             label = <REAL_t>0.0             # <<<<<<<<<<<<<<
  * 
  *         row2 = target_index * size
  */
-      __pyx_v_label = ((__pyx_t_14word2vec_inner_REAL_t)0.0);
+      __pyx_v_label = ((__pyx_t_12ms2vec_inner_REAL_t)0.0);
     }
     __pyx_L5:;
 
-    /* "word2vec_inner.pyx":228
+    /* "ms2vec_inner.pyx":228
  *             label = <REAL_t>0.0
  * 
  *         row2 = target_index * size             # <<<<<<<<<<<<<<
@@ -2817,16 +2817,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
     __pyx_v_row2 = (__pyx_v_target_index * __pyx_v_size);
 
-    /* "word2vec_inner.pyx":229
+    /* "ms2vec_inner.pyx":229
  * 
  *         row2 = target_index * size
  *         f_dot = our_dot(&size, &syn0[row1], &ONE, &syn1neg[row2], &ONE)             # <<<<<<<<<<<<<<
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue
  */
-    __pyx_v_f_dot = __pyx_v_14word2vec_inner_our_dot((&__pyx_v_size), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_f_dot = __pyx_v_12ms2vec_inner_our_dot((&__pyx_v_size), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":230
+    /* "ms2vec_inner.pyx":230
  *         row2 = target_index * size
  *         f_dot = our_dot(&size, &syn0[row1], &ONE, &syn1neg[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -2844,7 +2844,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":231
+      /* "ms2vec_inner.pyx":231
  *         f_dot = our_dot(&size, &syn0[row1], &ONE, &syn1neg[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue             # <<<<<<<<<<<<<<
@@ -2853,7 +2853,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
       goto __pyx_L3_continue;
 
-      /* "word2vec_inner.pyx":230
+      /* "ms2vec_inner.pyx":230
  *         row2 = target_index * size
  *         f_dot = our_dot(&size, &syn0[row1], &ONE, &syn1neg[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -2862,16 +2862,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
     }
 
-    /* "word2vec_inner.pyx":232
+    /* "ms2vec_inner.pyx":232
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue
  *         f = EXP_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
  *         g = (label - f) * alpha
  * 
  */
-    __pyx_v_f = (__pyx_v_14word2vec_inner_EXP_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
+    __pyx_v_f = (__pyx_v_12ms2vec_inner_EXP_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
 
-    /* "word2vec_inner.pyx":233
+    /* "ms2vec_inner.pyx":233
  *             continue
  *         f = EXP_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *         g = (label - f) * alpha             # <<<<<<<<<<<<<<
@@ -2880,7 +2880,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
     __pyx_v_g = ((__pyx_v_label - __pyx_v_f) * __pyx_v_alpha);
 
-    /* "word2vec_inner.pyx":235
+    /* "ms2vec_inner.pyx":235
  *         g = (label - f) * alpha
  * 
  *         if _compute_loss == 1:             # <<<<<<<<<<<<<<
@@ -2890,7 +2890,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
     __pyx_t_4 = ((__pyx_v__compute_loss == 1) != 0);
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":236
+      /* "ms2vec_inner.pyx":236
  * 
  *         if _compute_loss == 1:
  *             f_dot = (f_dot if d == 0  else -f_dot)             # <<<<<<<<<<<<<<
@@ -2904,7 +2904,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
       }
       __pyx_v_f_dot = __pyx_t_6;
 
-      /* "word2vec_inner.pyx":237
+      /* "ms2vec_inner.pyx":237
  *         if _compute_loss == 1:
  *             f_dot = (f_dot if d == 0  else -f_dot)
  *             if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -2922,7 +2922,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
       __pyx_L12_bool_binop_done:;
       if (__pyx_t_4) {
 
-        /* "word2vec_inner.pyx":238
+        /* "ms2vec_inner.pyx":238
  *             f_dot = (f_dot if d == 0  else -f_dot)
  *             if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *                 continue             # <<<<<<<<<<<<<<
@@ -2931,7 +2931,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
         goto __pyx_L3_continue;
 
-        /* "word2vec_inner.pyx":237
+        /* "ms2vec_inner.pyx":237
  *         if _compute_loss == 1:
  *             f_dot = (f_dot if d == 0  else -f_dot)
  *             if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -2940,16 +2940,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
       }
 
-      /* "word2vec_inner.pyx":239
+      /* "ms2vec_inner.pyx":239
  *             if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *                 continue
  *             log_e_f_dot = LOG_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - log_e_f_dot
  * 
  */
-      __pyx_v_log_e_f_dot = (__pyx_v_14word2vec_inner_LOG_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
+      __pyx_v_log_e_f_dot = (__pyx_v_12ms2vec_inner_LOG_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
 
-      /* "word2vec_inner.pyx":240
+      /* "ms2vec_inner.pyx":240
  *                 continue
  *             log_e_f_dot = LOG_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - log_e_f_dot             # <<<<<<<<<<<<<<
@@ -2958,7 +2958,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
       (__pyx_v__running_training_loss_param[0]) = ((__pyx_v__running_training_loss_param[0]) - __pyx_v_log_e_f_dot);
 
-      /* "word2vec_inner.pyx":235
+      /* "ms2vec_inner.pyx":235
  *         g = (label - f) * alpha
  * 
  *         if _compute_loss == 1:             # <<<<<<<<<<<<<<
@@ -2967,36 +2967,36 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  */
     }
 
-    /* "word2vec_inner.pyx":242
+    /* "ms2vec_inner.pyx":242
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - log_e_f_dot
  * 
  *         our_saxpy(&size, &g, &syn1neg[row2], &ONE, work, &ONE)             # <<<<<<<<<<<<<<
  *         our_saxpy(&size, &g, &syn0[row1], &ONE, &syn1neg[row2], &ONE)
  * 
  */
-    __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE), __pyx_v_work, (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE), __pyx_v_work, (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":243
+    /* "ms2vec_inner.pyx":243
  * 
  *         our_saxpy(&size, &g, &syn1neg[row2], &ONE, work, &ONE)
  *         our_saxpy(&size, &g, &syn0[row1], &ONE, &syn1neg[row2], &ONE)             # <<<<<<<<<<<<<<
  * 
  *     our_saxpy(&size, &word_locks[word2_index], work, &ONE, &syn0[row1], &ONE)
  */
-    __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE));
     __pyx_L3_continue:;
   }
 
-  /* "word2vec_inner.pyx":245
+  /* "ms2vec_inner.pyx":245
  *         our_saxpy(&size, &g, &syn0[row1], &ONE, &syn1neg[row2], &ONE)
  * 
  *     our_saxpy(&size, &word_locks[word2_index], work, &ONE, &syn0[row1], &ONE)             # <<<<<<<<<<<<<<
  * 
  *     return next_random
  */
-  __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&(__pyx_v_word_locks[__pyx_v_word2_index])), __pyx_v_work, (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_14word2vec_inner_ONE));
+  __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&(__pyx_v_word_locks[__pyx_v_word2_index])), __pyx_v_work, (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_12ms2vec_inner_ONE));
 
-  /* "word2vec_inner.pyx":247
+  /* "ms2vec_inner.pyx":247
  *     our_saxpy(&size, &word_locks[word2_index], work, &ONE, &syn0[row1], &ONE)
  * 
  *     return next_random             # <<<<<<<<<<<<<<
@@ -3006,7 +3006,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
   __pyx_r = __pyx_v_next_random;
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":159
+  /* "ms2vec_inner.pyx":159
  *     return this_random
  * 
  * cdef unsigned long long w2v_fast_sentence_sg_neg(             # <<<<<<<<<<<<<<
@@ -3019,7 +3019,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":250
+/* "ms2vec_inner.pyx":250
  * 
  * 
  * cdef void w2v_fast_sentence_cbow_hs(             # <<<<<<<<<<<<<<
@@ -3027,16 +3027,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(i
  *     REAL_t *neu1, REAL_t *syn0, REAL_t *syn1, const int size,
  */
 
-static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_uint32_t const *__pyx_v_word_point, __pyx_t_5numpy_uint8_t const *__pyx_v_word_code, int *__pyx_v_codelens, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_neu1, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn1, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const *__pyx_v_indexes, __pyx_t_14word2vec_inner_REAL_t const __pyx_v_alpha, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_work, int __pyx_v_i, int __pyx_v_j, int __pyx_v_k, int __pyx_v_cbow_mean, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_word_locks, int const __pyx_v__compute_loss, __pyx_t_14word2vec_inner_REAL_t *__pyx_v__running_training_loss_param) {
+static void __pyx_f_12ms2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_uint32_t const *__pyx_v_word_point, __pyx_t_5numpy_uint8_t const *__pyx_v_word_code, int *__pyx_v_codelens, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_neu1, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn1, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const *__pyx_v_indexes, __pyx_t_12ms2vec_inner_REAL_t const __pyx_v_alpha, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_work, int __pyx_v_i, int __pyx_v_j, int __pyx_v_k, int __pyx_v_cbow_mean, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_word_locks, int const __pyx_v__compute_loss, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v__running_training_loss_param) {
   PY_LONG_LONG __pyx_v_b;
   PY_LONG_LONG __pyx_v_row2;
   PY_LONG_LONG __pyx_v_sgn;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_f;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_g;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_count;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_inv_count;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_f_dot;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_lprob;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_f;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_g;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_count;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_inv_count;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_f_dot;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_lprob;
   int __pyx_v_m;
   int __pyx_t_1;
   int __pyx_t_2;
@@ -3045,7 +3045,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
   PY_LONG_LONG __pyx_t_5;
   int __pyx_t_6;
 
-  /* "word2vec_inner.pyx":302
+  /* "ms2vec_inner.pyx":302
  *     cdef long long a, b
  *     cdef long long row2, sgn
  *     cdef REAL_t f, g, count, inv_count = 1.0, f_dot, lprob             # <<<<<<<<<<<<<<
@@ -3054,25 +3054,25 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
   __pyx_v_inv_count = 1.0;
 
-  /* "word2vec_inner.pyx":305
+  /* "ms2vec_inner.pyx":305
  *     cdef int m
  * 
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))             # <<<<<<<<<<<<<<
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  */
-  (void)(memset(__pyx_v_neu1, 0, (__pyx_v_size * (sizeof(__pyx_t_14word2vec_inner_REAL_t)))));
+  (void)(memset(__pyx_v_neu1, 0, (__pyx_v_size * (sizeof(__pyx_t_12ms2vec_inner_REAL_t)))));
 
-  /* "word2vec_inner.pyx":306
+  /* "ms2vec_inner.pyx":306
  * 
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))
  *     count = <REAL_t>0.0             # <<<<<<<<<<<<<<
  *     for m in range(j, k):
  *         if m == i:
  */
-  __pyx_v_count = ((__pyx_t_14word2vec_inner_REAL_t)0.0);
+  __pyx_v_count = ((__pyx_t_12ms2vec_inner_REAL_t)0.0);
 
-  /* "word2vec_inner.pyx":307
+  /* "ms2vec_inner.pyx":307
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))
  *     count = <REAL_t>0.0
  *     for m in range(j, k):             # <<<<<<<<<<<<<<
@@ -3084,7 +3084,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
   for (__pyx_t_3 = __pyx_v_j; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_m = __pyx_t_3;
 
-    /* "word2vec_inner.pyx":308
+    /* "ms2vec_inner.pyx":308
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  *         if m == i:             # <<<<<<<<<<<<<<
@@ -3094,7 +3094,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
     __pyx_t_4 = ((__pyx_v_m == __pyx_v_i) != 0);
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":309
+      /* "ms2vec_inner.pyx":309
  *     for m in range(j, k):
  *         if m == i:
  *             continue             # <<<<<<<<<<<<<<
@@ -3103,7 +3103,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
       goto __pyx_L3_continue;
 
-      /* "word2vec_inner.pyx":308
+      /* "ms2vec_inner.pyx":308
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  *         if m == i:             # <<<<<<<<<<<<<<
@@ -3112,7 +3112,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
     }
 
-    /* "word2vec_inner.pyx":311
+    /* "ms2vec_inner.pyx":311
  *             continue
  *         else:
  *             count += ONEF             # <<<<<<<<<<<<<<
@@ -3120,40 +3120,40 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  *     if count > (<REAL_t>0.5):
  */
     /*else*/ {
-      __pyx_v_count = (__pyx_v_count + __pyx_v_14word2vec_inner_ONEF);
+      __pyx_v_count = (__pyx_v_count + __pyx_v_12ms2vec_inner_ONEF);
 
-      /* "word2vec_inner.pyx":312
+      /* "ms2vec_inner.pyx":312
  *         else:
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)             # <<<<<<<<<<<<<<
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  */
-      __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_14word2vec_inner_ONEF), (&(__pyx_v_syn0[((__pyx_v_indexes[__pyx_v_m]) * __pyx_v_size)])), (&__pyx_v_14word2vec_inner_ONE), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE));
+      __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_12ms2vec_inner_ONEF), (&(__pyx_v_syn0[((__pyx_v_indexes[__pyx_v_m]) * __pyx_v_size)])), (&__pyx_v_12ms2vec_inner_ONE), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE));
     }
     __pyx_L3_continue:;
   }
 
-  /* "word2vec_inner.pyx":313
+  /* "ms2vec_inner.pyx":313
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):             # <<<<<<<<<<<<<<
  *         inv_count = ONEF/count
  *     if cbow_mean:
  */
-  __pyx_t_4 = ((__pyx_v_count > ((__pyx_t_14word2vec_inner_REAL_t)0.5)) != 0);
+  __pyx_t_4 = ((__pyx_v_count > ((__pyx_t_12ms2vec_inner_REAL_t)0.5)) != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":314
+    /* "ms2vec_inner.pyx":314
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count             # <<<<<<<<<<<<<<
  *     if cbow_mean:
  *         sscal(&size, &inv_count, neu1, &ONE)  # (does this need BLAS-variants like saxpy?)
  */
-    __pyx_v_inv_count = (__pyx_v_14word2vec_inner_ONEF / __pyx_v_count);
+    __pyx_v_inv_count = (__pyx_v_12ms2vec_inner_ONEF / __pyx_v_count);
 
-    /* "word2vec_inner.pyx":313
+    /* "ms2vec_inner.pyx":313
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):             # <<<<<<<<<<<<<<
@@ -3162,7 +3162,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
   }
 
-  /* "word2vec_inner.pyx":315
+  /* "ms2vec_inner.pyx":315
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  *     if cbow_mean:             # <<<<<<<<<<<<<<
@@ -3172,16 +3172,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
   __pyx_t_4 = (__pyx_v_cbow_mean != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":316
+    /* "ms2vec_inner.pyx":316
  *         inv_count = ONEF/count
  *     if cbow_mean:
  *         sscal(&size, &inv_count, neu1, &ONE)  # (does this need BLAS-variants like saxpy?)             # <<<<<<<<<<<<<<
  * 
  *     memset(work, 0, size * cython.sizeof(REAL_t))
  */
-    __pyx_v_14word2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":315
+    /* "ms2vec_inner.pyx":315
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  *     if cbow_mean:             # <<<<<<<<<<<<<<
@@ -3190,16 +3190,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
   }
 
-  /* "word2vec_inner.pyx":318
+  /* "ms2vec_inner.pyx":318
  *         sscal(&size, &inv_count, neu1, &ONE)  # (does this need BLAS-variants like saxpy?)
  * 
  *     memset(work, 0, size * cython.sizeof(REAL_t))             # <<<<<<<<<<<<<<
  *     for b in range(codelens[i]):
  *         row2 = word_point[b] * size
  */
-  (void)(memset(__pyx_v_work, 0, (__pyx_v_size * (sizeof(__pyx_t_14word2vec_inner_REAL_t)))));
+  (void)(memset(__pyx_v_work, 0, (__pyx_v_size * (sizeof(__pyx_t_12ms2vec_inner_REAL_t)))));
 
-  /* "word2vec_inner.pyx":319
+  /* "ms2vec_inner.pyx":319
  * 
  *     memset(work, 0, size * cython.sizeof(REAL_t))
  *     for b in range(codelens[i]):             # <<<<<<<<<<<<<<
@@ -3211,7 +3211,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_2; __pyx_t_5+=1) {
     __pyx_v_b = __pyx_t_5;
 
-    /* "word2vec_inner.pyx":320
+    /* "ms2vec_inner.pyx":320
  *     memset(work, 0, size * cython.sizeof(REAL_t))
  *     for b in range(codelens[i]):
  *         row2 = word_point[b] * size             # <<<<<<<<<<<<<<
@@ -3220,16 +3220,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
     __pyx_v_row2 = ((__pyx_v_word_point[__pyx_v_b]) * __pyx_v_size);
 
-    /* "word2vec_inner.pyx":321
+    /* "ms2vec_inner.pyx":321
  *     for b in range(codelens[i]):
  *         row2 = word_point[b] * size
  *         f_dot = our_dot(&size, neu1, &ONE, &syn1[row2], &ONE)             # <<<<<<<<<<<<<<
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue
  */
-    __pyx_v_f_dot = __pyx_v_14word2vec_inner_our_dot((&__pyx_v_size), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_f_dot = __pyx_v_12ms2vec_inner_our_dot((&__pyx_v_size), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":322
+    /* "ms2vec_inner.pyx":322
  *         row2 = word_point[b] * size
  *         f_dot = our_dot(&size, neu1, &ONE, &syn1[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -3247,7 +3247,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
     __pyx_L11_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":323
+      /* "ms2vec_inner.pyx":323
  *         f_dot = our_dot(&size, neu1, &ONE, &syn1[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue             # <<<<<<<<<<<<<<
@@ -3256,7 +3256,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
       goto __pyx_L8_continue;
 
-      /* "word2vec_inner.pyx":322
+      /* "ms2vec_inner.pyx":322
  *         row2 = word_point[b] * size
  *         f_dot = our_dot(&size, neu1, &ONE, &syn1[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -3265,16 +3265,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
     }
 
-    /* "word2vec_inner.pyx":324
+    /* "ms2vec_inner.pyx":324
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue
  *         f = EXP_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
  *         g = (1 - word_code[b] - f) * alpha
  * 
  */
-    __pyx_v_f = (__pyx_v_14word2vec_inner_EXP_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
+    __pyx_v_f = (__pyx_v_12ms2vec_inner_EXP_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
 
-    /* "word2vec_inner.pyx":325
+    /* "ms2vec_inner.pyx":325
  *             continue
  *         f = EXP_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *         g = (1 - word_code[b] - f) * alpha             # <<<<<<<<<<<<<<
@@ -3283,7 +3283,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
     __pyx_v_g = (((1 - (__pyx_v_word_code[__pyx_v_b])) - __pyx_v_f) * __pyx_v_alpha);
 
-    /* "word2vec_inner.pyx":327
+    /* "ms2vec_inner.pyx":327
  *         g = (1 - word_code[b] - f) * alpha
  * 
  *         if _compute_loss == 1:             # <<<<<<<<<<<<<<
@@ -3293,7 +3293,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
     __pyx_t_4 = ((__pyx_v__compute_loss == 1) != 0);
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":328
+      /* "ms2vec_inner.pyx":328
  * 
  *         if _compute_loss == 1:
  *             sgn = (-1)**word_code[b]  # ch function: 0-> 1, 1 -> -1             # <<<<<<<<<<<<<<
@@ -3302,7 +3302,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
       __pyx_v_sgn = __Pyx_pow_long(-1L, ((long)(__pyx_v_word_code[__pyx_v_b])));
 
-      /* "word2vec_inner.pyx":329
+      /* "ms2vec_inner.pyx":329
  *         if _compute_loss == 1:
  *             sgn = (-1)**word_code[b]  # ch function: 0-> 1, 1 -> -1
  *             lprob = -1*sgn*f_dot             # <<<<<<<<<<<<<<
@@ -3311,7 +3311,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
       __pyx_v_lprob = ((-1LL * __pyx_v_sgn) * __pyx_v_f_dot);
 
-      /* "word2vec_inner.pyx":330
+      /* "ms2vec_inner.pyx":330
  *             sgn = (-1)**word_code[b]  # ch function: 0-> 1, 1 -> -1
  *             lprob = -1*sgn*f_dot
  *             if lprob <= -MAX_EXP or lprob >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -3329,7 +3329,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
       __pyx_L15_bool_binop_done:;
       if (__pyx_t_4) {
 
-        /* "word2vec_inner.pyx":331
+        /* "ms2vec_inner.pyx":331
  *             lprob = -1*sgn*f_dot
  *             if lprob <= -MAX_EXP or lprob >= MAX_EXP:
  *                 continue             # <<<<<<<<<<<<<<
@@ -3338,7 +3338,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
         goto __pyx_L8_continue;
 
-        /* "word2vec_inner.pyx":330
+        /* "ms2vec_inner.pyx":330
  *             sgn = (-1)**word_code[b]  # ch function: 0-> 1, 1 -> -1
  *             lprob = -1*sgn*f_dot
  *             if lprob <= -MAX_EXP or lprob >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -3347,16 +3347,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
       }
 
-      /* "word2vec_inner.pyx":332
+      /* "ms2vec_inner.pyx":332
  *             if lprob <= -MAX_EXP or lprob >= MAX_EXP:
  *                 continue
  *             lprob = LOG_TABLE[<int>((lprob + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - lprob
  * 
  */
-      __pyx_v_lprob = (__pyx_v_14word2vec_inner_LOG_TABLE[((int)((__pyx_v_lprob + 6.0) * ((0x3E8 / 6) / 2)))]);
+      __pyx_v_lprob = (__pyx_v_12ms2vec_inner_LOG_TABLE[((int)((__pyx_v_lprob + 6.0) * ((0x3E8 / 6) / 2)))]);
 
-      /* "word2vec_inner.pyx":333
+      /* "ms2vec_inner.pyx":333
  *                 continue
  *             lprob = LOG_TABLE[<int>((lprob + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - lprob             # <<<<<<<<<<<<<<
@@ -3365,7 +3365,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
       (__pyx_v__running_training_loss_param[0]) = ((__pyx_v__running_training_loss_param[0]) - __pyx_v_lprob);
 
-      /* "word2vec_inner.pyx":327
+      /* "ms2vec_inner.pyx":327
  *         g = (1 - word_code[b] - f) * alpha
  * 
  *         if _compute_loss == 1:             # <<<<<<<<<<<<<<
@@ -3374,27 +3374,27 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
     }
 
-    /* "word2vec_inner.pyx":335
+    /* "ms2vec_inner.pyx":335
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - lprob
  * 
  *         our_saxpy(&size, &g, &syn1[row2], &ONE, work, &ONE)             # <<<<<<<<<<<<<<
  *         our_saxpy(&size, &g, neu1, &ONE, &syn1[row2], &ONE)
  * 
  */
-    __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE), __pyx_v_work, (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE), __pyx_v_work, (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":336
+    /* "ms2vec_inner.pyx":336
  * 
  *         our_saxpy(&size, &g, &syn1[row2], &ONE, work, &ONE)
  *         our_saxpy(&size, &g, neu1, &ONE, &syn1[row2], &ONE)             # <<<<<<<<<<<<<<
  * 
  *     if not cbow_mean:  # divide error over summed window vectors
  */
-    __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE));
     __pyx_L8_continue:;
   }
 
-  /* "word2vec_inner.pyx":338
+  /* "ms2vec_inner.pyx":338
  *         our_saxpy(&size, &g, neu1, &ONE, &syn1[row2], &ONE)
  * 
  *     if not cbow_mean:  # divide error over summed window vectors             # <<<<<<<<<<<<<<
@@ -3404,16 +3404,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
   __pyx_t_4 = ((!(__pyx_v_cbow_mean != 0)) != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":339
+    /* "ms2vec_inner.pyx":339
  * 
  *     if not cbow_mean:  # divide error over summed window vectors
  *         sscal(&size, &inv_count, work, &ONE)  # (does this need BLAS-variants like saxpy?)             # <<<<<<<<<<<<<<
  * 
  *     for m in range(j, k):
  */
-    __pyx_v_14word2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_work, (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_work, (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":338
+    /* "ms2vec_inner.pyx":338
  *         our_saxpy(&size, &g, neu1, &ONE, &syn1[row2], &ONE)
  * 
  *     if not cbow_mean:  # divide error over summed window vectors             # <<<<<<<<<<<<<<
@@ -3422,7 +3422,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
   }
 
-  /* "word2vec_inner.pyx":341
+  /* "ms2vec_inner.pyx":341
  *         sscal(&size, &inv_count, work, &ONE)  # (does this need BLAS-variants like saxpy?)
  * 
  *     for m in range(j, k):             # <<<<<<<<<<<<<<
@@ -3434,7 +3434,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
   for (__pyx_t_3 = __pyx_v_j; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_m = __pyx_t_3;
 
-    /* "word2vec_inner.pyx":342
+    /* "ms2vec_inner.pyx":342
  * 
  *     for m in range(j, k):
  *         if m == i:             # <<<<<<<<<<<<<<
@@ -3444,7 +3444,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
     __pyx_t_4 = ((__pyx_v_m == __pyx_v_i) != 0);
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":343
+      /* "ms2vec_inner.pyx":343
  *     for m in range(j, k):
  *         if m == i:
  *             continue             # <<<<<<<<<<<<<<
@@ -3453,7 +3453,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
       goto __pyx_L18_continue;
 
-      /* "word2vec_inner.pyx":342
+      /* "ms2vec_inner.pyx":342
  * 
  *     for m in range(j, k):
  *         if m == i:             # <<<<<<<<<<<<<<
@@ -3462,7 +3462,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  */
     }
 
-    /* "word2vec_inner.pyx":345
+    /* "ms2vec_inner.pyx":345
  *             continue
  *         else:
  *             our_saxpy(&size, &word_locks[indexes[m]], work, &ONE, &syn0[indexes[m] * size], &ONE)             # <<<<<<<<<<<<<<
@@ -3470,12 +3470,12 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  * 
  */
     /*else*/ {
-      __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&(__pyx_v_word_locks[(__pyx_v_indexes[__pyx_v_m])])), __pyx_v_work, (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn0[((__pyx_v_indexes[__pyx_v_m]) * __pyx_v_size)])), (&__pyx_v_14word2vec_inner_ONE));
+      __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&(__pyx_v_word_locks[(__pyx_v_indexes[__pyx_v_m])])), __pyx_v_work, (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn0[((__pyx_v_indexes[__pyx_v_m]) * __pyx_v_size)])), (&__pyx_v_12ms2vec_inner_ONE));
     }
     __pyx_L18_continue:;
   }
 
-  /* "word2vec_inner.pyx":250
+  /* "ms2vec_inner.pyx":250
  * 
  * 
  * cdef void w2v_fast_sentence_cbow_hs(             # <<<<<<<<<<<<<<
@@ -3486,7 +3486,7 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
   /* function exit code */
 }
 
-/* "word2vec_inner.pyx":348
+/* "ms2vec_inner.pyx":348
  * 
  * 
  * cdef unsigned long long w2v_fast_sentence_cbow_neg(             # <<<<<<<<<<<<<<
@@ -3494,16 +3494,16 @@ static void __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs(__pyx_t_5numpy_ui
  *     REAL_t *neu1,  REAL_t *syn0, REAL_t *syn1neg, const int size,
  */
 
-static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg(int const __pyx_v_negative, __pyx_t_5numpy_uint32_t *__pyx_v_cum_table, unsigned PY_LONG_LONG __pyx_v_cum_table_len, CYTHON_UNUSED int *__pyx_v_codelens, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_neu1, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn1neg, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const *__pyx_v_indexes, __pyx_t_14word2vec_inner_REAL_t const __pyx_v_alpha, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_work, int __pyx_v_i, int __pyx_v_j, int __pyx_v_k, int __pyx_v_cbow_mean, unsigned PY_LONG_LONG __pyx_v_next_random, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_word_locks, int const __pyx_v__compute_loss, __pyx_t_14word2vec_inner_REAL_t *__pyx_v__running_training_loss_param) {
+static unsigned PY_LONG_LONG __pyx_f_12ms2vec_inner_w2v_fast_sentence_cbow_neg(int const __pyx_v_negative, __pyx_t_5numpy_uint32_t *__pyx_v_cum_table, unsigned PY_LONG_LONG __pyx_v_cum_table_len, CYTHON_UNUSED int *__pyx_v_codelens, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_neu1, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn1neg, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const *__pyx_v_indexes, __pyx_t_12ms2vec_inner_REAL_t const __pyx_v_alpha, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_work, int __pyx_v_i, int __pyx_v_j, int __pyx_v_k, int __pyx_v_cbow_mean, unsigned PY_LONG_LONG __pyx_v_next_random, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_word_locks, int const __pyx_v__compute_loss, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v__running_training_loss_param) {
   PY_LONG_LONG __pyx_v_row2;
   unsigned PY_LONG_LONG __pyx_v_modulo;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_f;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_g;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_count;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_inv_count;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_label;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_log_e_f_dot;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_f_dot;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_f;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_g;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_count;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_inv_count;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_label;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_log_e_f_dot;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_f_dot;
   __pyx_t_5numpy_uint32_t __pyx_v_target_index;
   __pyx_t_5numpy_uint32_t __pyx_v_word_index;
   int __pyx_v_d;
@@ -3516,9 +3516,9 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
   long __pyx_t_5;
   long __pyx_t_6;
   int __pyx_t_7;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_t_8;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_t_8;
 
-  /* "word2vec_inner.pyx":405
+  /* "ms2vec_inner.pyx":405
  *     cdef long long a
  *     cdef long long row2
  *     cdef unsigned long long modulo = 281474976710655ULL             # <<<<<<<<<<<<<<
@@ -3527,7 +3527,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
   __pyx_v_modulo = 281474976710655ULL;
 
-  /* "word2vec_inner.pyx":406
+  /* "ms2vec_inner.pyx":406
  *     cdef long long row2
  *     cdef unsigned long long modulo = 281474976710655ULL
  *     cdef REAL_t f, g, count, inv_count = 1.0, label, log_e_f_dot, f_dot             # <<<<<<<<<<<<<<
@@ -3536,7 +3536,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
   __pyx_v_inv_count = 1.0;
 
-  /* "word2vec_inner.pyx":410
+  /* "ms2vec_inner.pyx":410
  *     cdef int d, m
  * 
  *     word_index = indexes[i]             # <<<<<<<<<<<<<<
@@ -3545,25 +3545,25 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
   __pyx_v_word_index = (__pyx_v_indexes[__pyx_v_i]);
 
-  /* "word2vec_inner.pyx":412
+  /* "ms2vec_inner.pyx":412
  *     word_index = indexes[i]
  * 
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))             # <<<<<<<<<<<<<<
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  */
-  (void)(memset(__pyx_v_neu1, 0, (__pyx_v_size * (sizeof(__pyx_t_14word2vec_inner_REAL_t)))));
+  (void)(memset(__pyx_v_neu1, 0, (__pyx_v_size * (sizeof(__pyx_t_12ms2vec_inner_REAL_t)))));
 
-  /* "word2vec_inner.pyx":413
+  /* "ms2vec_inner.pyx":413
  * 
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))
  *     count = <REAL_t>0.0             # <<<<<<<<<<<<<<
  *     for m in range(j, k):
  *         if m == i:
  */
-  __pyx_v_count = ((__pyx_t_14word2vec_inner_REAL_t)0.0);
+  __pyx_v_count = ((__pyx_t_12ms2vec_inner_REAL_t)0.0);
 
-  /* "word2vec_inner.pyx":414
+  /* "ms2vec_inner.pyx":414
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))
  *     count = <REAL_t>0.0
  *     for m in range(j, k):             # <<<<<<<<<<<<<<
@@ -3575,7 +3575,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
   for (__pyx_t_3 = __pyx_v_j; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_m = __pyx_t_3;
 
-    /* "word2vec_inner.pyx":415
+    /* "ms2vec_inner.pyx":415
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  *         if m == i:             # <<<<<<<<<<<<<<
@@ -3585,7 +3585,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
     __pyx_t_4 = ((__pyx_v_m == __pyx_v_i) != 0);
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":416
+      /* "ms2vec_inner.pyx":416
  *     for m in range(j, k):
  *         if m == i:
  *             continue             # <<<<<<<<<<<<<<
@@ -3594,7 +3594,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
       goto __pyx_L3_continue;
 
-      /* "word2vec_inner.pyx":415
+      /* "ms2vec_inner.pyx":415
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  *         if m == i:             # <<<<<<<<<<<<<<
@@ -3603,7 +3603,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
     }
 
-    /* "word2vec_inner.pyx":418
+    /* "ms2vec_inner.pyx":418
  *             continue
  *         else:
  *             count += ONEF             # <<<<<<<<<<<<<<
@@ -3611,40 +3611,40 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  *     if count > (<REAL_t>0.5):
  */
     /*else*/ {
-      __pyx_v_count = (__pyx_v_count + __pyx_v_14word2vec_inner_ONEF);
+      __pyx_v_count = (__pyx_v_count + __pyx_v_12ms2vec_inner_ONEF);
 
-      /* "word2vec_inner.pyx":419
+      /* "ms2vec_inner.pyx":419
  *         else:
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)             # <<<<<<<<<<<<<<
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  */
-      __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_14word2vec_inner_ONEF), (&(__pyx_v_syn0[((__pyx_v_indexes[__pyx_v_m]) * __pyx_v_size)])), (&__pyx_v_14word2vec_inner_ONE), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE));
+      __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_12ms2vec_inner_ONEF), (&(__pyx_v_syn0[((__pyx_v_indexes[__pyx_v_m]) * __pyx_v_size)])), (&__pyx_v_12ms2vec_inner_ONE), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE));
     }
     __pyx_L3_continue:;
   }
 
-  /* "word2vec_inner.pyx":420
+  /* "ms2vec_inner.pyx":420
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):             # <<<<<<<<<<<<<<
  *         inv_count = ONEF/count
  *     if cbow_mean:
  */
-  __pyx_t_4 = ((__pyx_v_count > ((__pyx_t_14word2vec_inner_REAL_t)0.5)) != 0);
+  __pyx_t_4 = ((__pyx_v_count > ((__pyx_t_12ms2vec_inner_REAL_t)0.5)) != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":421
+    /* "ms2vec_inner.pyx":421
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count             # <<<<<<<<<<<<<<
  *     if cbow_mean:
  *         sscal(&size, &inv_count, neu1, &ONE)  # (does this need BLAS-variants like saxpy?)
  */
-    __pyx_v_inv_count = (__pyx_v_14word2vec_inner_ONEF / __pyx_v_count);
+    __pyx_v_inv_count = (__pyx_v_12ms2vec_inner_ONEF / __pyx_v_count);
 
-    /* "word2vec_inner.pyx":420
+    /* "ms2vec_inner.pyx":420
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):             # <<<<<<<<<<<<<<
@@ -3653,7 +3653,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
   }
 
-  /* "word2vec_inner.pyx":422
+  /* "ms2vec_inner.pyx":422
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  *     if cbow_mean:             # <<<<<<<<<<<<<<
@@ -3663,16 +3663,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
   __pyx_t_4 = (__pyx_v_cbow_mean != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":423
+    /* "ms2vec_inner.pyx":423
  *         inv_count = ONEF/count
  *     if cbow_mean:
  *         sscal(&size, &inv_count, neu1, &ONE)  # (does this need BLAS-variants like saxpy?)             # <<<<<<<<<<<<<<
  * 
  *     memset(work, 0, size * cython.sizeof(REAL_t))
  */
-    __pyx_v_14word2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":422
+    /* "ms2vec_inner.pyx":422
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  *     if cbow_mean:             # <<<<<<<<<<<<<<
@@ -3681,16 +3681,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
   }
 
-  /* "word2vec_inner.pyx":425
+  /* "ms2vec_inner.pyx":425
  *         sscal(&size, &inv_count, neu1, &ONE)  # (does this need BLAS-variants like saxpy?)
  * 
  *     memset(work, 0, size * cython.sizeof(REAL_t))             # <<<<<<<<<<<<<<
  * 
  *     for d in range(negative+1):
  */
-  (void)(memset(__pyx_v_work, 0, (__pyx_v_size * (sizeof(__pyx_t_14word2vec_inner_REAL_t)))));
+  (void)(memset(__pyx_v_work, 0, (__pyx_v_size * (sizeof(__pyx_t_12ms2vec_inner_REAL_t)))));
 
-  /* "word2vec_inner.pyx":427
+  /* "ms2vec_inner.pyx":427
  *     memset(work, 0, size * cython.sizeof(REAL_t))
  * 
  *     for d in range(negative+1):             # <<<<<<<<<<<<<<
@@ -3702,7 +3702,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
   for (__pyx_t_1 = 0; __pyx_t_1 < __pyx_t_6; __pyx_t_1+=1) {
     __pyx_v_d = __pyx_t_1;
 
-    /* "word2vec_inner.pyx":428
+    /* "ms2vec_inner.pyx":428
  * 
  *     for d in range(negative+1):
  *         if d == 0:             # <<<<<<<<<<<<<<
@@ -3712,7 +3712,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
     __pyx_t_4 = ((__pyx_v_d == 0) != 0);
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":429
+      /* "ms2vec_inner.pyx":429
  *     for d in range(negative+1):
  *         if d == 0:
  *             target_index = word_index             # <<<<<<<<<<<<<<
@@ -3721,16 +3721,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
       __pyx_v_target_index = __pyx_v_word_index;
 
-      /* "word2vec_inner.pyx":430
+      /* "ms2vec_inner.pyx":430
  *         if d == 0:
  *             target_index = word_index
  *             label = ONEF             # <<<<<<<<<<<<<<
  *         else:
  *             target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
  */
-      __pyx_v_label = __pyx_v_14word2vec_inner_ONEF;
+      __pyx_v_label = __pyx_v_12ms2vec_inner_ONEF;
 
-      /* "word2vec_inner.pyx":428
+      /* "ms2vec_inner.pyx":428
  * 
  *     for d in range(negative+1):
  *         if d == 0:             # <<<<<<<<<<<<<<
@@ -3740,7 +3740,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
       goto __pyx_L10;
     }
 
-    /* "word2vec_inner.pyx":432
+    /* "ms2vec_inner.pyx":432
  *             label = ONEF
  *         else:
  *             target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)             # <<<<<<<<<<<<<<
@@ -3748,9 +3748,9 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  *             if target_index == word_index:
  */
     /*else*/ {
-      __pyx_v_target_index = __pyx_f_14word2vec_inner_bisect_left(__pyx_v_cum_table, ((__pyx_v_next_random >> 16) % (__pyx_v_cum_table[(__pyx_v_cum_table_len - 1)])), 0, __pyx_v_cum_table_len);
+      __pyx_v_target_index = __pyx_f_12ms2vec_inner_bisect_left(__pyx_v_cum_table, ((__pyx_v_next_random >> 16) % (__pyx_v_cum_table[(__pyx_v_cum_table_len - 1)])), 0, __pyx_v_cum_table_len);
 
-      /* "word2vec_inner.pyx":433
+      /* "ms2vec_inner.pyx":433
  *         else:
  *             target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
  *             next_random = (next_random * <unsigned long long>25214903917ULL + 11) & modulo             # <<<<<<<<<<<<<<
@@ -3759,7 +3759,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
       __pyx_v_next_random = (((__pyx_v_next_random * ((unsigned PY_LONG_LONG)25214903917ULL)) + 11) & __pyx_v_modulo);
 
-      /* "word2vec_inner.pyx":434
+      /* "ms2vec_inner.pyx":434
  *             target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
  *             next_random = (next_random * <unsigned long long>25214903917ULL + 11) & modulo
  *             if target_index == word_index:             # <<<<<<<<<<<<<<
@@ -3769,7 +3769,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
       __pyx_t_4 = ((__pyx_v_target_index == __pyx_v_word_index) != 0);
       if (__pyx_t_4) {
 
-        /* "word2vec_inner.pyx":435
+        /* "ms2vec_inner.pyx":435
  *             next_random = (next_random * <unsigned long long>25214903917ULL + 11) & modulo
  *             if target_index == word_index:
  *                 continue             # <<<<<<<<<<<<<<
@@ -3778,7 +3778,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
         goto __pyx_L8_continue;
 
-        /* "word2vec_inner.pyx":434
+        /* "ms2vec_inner.pyx":434
  *             target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
  *             next_random = (next_random * <unsigned long long>25214903917ULL + 11) & modulo
  *             if target_index == word_index:             # <<<<<<<<<<<<<<
@@ -3787,18 +3787,18 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
       }
 
-      /* "word2vec_inner.pyx":436
+      /* "ms2vec_inner.pyx":436
  *             if target_index == word_index:
  *                 continue
  *             label = <REAL_t>0.0             # <<<<<<<<<<<<<<
  * 
  *         row2 = target_index * size
  */
-      __pyx_v_label = ((__pyx_t_14word2vec_inner_REAL_t)0.0);
+      __pyx_v_label = ((__pyx_t_12ms2vec_inner_REAL_t)0.0);
     }
     __pyx_L10:;
 
-    /* "word2vec_inner.pyx":438
+    /* "ms2vec_inner.pyx":438
  *             label = <REAL_t>0.0
  * 
  *         row2 = target_index * size             # <<<<<<<<<<<<<<
@@ -3807,16 +3807,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
     __pyx_v_row2 = (__pyx_v_target_index * __pyx_v_size);
 
-    /* "word2vec_inner.pyx":439
+    /* "ms2vec_inner.pyx":439
  * 
  *         row2 = target_index * size
  *         f_dot = our_dot(&size, neu1, &ONE, &syn1neg[row2], &ONE)             # <<<<<<<<<<<<<<
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue
  */
-    __pyx_v_f_dot = __pyx_v_14word2vec_inner_our_dot((&__pyx_v_size), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_f_dot = __pyx_v_12ms2vec_inner_our_dot((&__pyx_v_size), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":440
+    /* "ms2vec_inner.pyx":440
  *         row2 = target_index * size
  *         f_dot = our_dot(&size, neu1, &ONE, &syn1neg[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -3834,7 +3834,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
     __pyx_L13_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":441
+      /* "ms2vec_inner.pyx":441
  *         f_dot = our_dot(&size, neu1, &ONE, &syn1neg[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue             # <<<<<<<<<<<<<<
@@ -3843,7 +3843,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
       goto __pyx_L8_continue;
 
-      /* "word2vec_inner.pyx":440
+      /* "ms2vec_inner.pyx":440
  *         row2 = target_index * size
  *         f_dot = our_dot(&size, neu1, &ONE, &syn1neg[row2], &ONE)
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -3852,16 +3852,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
     }
 
-    /* "word2vec_inner.pyx":442
+    /* "ms2vec_inner.pyx":442
  *         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *             continue
  *         f = EXP_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
  *         g = (label - f) * alpha
  * 
  */
-    __pyx_v_f = (__pyx_v_14word2vec_inner_EXP_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
+    __pyx_v_f = (__pyx_v_12ms2vec_inner_EXP_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
 
-    /* "word2vec_inner.pyx":443
+    /* "ms2vec_inner.pyx":443
  *             continue
  *         f = EXP_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *         g = (label - f) * alpha             # <<<<<<<<<<<<<<
@@ -3870,7 +3870,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
     __pyx_v_g = ((__pyx_v_label - __pyx_v_f) * __pyx_v_alpha);
 
-    /* "word2vec_inner.pyx":445
+    /* "ms2vec_inner.pyx":445
  *         g = (label - f) * alpha
  * 
  *         if _compute_loss == 1:             # <<<<<<<<<<<<<<
@@ -3880,7 +3880,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
     __pyx_t_4 = ((__pyx_v__compute_loss == 1) != 0);
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":446
+      /* "ms2vec_inner.pyx":446
  * 
  *         if _compute_loss == 1:
  *             f_dot = (f_dot if d == 0  else -f_dot)             # <<<<<<<<<<<<<<
@@ -3894,7 +3894,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
       }
       __pyx_v_f_dot = __pyx_t_8;
 
-      /* "word2vec_inner.pyx":447
+      /* "ms2vec_inner.pyx":447
  *         if _compute_loss == 1:
  *             f_dot = (f_dot if d == 0  else -f_dot)
  *             if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -3912,7 +3912,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
       __pyx_L17_bool_binop_done:;
       if (__pyx_t_4) {
 
-        /* "word2vec_inner.pyx":448
+        /* "ms2vec_inner.pyx":448
  *             f_dot = (f_dot if d == 0  else -f_dot)
  *             if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *                 continue             # <<<<<<<<<<<<<<
@@ -3921,7 +3921,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
         goto __pyx_L8_continue;
 
-        /* "word2vec_inner.pyx":447
+        /* "ms2vec_inner.pyx":447
  *         if _compute_loss == 1:
  *             f_dot = (f_dot if d == 0  else -f_dot)
  *             if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -3930,16 +3930,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
       }
 
-      /* "word2vec_inner.pyx":449
+      /* "ms2vec_inner.pyx":449
  *             if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
  *                 continue
  *             log_e_f_dot = LOG_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - log_e_f_dot
  * 
  */
-      __pyx_v_log_e_f_dot = (__pyx_v_14word2vec_inner_LOG_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
+      __pyx_v_log_e_f_dot = (__pyx_v_12ms2vec_inner_LOG_TABLE[((int)((__pyx_v_f_dot + 6.0) * ((0x3E8 / 6) / 2)))]);
 
-      /* "word2vec_inner.pyx":450
+      /* "ms2vec_inner.pyx":450
  *                 continue
  *             log_e_f_dot = LOG_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - log_e_f_dot             # <<<<<<<<<<<<<<
@@ -3948,7 +3948,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
       (__pyx_v__running_training_loss_param[0]) = ((__pyx_v__running_training_loss_param[0]) - __pyx_v_log_e_f_dot);
 
-      /* "word2vec_inner.pyx":445
+      /* "ms2vec_inner.pyx":445
  *         g = (label - f) * alpha
  * 
  *         if _compute_loss == 1:             # <<<<<<<<<<<<<<
@@ -3957,27 +3957,27 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
     }
 
-    /* "word2vec_inner.pyx":452
+    /* "ms2vec_inner.pyx":452
  *             _running_training_loss_param[0] = _running_training_loss_param[0] - log_e_f_dot
  * 
  *         our_saxpy(&size, &g, &syn1neg[row2], &ONE, work, &ONE)             # <<<<<<<<<<<<<<
  *         our_saxpy(&size, &g, neu1, &ONE, &syn1neg[row2], &ONE)
  * 
  */
-    __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE), __pyx_v_work, (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE), __pyx_v_work, (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":453
+    /* "ms2vec_inner.pyx":453
  * 
  *         our_saxpy(&size, &g, &syn1neg[row2], &ONE, work, &ONE)
  *         our_saxpy(&size, &g, neu1, &ONE, &syn1neg[row2], &ONE)             # <<<<<<<<<<<<<<
  * 
  *     if not cbow_mean:  # divide error over summed window vectors
  */
-    __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_g), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn1neg[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE));
     __pyx_L8_continue:;
   }
 
-  /* "word2vec_inner.pyx":455
+  /* "ms2vec_inner.pyx":455
  *         our_saxpy(&size, &g, neu1, &ONE, &syn1neg[row2], &ONE)
  * 
  *     if not cbow_mean:  # divide error over summed window vectors             # <<<<<<<<<<<<<<
@@ -3987,16 +3987,16 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
   __pyx_t_4 = ((!(__pyx_v_cbow_mean != 0)) != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":456
+    /* "ms2vec_inner.pyx":456
  * 
  *     if not cbow_mean:  # divide error over summed window vectors
  *         sscal(&size, &inv_count, work, &ONE)  # (does this need BLAS-variants like saxpy?)             # <<<<<<<<<<<<<<
  * 
  *     for m in range(j,k):
  */
-    __pyx_v_14word2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_work, (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_work, (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":455
+    /* "ms2vec_inner.pyx":455
  *         our_saxpy(&size, &g, neu1, &ONE, &syn1neg[row2], &ONE)
  * 
  *     if not cbow_mean:  # divide error over summed window vectors             # <<<<<<<<<<<<<<
@@ -4005,7 +4005,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
   }
 
-  /* "word2vec_inner.pyx":458
+  /* "ms2vec_inner.pyx":458
  *         sscal(&size, &inv_count, work, &ONE)  # (does this need BLAS-variants like saxpy?)
  * 
  *     for m in range(j,k):             # <<<<<<<<<<<<<<
@@ -4017,7 +4017,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
   for (__pyx_t_3 = __pyx_v_j; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_m = __pyx_t_3;
 
-    /* "word2vec_inner.pyx":459
+    /* "ms2vec_inner.pyx":459
  * 
  *     for m in range(j,k):
  *         if m == i:             # <<<<<<<<<<<<<<
@@ -4027,7 +4027,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
     __pyx_t_4 = ((__pyx_v_m == __pyx_v_i) != 0);
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":460
+      /* "ms2vec_inner.pyx":460
  *     for m in range(j,k):
  *         if m == i:
  *             continue             # <<<<<<<<<<<<<<
@@ -4036,7 +4036,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
       goto __pyx_L20_continue;
 
-      /* "word2vec_inner.pyx":459
+      /* "ms2vec_inner.pyx":459
  * 
  *     for m in range(j,k):
  *         if m == i:             # <<<<<<<<<<<<<<
@@ -4045,7 +4045,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  */
     }
 
-    /* "word2vec_inner.pyx":462
+    /* "ms2vec_inner.pyx":462
  *             continue
  *         else:
  *             our_saxpy(&size, &word_locks[indexes[m]], work, &ONE, &syn0[indexes[m]*size], &ONE)             # <<<<<<<<<<<<<<
@@ -4053,12 +4053,12 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  *     return next_random
  */
     /*else*/ {
-      __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&(__pyx_v_word_locks[(__pyx_v_indexes[__pyx_v_m])])), __pyx_v_work, (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn0[((__pyx_v_indexes[__pyx_v_m]) * __pyx_v_size)])), (&__pyx_v_14word2vec_inner_ONE));
+      __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&(__pyx_v_word_locks[(__pyx_v_indexes[__pyx_v_m])])), __pyx_v_work, (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn0[((__pyx_v_indexes[__pyx_v_m]) * __pyx_v_size)])), (&__pyx_v_12ms2vec_inner_ONE));
     }
     __pyx_L20_continue:;
   }
 
-  /* "word2vec_inner.pyx":464
+  /* "ms2vec_inner.pyx":464
  *             our_saxpy(&size, &word_locks[indexes[m]], work, &ONE, &syn0[indexes[m]*size], &ONE)
  * 
  *     return next_random             # <<<<<<<<<<<<<<
@@ -4068,7 +4068,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
   __pyx_r = __pyx_v_next_random;
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":348
+  /* "ms2vec_inner.pyx":348
  * 
  * 
  * cdef unsigned long long w2v_fast_sentence_cbow_neg(             # <<<<<<<<<<<<<<
@@ -4081,7 +4081,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":467
+/* "ms2vec_inner.pyx":467
  * 
  * 
  * cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1=None):             # <<<<<<<<<<<<<<
@@ -4089,7 +4089,7 @@ static unsigned PY_LONG_LONG __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg
  *     c[0].negative = model.negative
  */
 
-static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2vec_inner_Word2VecConfig *__pyx_v_c, PyObject *__pyx_v_model, PyObject *__pyx_v_alpha, PyObject *__pyx_v_compute_loss, PyObject *__pyx_v__work, struct __pyx_opt_args_14word2vec_inner_init_w2v_config *__pyx_optional_args) {
+static PyObject *__pyx_f_12ms2vec_inner_init_w2v_config(struct __pyx_t_12ms2vec_inner_Word2VecConfig *__pyx_v_c, PyObject *__pyx_v_model, PyObject *__pyx_v_alpha, PyObject *__pyx_v_compute_loss, PyObject *__pyx_v__work, struct __pyx_opt_args_12ms2vec_inner_init_w2v_config *__pyx_optional_args) {
   PyObject *__pyx_v__neu1 = ((PyObject *)Py_None);
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4097,7 +4097,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   int __pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
   int __pyx_t_4;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_t_5;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_t_5;
   Py_ssize_t __pyx_t_6;
   int __pyx_t_7;
   PyObject *__pyx_t_8 = NULL;
@@ -4109,7 +4109,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
     }
   }
 
-  /* "word2vec_inner.pyx":468
+  /* "ms2vec_inner.pyx":468
  * 
  * cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1=None):
  *     c[0].hs = model.hs             # <<<<<<<<<<<<<<
@@ -4122,7 +4122,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_c[0]).hs = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":469
+  /* "ms2vec_inner.pyx":469
  * cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1=None):
  *     c[0].hs = model.hs
  *     c[0].negative = model.negative             # <<<<<<<<<<<<<<
@@ -4135,7 +4135,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_c[0]).negative = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":470
+  /* "ms2vec_inner.pyx":470
  *     c[0].hs = model.hs
  *     c[0].negative = model.negative
  *     c[0].sample = (model.vocabulary.sample != 0)             # <<<<<<<<<<<<<<
@@ -4154,7 +4154,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_c[0]).sample = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":471
+  /* "ms2vec_inner.pyx":471
  *     c[0].negative = model.negative
  *     c[0].sample = (model.vocabulary.sample != 0)
  *     c[0].cbow_mean = model.cbow_mean             # <<<<<<<<<<<<<<
@@ -4167,7 +4167,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_c[0]).cbow_mean = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":472
+  /* "ms2vec_inner.pyx":472
  *     c[0].sample = (model.vocabulary.sample != 0)
  *     c[0].cbow_mean = model.cbow_mean
  *     c[0].window = model.window             # <<<<<<<<<<<<<<
@@ -4180,7 +4180,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_c[0]).window = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":473
+  /* "ms2vec_inner.pyx":473
  *     c[0].cbow_mean = model.cbow_mean
  *     c[0].window = model.window
  *     c[0].workers = model.workers             # <<<<<<<<<<<<<<
@@ -4193,7 +4193,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_c[0]).workers = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":475
+  /* "ms2vec_inner.pyx":475
  *     c[0].workers = model.workers
  * 
  *     c[0].compute_loss = (1 if compute_loss else 0)             # <<<<<<<<<<<<<<
@@ -4208,7 +4208,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   }
   (__pyx_v_c[0]).compute_loss = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":476
+  /* "ms2vec_inner.pyx":476
  * 
  *     c[0].compute_loss = (1 if compute_loss else 0)
  *     c[0].running_training_loss = model.running_training_loss             # <<<<<<<<<<<<<<
@@ -4221,7 +4221,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   (__pyx_v_c[0]).running_training_loss = __pyx_t_5;
 
-  /* "word2vec_inner.pyx":478
+  /* "ms2vec_inner.pyx":478
  *     c[0].running_training_loss = model.running_training_loss
  * 
  *     c[0].syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))             # <<<<<<<<<<<<<<
@@ -4234,10 +4234,10 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 478, __pyx_L1_error)
-  (__pyx_v_c[0]).syn0 = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
+  (__pyx_v_c[0]).syn0 = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "word2vec_inner.pyx":479
+  /* "ms2vec_inner.pyx":479
  * 
  *     c[0].syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))
  *     c[0].word_locks = <REAL_t *>(np.PyArray_DATA(model.trainables.vectors_lockf))             # <<<<<<<<<<<<<<
@@ -4250,10 +4250,10 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 479, __pyx_L1_error)
-  (__pyx_v_c[0]).word_locks = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_1)));
+  (__pyx_v_c[0]).word_locks = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_1)));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":480
+  /* "ms2vec_inner.pyx":480
  *     c[0].syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))
  *     c[0].word_locks = <REAL_t *>(np.PyArray_DATA(model.trainables.vectors_lockf))
  *     c[0].alpha = alpha             # <<<<<<<<<<<<<<
@@ -4263,7 +4263,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __pyx_t_5 = __pyx_PyFloat_AsFloat(__pyx_v_alpha); if (unlikely((__pyx_t_5 == ((npy_float32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 480, __pyx_L1_error)
   (__pyx_v_c[0]).alpha = __pyx_t_5;
 
-  /* "word2vec_inner.pyx":481
+  /* "ms2vec_inner.pyx":481
  *     c[0].word_locks = <REAL_t *>(np.PyArray_DATA(model.trainables.vectors_lockf))
  *     c[0].alpha = alpha
  *     c[0].size = model.wv.vector_size             # <<<<<<<<<<<<<<
@@ -4279,7 +4279,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   (__pyx_v_c[0]).size = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":483
+  /* "ms2vec_inner.pyx":483
  *     c[0].size = model.wv.vector_size
  * 
  *     if c[0].hs:             # <<<<<<<<<<<<<<
@@ -4289,7 +4289,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __pyx_t_4 = ((__pyx_v_c[0]).hs != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":484
+    /* "ms2vec_inner.pyx":484
  * 
  *     if c[0].hs:
  *         c[0].syn1 = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1))             # <<<<<<<<<<<<<<
@@ -4302,10 +4302,10 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 484, __pyx_L1_error)
-    (__pyx_v_c[0]).syn1 = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_1)));
+    (__pyx_v_c[0]).syn1 = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_1)));
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "word2vec_inner.pyx":483
+    /* "ms2vec_inner.pyx":483
  *     c[0].size = model.wv.vector_size
  * 
  *     if c[0].hs:             # <<<<<<<<<<<<<<
@@ -4314,7 +4314,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
  */
   }
 
-  /* "word2vec_inner.pyx":486
+  /* "ms2vec_inner.pyx":486
  *         c[0].syn1 = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1))
  * 
  *     if c[0].negative:             # <<<<<<<<<<<<<<
@@ -4324,7 +4324,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __pyx_t_4 = ((__pyx_v_c[0]).negative != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":487
+    /* "ms2vec_inner.pyx":487
  * 
  *     if c[0].negative:
  *         c[0].syn1neg = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1neg))             # <<<<<<<<<<<<<<
@@ -4337,10 +4337,10 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 487, __pyx_L1_error)
-    (__pyx_v_c[0]).syn1neg = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
+    (__pyx_v_c[0]).syn1neg = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "word2vec_inner.pyx":488
+    /* "ms2vec_inner.pyx":488
  *     if c[0].negative:
  *         c[0].syn1neg = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1neg))
  *         c[0].cum_table = <np.uint32_t *>(np.PyArray_DATA(model.vocabulary.cum_table))             # <<<<<<<<<<<<<<
@@ -4356,7 +4356,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
     (__pyx_v_c[0]).cum_table = ((__pyx_t_5numpy_uint32_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_1)));
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "word2vec_inner.pyx":489
+    /* "ms2vec_inner.pyx":489
  *         c[0].syn1neg = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1neg))
  *         c[0].cum_table = <np.uint32_t *>(np.PyArray_DATA(model.vocabulary.cum_table))
  *         c[0].cum_table_len = len(model.vocabulary.cum_table)             # <<<<<<<<<<<<<<
@@ -4372,7 +4372,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     (__pyx_v_c[0]).cum_table_len = __pyx_t_6;
 
-    /* "word2vec_inner.pyx":486
+    /* "ms2vec_inner.pyx":486
  *         c[0].syn1 = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1))
  * 
  *     if c[0].negative:             # <<<<<<<<<<<<<<
@@ -4381,7 +4381,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
  */
   }
 
-  /* "word2vec_inner.pyx":490
+  /* "ms2vec_inner.pyx":490
  *         c[0].cum_table = <np.uint32_t *>(np.PyArray_DATA(model.vocabulary.cum_table))
  *         c[0].cum_table_len = len(model.vocabulary.cum_table)
  *     if c[0].negative or c[0].sample:             # <<<<<<<<<<<<<<
@@ -4399,7 +4399,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __pyx_L6_bool_binop_done:;
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":491
+    /* "ms2vec_inner.pyx":491
  *         c[0].cum_table_len = len(model.vocabulary.cum_table)
  *     if c[0].negative or c[0].sample:
  *         c[0].next_random = (2**24) * model.random.randint(0, 2**24) + model.random.randint(0, 2**24)             # <<<<<<<<<<<<<<
@@ -4433,7 +4433,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     (__pyx_v_c[0]).next_random = __pyx_t_9;
 
-    /* "word2vec_inner.pyx":490
+    /* "ms2vec_inner.pyx":490
  *         c[0].cum_table = <np.uint32_t *>(np.PyArray_DATA(model.vocabulary.cum_table))
  *         c[0].cum_table_len = len(model.vocabulary.cum_table)
  *     if c[0].negative or c[0].sample:             # <<<<<<<<<<<<<<
@@ -4442,7 +4442,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
  */
   }
 
-  /* "word2vec_inner.pyx":494
+  /* "ms2vec_inner.pyx":494
  * 
  *     # convert Python structures to primitive types, so we can release the GIL
  *     c[0].work = <REAL_t *>np.PyArray_DATA(_work)             # <<<<<<<<<<<<<<
@@ -4450,9 +4450,9 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
  *     if _neu1 is not None:
  */
   if (!(likely(((__pyx_v__work) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__work, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 494, __pyx_L1_error)
-  (__pyx_v_c[0]).work = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__work)));
+  (__pyx_v_c[0]).work = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__work)));
 
-  /* "word2vec_inner.pyx":496
+  /* "ms2vec_inner.pyx":496
  *     c[0].work = <REAL_t *>np.PyArray_DATA(_work)
  * 
  *     if _neu1 is not None:             # <<<<<<<<<<<<<<
@@ -4463,7 +4463,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __pyx_t_7 = (__pyx_t_4 != 0);
   if (__pyx_t_7) {
 
-    /* "word2vec_inner.pyx":497
+    /* "ms2vec_inner.pyx":497
  * 
  *     if _neu1 is not None:
  *         c[0].neu1 = <REAL_t *>np.PyArray_DATA(_neu1)             # <<<<<<<<<<<<<<
@@ -4471,9 +4471,9 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
  * 
  */
     if (!(likely(((__pyx_v__neu1) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__neu1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 497, __pyx_L1_error)
-    (__pyx_v_c[0]).neu1 = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__neu1)));
+    (__pyx_v_c[0]).neu1 = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__neu1)));
 
-    /* "word2vec_inner.pyx":496
+    /* "ms2vec_inner.pyx":496
  *     c[0].work = <REAL_t *>np.PyArray_DATA(_work)
  * 
  *     if _neu1 is not None:             # <<<<<<<<<<<<<<
@@ -4482,7 +4482,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
  */
   }
 
-  /* "word2vec_inner.pyx":467
+  /* "ms2vec_inner.pyx":467
  * 
  * 
  * cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1=None):             # <<<<<<<<<<<<<<
@@ -4497,7 +4497,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_8);
-  __Pyx_AddTraceback("word2vec_inner.init_w2v_config", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ms2vec_inner.init_w2v_config", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -4505,7 +4505,7 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":500
+/* "ms2vec_inner.pyx":500
  * 
  * 
  * def train_batch_sg(model, sentences, alpha, _work, compute_loss):             # <<<<<<<<<<<<<<
@@ -4514,10 +4514,10 @@ static PyObject *__pyx_f_14word2vec_inner_init_w2v_config(struct __pyx_t_14word2
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14word2vec_inner_1train_batch_sg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_14word2vec_inner_train_batch_sg[] = "train_batch_sg(model, sentences, alpha, _work, compute_loss)\nUpdate skip-gram model by training on a batch of sentences.\n\n    Called internally from :meth:`~gensim.models.word2vec.Word2Vec.train`.\n\n    Parameters\n    ----------\n    model : :class:`~gensim.models.word2Vec.Word2Vec`\n        The Word2Vec model instance to train.\n    sentences : iterable of list of str\n        The corpus used to train the model.\n    alpha : float\n        The learning rate\n    _work : np.ndarray\n        Private working memory for each worker.\n    compute_loss : bool\n        Whether or not the training loss should be computed in this batch.\n\n    Returns\n    -------\n    int\n        Number of words in the vocabulary actually used for training (They already existed in the vocabulary\n        and were not discarded by negative sampling).\n\n    ";
-static PyMethodDef __pyx_mdef_14word2vec_inner_1train_batch_sg = {"train_batch_sg", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14word2vec_inner_1train_batch_sg, METH_VARARGS|METH_KEYWORDS, __pyx_doc_14word2vec_inner_train_batch_sg};
-static PyObject *__pyx_pw_14word2vec_inner_1train_batch_sg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12ms2vec_inner_1train_batch_sg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_12ms2vec_inner_train_batch_sg[] = "train_batch_sg(model, sentences, alpha, _work, compute_loss)\nUpdate skip-gram model by training on a batch of sentences.\n\n    Called internally from :meth:`~gensim.models.word2vec.Word2Vec.train`.\n\n    Parameters\n    ----------\n    model : :class:`~gensim.models.word2Vec.Word2Vec`\n        The Word2Vec model instance to train.\n    sentences : iterable of list of str\n        The corpus used to train the model.\n    alpha : float\n        The learning rate\n    _work : np.ndarray\n        Private working memory for each worker.\n    compute_loss : bool\n        Whether or not the training loss should be computed in this batch.\n\n    Returns\n    -------\n    int\n        Number of words in the vocabulary actually used for training (They already existed in the vocabulary\n        and were not discarded by negative sampling).\n\n    ";
+static PyMethodDef __pyx_mdef_12ms2vec_inner_1train_batch_sg = {"train_batch_sg", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_12ms2vec_inner_1train_batch_sg, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12ms2vec_inner_train_batch_sg};
+static PyObject *__pyx_pw_12ms2vec_inner_1train_batch_sg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_model = 0;
   PyObject *__pyx_v_sentences = 0;
   PyObject *__pyx_v_alpha = 0;
@@ -4598,19 +4598,19 @@ static PyObject *__pyx_pw_14word2vec_inner_1train_batch_sg(PyObject *__pyx_self,
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("train_batch_sg", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 500, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("word2vec_inner.train_batch_sg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ms2vec_inner.train_batch_sg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14word2vec_inner_train_batch_sg(__pyx_self, __pyx_v_model, __pyx_v_sentences, __pyx_v_alpha, __pyx_v__work, __pyx_v_compute_loss);
+  __pyx_r = __pyx_pf_12ms2vec_inner_train_batch_sg(__pyx_self, __pyx_v_model, __pyx_v_sentences, __pyx_v_alpha, __pyx_v__work, __pyx_v_compute_loss);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentences, PyObject *__pyx_v_alpha, PyObject *__pyx_v__work, PyObject *__pyx_v_compute_loss) {
-  struct __pyx_t_14word2vec_inner_Word2VecConfig __pyx_v_c;
+static PyObject *__pyx_pf_12ms2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentences, PyObject *__pyx_v_alpha, PyObject *__pyx_v__work, PyObject *__pyx_v_compute_loss) {
+  struct __pyx_t_12ms2vec_inner_Word2VecConfig __pyx_v_c;
   int __pyx_v_i;
   int __pyx_v_j;
   int __pyx_v_k;
@@ -4651,7 +4651,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
   int __pyx_t_23;
   __Pyx_RefNannySetupContext("train_batch_sg", 0);
 
-  /* "word2vec_inner.pyx":527
+  /* "ms2vec_inner.pyx":527
  *     cdef Word2VecConfig c
  *     cdef int i, j, k
  *     cdef int effective_words = 0, effective_sentences = 0             # <<<<<<<<<<<<<<
@@ -4661,18 +4661,18 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
   __pyx_v_effective_words = 0;
   __pyx_v_effective_sentences = 0;
 
-  /* "word2vec_inner.pyx":530
+  /* "ms2vec_inner.pyx":530
  *     cdef int sent_idx, idx_start, idx_end
  * 
  *     init_w2v_config(&c, model, alpha, compute_loss, _work)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __pyx_f_14word2vec_inner_init_w2v_config((&__pyx_v_c), __pyx_v_model, __pyx_v_alpha, __pyx_v_compute_loss, __pyx_v__work, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 530, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_12ms2vec_inner_init_w2v_config((&__pyx_v_c), __pyx_v_model, __pyx_v_alpha, __pyx_v_compute_loss, __pyx_v__work, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 530, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":534
+  /* "ms2vec_inner.pyx":534
  * 
  *     # prepare C structures so we can go "full C" and release the Python GIL
  *     vlookup = model.wv.vocab             # <<<<<<<<<<<<<<
@@ -4687,7 +4687,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
   __pyx_v_vlookup = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "word2vec_inner.pyx":535
+  /* "ms2vec_inner.pyx":535
  *     # prepare C structures so we can go "full C" and release the Python GIL
  *     vlookup = model.wv.vocab
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0             # <<<<<<<<<<<<<<
@@ -4696,7 +4696,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
   (__pyx_v_c.sentence_idx[0]) = 0;
 
-  /* "word2vec_inner.pyx":536
+  /* "ms2vec_inner.pyx":536
  *     vlookup = model.wv.vocab
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:             # <<<<<<<<<<<<<<
@@ -4745,7 +4745,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
     __Pyx_XDECREF_SET(__pyx_v_sent, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "word2vec_inner.pyx":537
+    /* "ms2vec_inner.pyx":537
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:
  *         if not sent:             # <<<<<<<<<<<<<<
@@ -4756,7 +4756,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
     __pyx_t_6 = ((!__pyx_t_5) != 0);
     if (__pyx_t_6) {
 
-      /* "word2vec_inner.pyx":538
+      /* "ms2vec_inner.pyx":538
  *     for sent in sentences:
  *         if not sent:
  *             continue  # ignore empty sentences; leave effective_sentences unchanged             # <<<<<<<<<<<<<<
@@ -4765,7 +4765,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
       goto __pyx_L3_continue;
 
-      /* "word2vec_inner.pyx":537
+      /* "ms2vec_inner.pyx":537
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:
  *         if not sent:             # <<<<<<<<<<<<<<
@@ -4774,7 +4774,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
     }
 
-    /* "word2vec_inner.pyx":539
+    /* "ms2vec_inner.pyx":539
  *         if not sent:
  *             continue  # ignore empty sentences; leave effective_sentences unchanged
  *         for token in sent:             # <<<<<<<<<<<<<<
@@ -4823,7 +4823,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
       __Pyx_XDECREF_SET(__pyx_v_token, __pyx_t_9);
       __pyx_t_9 = 0;
 
-      /* "word2vec_inner.pyx":540
+      /* "ms2vec_inner.pyx":540
  *             continue  # ignore empty sentences; leave effective_sentences unchanged
  *         for token in sent:
  *             word = vlookup[token] if token in vlookup else None             # <<<<<<<<<<<<<<
@@ -4843,7 +4843,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
       __Pyx_XDECREF_SET(__pyx_v_word, __pyx_t_9);
       __pyx_t_9 = 0;
 
-      /* "word2vec_inner.pyx":541
+      /* "ms2vec_inner.pyx":541
  *         for token in sent:
  *             word = vlookup[token] if token in vlookup else None
  *             if word is None:             # <<<<<<<<<<<<<<
@@ -4854,7 +4854,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
       __pyx_t_5 = (__pyx_t_6 != 0);
       if (__pyx_t_5) {
 
-        /* "word2vec_inner.pyx":542
+        /* "ms2vec_inner.pyx":542
  *             word = vlookup[token] if token in vlookup else None
  *             if word is None:
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window             # <<<<<<<<<<<<<<
@@ -4863,7 +4863,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
         goto __pyx_L6_continue;
 
-        /* "word2vec_inner.pyx":541
+        /* "ms2vec_inner.pyx":541
  *         for token in sent:
  *             word = vlookup[token] if token in vlookup else None
  *             if word is None:             # <<<<<<<<<<<<<<
@@ -4872,7 +4872,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
       }
 
-      /* "word2vec_inner.pyx":543
+      /* "ms2vec_inner.pyx":543
  *             if word is None:
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
  *             if c.sample and word.sample_int < random_int32(&c.next_random):             # <<<<<<<<<<<<<<
@@ -4887,7 +4887,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
       }
       __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_sample_int); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 543, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_10 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_f_14word2vec_inner_random_int32((&__pyx_v_c.next_random))); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 543, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_f_12ms2vec_inner_random_int32((&__pyx_v_c.next_random))); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 543, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_11 = PyObject_RichCompare(__pyx_t_9, __pyx_t_10, Py_LT); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 543, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -4898,7 +4898,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
       __pyx_L10_bool_binop_done:;
       if (__pyx_t_5) {
 
-        /* "word2vec_inner.pyx":544
+        /* "ms2vec_inner.pyx":544
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
  *             if c.sample and word.sample_int < random_int32(&c.next_random):
  *                 continue             # <<<<<<<<<<<<<<
@@ -4907,7 +4907,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
         goto __pyx_L6_continue;
 
-        /* "word2vec_inner.pyx":543
+        /* "ms2vec_inner.pyx":543
  *             if word is None:
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
  *             if c.sample and word.sample_int < random_int32(&c.next_random):             # <<<<<<<<<<<<<<
@@ -4916,7 +4916,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
       }
 
-      /* "word2vec_inner.pyx":545
+      /* "ms2vec_inner.pyx":545
  *             if c.sample and word.sample_int < random_int32(&c.next_random):
  *                 continue
  *             c.indexes[effective_words] = word.index             # <<<<<<<<<<<<<<
@@ -4929,7 +4929,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       (__pyx_v_c.indexes[__pyx_v_effective_words]) = __pyx_t_12;
 
-      /* "word2vec_inner.pyx":546
+      /* "ms2vec_inner.pyx":546
  *                 continue
  *             c.indexes[effective_words] = word.index
  *             if c.hs:             # <<<<<<<<<<<<<<
@@ -4939,7 +4939,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
       __pyx_t_5 = (__pyx_v_c.hs != 0);
       if (__pyx_t_5) {
 
-        /* "word2vec_inner.pyx":547
+        /* "ms2vec_inner.pyx":547
  *             c.indexes[effective_words] = word.index
  *             if c.hs:
  *                 c.codelens[effective_words] = <int>len(word.code)             # <<<<<<<<<<<<<<
@@ -4952,7 +4952,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         (__pyx_v_c.codelens[__pyx_v_effective_words]) = ((int)__pyx_t_13);
 
-        /* "word2vec_inner.pyx":548
+        /* "ms2vec_inner.pyx":548
  *             if c.hs:
  *                 c.codelens[effective_words] = <int>len(word.code)
  *                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)             # <<<<<<<<<<<<<<
@@ -4965,7 +4965,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
         (__pyx_v_c.codes[__pyx_v_effective_words]) = ((__pyx_t_5numpy_uint8_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_11)));
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "word2vec_inner.pyx":549
+        /* "ms2vec_inner.pyx":549
  *                 c.codelens[effective_words] = <int>len(word.code)
  *                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)             # <<<<<<<<<<<<<<
@@ -4978,7 +4978,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
         (__pyx_v_c.points[__pyx_v_effective_words]) = ((__pyx_t_5numpy_uint32_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_11)));
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-        /* "word2vec_inner.pyx":546
+        /* "ms2vec_inner.pyx":546
  *                 continue
  *             c.indexes[effective_words] = word.index
  *             if c.hs:             # <<<<<<<<<<<<<<
@@ -4987,7 +4987,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
       }
 
-      /* "word2vec_inner.pyx":550
+      /* "ms2vec_inner.pyx":550
  *                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *             effective_words += 1             # <<<<<<<<<<<<<<
@@ -4996,7 +4996,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
       __pyx_v_effective_words = (__pyx_v_effective_words + 1);
 
-      /* "word2vec_inner.pyx":551
+      /* "ms2vec_inner.pyx":551
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *             effective_words += 1
  *             if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -5006,7 +5006,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
       __pyx_t_5 = ((__pyx_v_effective_words == 0x2710) != 0);
       if (__pyx_t_5) {
 
-        /* "word2vec_inner.pyx":552
+        /* "ms2vec_inner.pyx":552
  *             effective_words += 1
  *             if effective_words == MAX_SENTENCE_LEN:
  *                 break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -5015,7 +5015,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
         goto __pyx_L7_break;
 
-        /* "word2vec_inner.pyx":551
+        /* "ms2vec_inner.pyx":551
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *             effective_words += 1
  *             if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -5024,7 +5024,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
       }
 
-      /* "word2vec_inner.pyx":539
+      /* "ms2vec_inner.pyx":539
  *         if not sent:
  *             continue  # ignore empty sentences; leave effective_sentences unchanged
  *         for token in sent:             # <<<<<<<<<<<<<<
@@ -5036,7 +5036,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
     __pyx_L7_break:;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "word2vec_inner.pyx":557
+    /* "ms2vec_inner.pyx":557
  *         # across sentence boundaries.
  *         # indices of sentence number X are between <sentence_idx[X], sentence_idx[X])
  *         effective_sentences += 1             # <<<<<<<<<<<<<<
@@ -5045,7 +5045,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
     __pyx_v_effective_sentences = (__pyx_v_effective_sentences + 1);
 
-    /* "word2vec_inner.pyx":558
+    /* "ms2vec_inner.pyx":558
  *         # indices of sentence number X are between <sentence_idx[X], sentence_idx[X])
  *         effective_sentences += 1
  *         c.sentence_idx[effective_sentences] = effective_words             # <<<<<<<<<<<<<<
@@ -5054,7 +5054,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
     (__pyx_v_c.sentence_idx[__pyx_v_effective_sentences]) = __pyx_v_effective_words;
 
-    /* "word2vec_inner.pyx":560
+    /* "ms2vec_inner.pyx":560
  *         c.sentence_idx[effective_sentences] = effective_words
  * 
  *         if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -5064,7 +5064,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
     __pyx_t_5 = ((__pyx_v_effective_words == 0x2710) != 0);
     if (__pyx_t_5) {
 
-      /* "word2vec_inner.pyx":561
+      /* "ms2vec_inner.pyx":561
  * 
  *         if effective_words == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -5073,7 +5073,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
       goto __pyx_L4_break;
 
-      /* "word2vec_inner.pyx":560
+      /* "ms2vec_inner.pyx":560
  *         c.sentence_idx[effective_sentences] = effective_words
  * 
  *         if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -5082,7 +5082,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
     }
 
-    /* "word2vec_inner.pyx":536
+    /* "ms2vec_inner.pyx":536
  *     vlookup = model.wv.vocab
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:             # <<<<<<<<<<<<<<
@@ -5094,7 +5094,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "word2vec_inner.pyx":564
+  /* "ms2vec_inner.pyx":564
  * 
  *     # precompute "reduced window" offsets in a single randint() call
  *     for i, item in enumerate(model.random.randint(0, c.window, effective_words)):             # <<<<<<<<<<<<<<
@@ -5208,7 +5208,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
     __pyx_v_i = __pyx_t_14;
     __pyx_t_14 = (__pyx_t_14 + 1);
 
-    /* "word2vec_inner.pyx":565
+    /* "ms2vec_inner.pyx":565
  *     # precompute "reduced window" offsets in a single randint() call
  *     for i, item in enumerate(model.random.randint(0, c.window, effective_words)):
  *         c.reduced_windows[i] = item             # <<<<<<<<<<<<<<
@@ -5218,7 +5218,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
     __pyx_t_12 = __Pyx_PyInt_As_npy_uint32(__pyx_v_item); if (unlikely((__pyx_t_12 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 565, __pyx_L1_error)
     (__pyx_v_c.reduced_windows[__pyx_v_i]) = __pyx_t_12;
 
-    /* "word2vec_inner.pyx":564
+    /* "ms2vec_inner.pyx":564
  * 
  *     # precompute "reduced window" offsets in a single randint() call
  *     for i, item in enumerate(model.random.randint(0, c.window, effective_words)):             # <<<<<<<<<<<<<<
@@ -5228,7 +5228,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
   }
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-  /* "word2vec_inner.pyx":568
+  /* "ms2vec_inner.pyx":568
  * 
  *     # release GIL & train on all sentences
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -5243,7 +5243,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
       #endif
       /*try:*/ {
 
-        /* "word2vec_inner.pyx":569
+        /* "ms2vec_inner.pyx":569
  *     # release GIL & train on all sentences
  *     with nogil:
  *         for sent_idx in range(effective_sentences):             # <<<<<<<<<<<<<<
@@ -5255,7 +5255,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
         for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_15; __pyx_t_17+=1) {
           __pyx_v_sent_idx = __pyx_t_17;
 
-          /* "word2vec_inner.pyx":570
+          /* "ms2vec_inner.pyx":570
  *     with nogil:
  *         for sent_idx in range(effective_sentences):
  *             idx_start = c.sentence_idx[sent_idx]             # <<<<<<<<<<<<<<
@@ -5264,7 +5264,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
           __pyx_v_idx_start = (__pyx_v_c.sentence_idx[__pyx_v_sent_idx]);
 
-          /* "word2vec_inner.pyx":571
+          /* "ms2vec_inner.pyx":571
  *         for sent_idx in range(effective_sentences):
  *             idx_start = c.sentence_idx[sent_idx]
  *             idx_end = c.sentence_idx[sent_idx + 1]             # <<<<<<<<<<<<<<
@@ -5273,7 +5273,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
           __pyx_v_idx_end = (__pyx_v_c.sentence_idx[(__pyx_v_sent_idx + 1)]);
 
-          /* "word2vec_inner.pyx":572
+          /* "ms2vec_inner.pyx":572
  *             idx_start = c.sentence_idx[sent_idx]
  *             idx_end = c.sentence_idx[sent_idx + 1]
  *             for i in range(idx_start, idx_end):             # <<<<<<<<<<<<<<
@@ -5285,7 +5285,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
           for (__pyx_t_20 = __pyx_v_idx_start; __pyx_t_20 < __pyx_t_19; __pyx_t_20+=1) {
             __pyx_v_i = __pyx_t_20;
 
-            /* "word2vec_inner.pyx":573
+            /* "ms2vec_inner.pyx":573
  *             idx_end = c.sentence_idx[sent_idx + 1]
  *             for i in range(idx_start, idx_end):
  *                 j = i - c.window + c.reduced_windows[i]             # <<<<<<<<<<<<<<
@@ -5294,7 +5294,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
             __pyx_v_j = ((__pyx_v_i - __pyx_v_c.window) + (__pyx_v_c.reduced_windows[__pyx_v_i]));
 
-            /* "word2vec_inner.pyx":574
+            /* "ms2vec_inner.pyx":574
  *             for i in range(idx_start, idx_end):
  *                 j = i - c.window + c.reduced_windows[i]
  *                 if j < idx_start:             # <<<<<<<<<<<<<<
@@ -5304,7 +5304,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
             __pyx_t_5 = ((__pyx_v_j < __pyx_v_idx_start) != 0);
             if (__pyx_t_5) {
 
-              /* "word2vec_inner.pyx":575
+              /* "ms2vec_inner.pyx":575
  *                 j = i - c.window + c.reduced_windows[i]
  *                 if j < idx_start:
  *                     j = idx_start             # <<<<<<<<<<<<<<
@@ -5313,7 +5313,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
               __pyx_v_j = __pyx_v_idx_start;
 
-              /* "word2vec_inner.pyx":574
+              /* "ms2vec_inner.pyx":574
  *             for i in range(idx_start, idx_end):
  *                 j = i - c.window + c.reduced_windows[i]
  *                 if j < idx_start:             # <<<<<<<<<<<<<<
@@ -5322,7 +5322,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
             }
 
-            /* "word2vec_inner.pyx":576
+            /* "ms2vec_inner.pyx":576
  *                 if j < idx_start:
  *                     j = idx_start
  *                 k = i + c.window + 1 - c.reduced_windows[i]             # <<<<<<<<<<<<<<
@@ -5331,7 +5331,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
             __pyx_v_k = (((__pyx_v_i + __pyx_v_c.window) + 1) - (__pyx_v_c.reduced_windows[__pyx_v_i]));
 
-            /* "word2vec_inner.pyx":577
+            /* "ms2vec_inner.pyx":577
  *                     j = idx_start
  *                 k = i + c.window + 1 - c.reduced_windows[i]
  *                 if k > idx_end:             # <<<<<<<<<<<<<<
@@ -5341,7 +5341,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
             __pyx_t_5 = ((__pyx_v_k > __pyx_v_idx_end) != 0);
             if (__pyx_t_5) {
 
-              /* "word2vec_inner.pyx":578
+              /* "ms2vec_inner.pyx":578
  *                 k = i + c.window + 1 - c.reduced_windows[i]
  *                 if k > idx_end:
  *                     k = idx_end             # <<<<<<<<<<<<<<
@@ -5350,7 +5350,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
               __pyx_v_k = __pyx_v_idx_end;
 
-              /* "word2vec_inner.pyx":577
+              /* "ms2vec_inner.pyx":577
  *                     j = idx_start
  *                 k = i + c.window + 1 - c.reduced_windows[i]
  *                 if k > idx_end:             # <<<<<<<<<<<<<<
@@ -5359,7 +5359,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
             }
 
-            /* "word2vec_inner.pyx":579
+            /* "ms2vec_inner.pyx":579
  *                 if k > idx_end:
  *                     k = idx_end
  *                 for j in range(j, k):             # <<<<<<<<<<<<<<
@@ -5371,7 +5371,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
             for (__pyx_t_23 = __pyx_v_j; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
               __pyx_v_j = __pyx_t_23;
 
-              /* "word2vec_inner.pyx":580
+              /* "ms2vec_inner.pyx":580
  *                     k = idx_end
  *                 for j in range(j, k):
  *                     if j == i:             # <<<<<<<<<<<<<<
@@ -5381,7 +5381,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
               __pyx_t_5 = ((__pyx_v_j == __pyx_v_i) != 0);
               if (__pyx_t_5) {
 
-                /* "word2vec_inner.pyx":581
+                /* "ms2vec_inner.pyx":581
  *                 for j in range(j, k):
  *                     if j == i:
  *                         continue             # <<<<<<<<<<<<<<
@@ -5390,7 +5390,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
                 goto __pyx_L26_continue;
 
-                /* "word2vec_inner.pyx":580
+                /* "ms2vec_inner.pyx":580
  *                     k = idx_end
  *                 for j in range(j, k):
  *                     if j == i:             # <<<<<<<<<<<<<<
@@ -5399,7 +5399,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
               }
 
-              /* "word2vec_inner.pyx":582
+              /* "ms2vec_inner.pyx":582
  *                     if j == i:
  *                         continue
  *                     if c.hs:             # <<<<<<<<<<<<<<
@@ -5409,16 +5409,16 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
               __pyx_t_5 = (__pyx_v_c.hs != 0);
               if (__pyx_t_5) {
 
-                /* "word2vec_inner.pyx":583
+                /* "ms2vec_inner.pyx":583
  *                         continue
  *                     if c.hs:
  *                         w2v_fast_sentence_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.alpha, c.work, c.word_locks, c.compute_loss, &c.running_training_loss)             # <<<<<<<<<<<<<<
  *                     if c.negative:
  *                         c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg, c.size, c.indexes[i], c.indexes[j], c.alpha, c.work, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
  */
-                __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs((__pyx_v_c.points[__pyx_v_i]), (__pyx_v_c.codes[__pyx_v_i]), (__pyx_v_c.codelens[__pyx_v_i]), __pyx_v_c.syn0, __pyx_v_c.syn1, __pyx_v_c.size, (__pyx_v_c.indexes[__pyx_v_j]), __pyx_v_c.alpha, __pyx_v_c.work, __pyx_v_c.word_locks, __pyx_v_c.compute_loss, (&__pyx_v_c.running_training_loss));
+                __pyx_f_12ms2vec_inner_w2v_fast_sentence_sg_hs((__pyx_v_c.points[__pyx_v_i]), (__pyx_v_c.codes[__pyx_v_i]), (__pyx_v_c.codelens[__pyx_v_i]), __pyx_v_c.syn0, __pyx_v_c.syn1, __pyx_v_c.size, (__pyx_v_c.indexes[__pyx_v_j]), __pyx_v_c.alpha, __pyx_v_c.work, __pyx_v_c.word_locks, __pyx_v_c.compute_loss, (&__pyx_v_c.running_training_loss));
 
-                /* "word2vec_inner.pyx":582
+                /* "ms2vec_inner.pyx":582
  *                     if j == i:
  *                         continue
  *                     if c.hs:             # <<<<<<<<<<<<<<
@@ -5427,7 +5427,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
               }
 
-              /* "word2vec_inner.pyx":584
+              /* "ms2vec_inner.pyx":584
  *                     if c.hs:
  *                         w2v_fast_sentence_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.alpha, c.work, c.word_locks, c.compute_loss, &c.running_training_loss)
  *                     if c.negative:             # <<<<<<<<<<<<<<
@@ -5437,16 +5437,16 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
               __pyx_t_5 = (__pyx_v_c.negative != 0);
               if (__pyx_t_5) {
 
-                /* "word2vec_inner.pyx":585
+                /* "ms2vec_inner.pyx":585
  *                         w2v_fast_sentence_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.alpha, c.work, c.word_locks, c.compute_loss, &c.running_training_loss)
  *                     if c.negative:
  *                         c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg, c.size, c.indexes[i], c.indexes[j], c.alpha, c.work, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)             # <<<<<<<<<<<<<<
  * 
  *     model.running_training_loss = c.running_training_loss
  */
-                __pyx_v_c.next_random = __pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg(__pyx_v_c.negative, __pyx_v_c.cum_table, __pyx_v_c.cum_table_len, __pyx_v_c.syn0, __pyx_v_c.syn1neg, __pyx_v_c.size, (__pyx_v_c.indexes[__pyx_v_i]), (__pyx_v_c.indexes[__pyx_v_j]), __pyx_v_c.alpha, __pyx_v_c.work, __pyx_v_c.next_random, __pyx_v_c.word_locks, __pyx_v_c.compute_loss, (&__pyx_v_c.running_training_loss));
+                __pyx_v_c.next_random = __pyx_f_12ms2vec_inner_w2v_fast_sentence_sg_neg(__pyx_v_c.negative, __pyx_v_c.cum_table, __pyx_v_c.cum_table_len, __pyx_v_c.syn0, __pyx_v_c.syn1neg, __pyx_v_c.size, (__pyx_v_c.indexes[__pyx_v_i]), (__pyx_v_c.indexes[__pyx_v_j]), __pyx_v_c.alpha, __pyx_v_c.work, __pyx_v_c.next_random, __pyx_v_c.word_locks, __pyx_v_c.compute_loss, (&__pyx_v_c.running_training_loss));
 
-                /* "word2vec_inner.pyx":584
+                /* "ms2vec_inner.pyx":584
  *                     if c.hs:
  *                         w2v_fast_sentence_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.alpha, c.work, c.word_locks, c.compute_loss, &c.running_training_loss)
  *                     if c.negative:             # <<<<<<<<<<<<<<
@@ -5460,7 +5460,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
         }
       }
 
-      /* "word2vec_inner.pyx":568
+      /* "ms2vec_inner.pyx":568
  * 
  *     # release GIL & train on all sentences
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -5479,7 +5479,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
       }
   }
 
-  /* "word2vec_inner.pyx":587
+  /* "ms2vec_inner.pyx":587
  *                         c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg, c.size, c.indexes[i], c.indexes[j], c.alpha, c.work, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
  * 
  *     model.running_training_loss = c.running_training_loss             # <<<<<<<<<<<<<<
@@ -5491,7 +5491,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_model, __pyx_n_s_running_training_loss, __pyx_t_11) < 0) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-  /* "word2vec_inner.pyx":588
+  /* "ms2vec_inner.pyx":588
  * 
  *     model.running_training_loss = c.running_training_loss
  *     return effective_words             # <<<<<<<<<<<<<<
@@ -5505,7 +5505,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
   __pyx_t_11 = 0;
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":500
+  /* "ms2vec_inner.pyx":500
  * 
  * 
  * def train_batch_sg(model, sentences, alpha, _work, compute_loss):             # <<<<<<<<<<<<<<
@@ -5521,7 +5521,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
   __Pyx_XDECREF(__pyx_t_10);
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_16);
-  __Pyx_AddTraceback("word2vec_inner.train_batch_sg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ms2vec_inner.train_batch_sg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_vlookup);
@@ -5534,7 +5534,7 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":591
+/* "ms2vec_inner.pyx":591
  * 
  * 
  * def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):             # <<<<<<<<<<<<<<
@@ -5543,10 +5543,10 @@ static PyObject *__pyx_pf_14word2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14word2vec_inner_3train_batch_cbow(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_14word2vec_inner_2train_batch_cbow[] = "train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss)\nUpdate CBOW model by training on a batch of sentences.\n\n    Called internally from :meth:`~gensim.models.word2vec.Word2Vec.train`.\n\n    Parameters\n    ----------\n    model : :class:`~gensim.models.word2vec.Word2Vec`\n        The Word2Vec model instance to train.\n    sentences : iterable of list of str\n        The corpus used to train the model.\n    alpha : float\n        The learning rate.\n    _work : np.ndarray\n        Private working memory for each worker.\n    _neu1 : np.ndarray\n        Private working memory for each worker.\n    compute_loss : bool\n        Whether or not the training loss should be computed in this batch.\n\n    Returns\n    -------\n    int\n        Number of words in the vocabulary actually used for training (They already existed in the vocabulary\n        and were not discarded by negative sampling).\n    ";
-static PyMethodDef __pyx_mdef_14word2vec_inner_3train_batch_cbow = {"train_batch_cbow", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14word2vec_inner_3train_batch_cbow, METH_VARARGS|METH_KEYWORDS, __pyx_doc_14word2vec_inner_2train_batch_cbow};
-static PyObject *__pyx_pw_14word2vec_inner_3train_batch_cbow(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12ms2vec_inner_3train_batch_cbow(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_12ms2vec_inner_2train_batch_cbow[] = "train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss)\nUpdate CBOW model by training on a batch of sentences.\n\n    Called internally from :meth:`~gensim.models.word2vec.Word2Vec.train`.\n\n    Parameters\n    ----------\n    model : :class:`~gensim.models.word2vec.Word2Vec`\n        The Word2Vec model instance to train.\n    sentences : iterable of list of str\n        The corpus used to train the model.\n    alpha : float\n        The learning rate.\n    _work : np.ndarray\n        Private working memory for each worker.\n    _neu1 : np.ndarray\n        Private working memory for each worker.\n    compute_loss : bool\n        Whether or not the training loss should be computed in this batch.\n\n    Returns\n    -------\n    int\n        Number of words in the vocabulary actually used for training (They already existed in the vocabulary\n        and were not discarded by negative sampling).\n    ";
+static PyMethodDef __pyx_mdef_12ms2vec_inner_3train_batch_cbow = {"train_batch_cbow", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_12ms2vec_inner_3train_batch_cbow, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12ms2vec_inner_2train_batch_cbow};
+static PyObject *__pyx_pw_12ms2vec_inner_3train_batch_cbow(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_model = 0;
   PyObject *__pyx_v_sentences = 0;
   PyObject *__pyx_v_alpha = 0;
@@ -5638,19 +5638,19 @@ static PyObject *__pyx_pw_14word2vec_inner_3train_batch_cbow(PyObject *__pyx_sel
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("train_batch_cbow", 1, 6, 6, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 591, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("word2vec_inner.train_batch_cbow", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ms2vec_inner.train_batch_cbow", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14word2vec_inner_2train_batch_cbow(__pyx_self, __pyx_v_model, __pyx_v_sentences, __pyx_v_alpha, __pyx_v__work, __pyx_v__neu1, __pyx_v_compute_loss);
+  __pyx_r = __pyx_pf_12ms2vec_inner_2train_batch_cbow(__pyx_self, __pyx_v_model, __pyx_v_sentences, __pyx_v_alpha, __pyx_v__work, __pyx_v__neu1, __pyx_v_compute_loss);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentences, PyObject *__pyx_v_alpha, PyObject *__pyx_v__work, PyObject *__pyx_v__neu1, PyObject *__pyx_v_compute_loss) {
-  struct __pyx_t_14word2vec_inner_Word2VecConfig __pyx_v_c;
+static PyObject *__pyx_pf_12ms2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentences, PyObject *__pyx_v_alpha, PyObject *__pyx_v__work, PyObject *__pyx_v__neu1, PyObject *__pyx_v_compute_loss) {
+  struct __pyx_t_12ms2vec_inner_Word2VecConfig __pyx_v_c;
   int __pyx_v_i;
   int __pyx_v_j;
   int __pyx_v_k;
@@ -5667,7 +5667,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  struct __pyx_opt_args_14word2vec_inner_init_w2v_config __pyx_t_2;
+  struct __pyx_opt_args_12ms2vec_inner_init_w2v_config __pyx_t_2;
   PyObject *__pyx_t_3 = NULL;
   Py_ssize_t __pyx_t_4;
   PyObject *(*__pyx_t_5)(PyObject *);
@@ -5689,7 +5689,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
   int __pyx_t_21;
   __Pyx_RefNannySetupContext("train_batch_cbow", 0);
 
-  /* "word2vec_inner.pyx":619
+  /* "ms2vec_inner.pyx":619
  *     cdef Word2VecConfig c
  *     cdef int i, j, k
  *     cdef int effective_words = 0, effective_sentences = 0             # <<<<<<<<<<<<<<
@@ -5699,7 +5699,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
   __pyx_v_effective_words = 0;
   __pyx_v_effective_sentences = 0;
 
-  /* "word2vec_inner.pyx":622
+  /* "ms2vec_inner.pyx":622
  *     cdef int sent_idx, idx_start, idx_end
  * 
  *     init_w2v_config(&c, model, alpha, compute_loss, _work, _neu1)             # <<<<<<<<<<<<<<
@@ -5708,11 +5708,11 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2._neu1 = __pyx_v__neu1;
-  __pyx_t_1 = __pyx_f_14word2vec_inner_init_w2v_config((&__pyx_v_c), __pyx_v_model, __pyx_v_alpha, __pyx_v_compute_loss, __pyx_v__work, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 622, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_12ms2vec_inner_init_w2v_config((&__pyx_v_c), __pyx_v_model, __pyx_v_alpha, __pyx_v_compute_loss, __pyx_v__work, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 622, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":625
+  /* "ms2vec_inner.pyx":625
  * 
  *     # prepare C structures so we can go "full C" and release the Python GIL
  *     vlookup = model.wv.vocab             # <<<<<<<<<<<<<<
@@ -5727,7 +5727,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
   __pyx_v_vlookup = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "word2vec_inner.pyx":626
+  /* "ms2vec_inner.pyx":626
  *     # prepare C structures so we can go "full C" and release the Python GIL
  *     vlookup = model.wv.vocab
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0             # <<<<<<<<<<<<<<
@@ -5736,7 +5736,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
   (__pyx_v_c.sentence_idx[0]) = 0;
 
-  /* "word2vec_inner.pyx":627
+  /* "ms2vec_inner.pyx":627
  *     vlookup = model.wv.vocab
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:             # <<<<<<<<<<<<<<
@@ -5785,7 +5785,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
     __Pyx_XDECREF_SET(__pyx_v_sent, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "word2vec_inner.pyx":628
+    /* "ms2vec_inner.pyx":628
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:
  *         if not sent:             # <<<<<<<<<<<<<<
@@ -5796,7 +5796,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
     __pyx_t_7 = ((!__pyx_t_6) != 0);
     if (__pyx_t_7) {
 
-      /* "word2vec_inner.pyx":629
+      /* "ms2vec_inner.pyx":629
  *     for sent in sentences:
  *         if not sent:
  *             continue  # ignore empty sentences; leave effective_sentences unchanged             # <<<<<<<<<<<<<<
@@ -5805,7 +5805,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
       goto __pyx_L3_continue;
 
-      /* "word2vec_inner.pyx":628
+      /* "ms2vec_inner.pyx":628
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:
  *         if not sent:             # <<<<<<<<<<<<<<
@@ -5814,7 +5814,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
     }
 
-    /* "word2vec_inner.pyx":630
+    /* "ms2vec_inner.pyx":630
  *         if not sent:
  *             continue  # ignore empty sentences; leave effective_sentences unchanged
  *         for token in sent:             # <<<<<<<<<<<<<<
@@ -5863,7 +5863,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
       __Pyx_XDECREF_SET(__pyx_v_token, __pyx_t_10);
       __pyx_t_10 = 0;
 
-      /* "word2vec_inner.pyx":631
+      /* "ms2vec_inner.pyx":631
  *             continue  # ignore empty sentences; leave effective_sentences unchanged
  *         for token in sent:
  *             word = vlookup[token] if token in vlookup else None             # <<<<<<<<<<<<<<
@@ -5883,7 +5883,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
       __Pyx_XDECREF_SET(__pyx_v_word, __pyx_t_10);
       __pyx_t_10 = 0;
 
-      /* "word2vec_inner.pyx":632
+      /* "ms2vec_inner.pyx":632
  *         for token in sent:
  *             word = vlookup[token] if token in vlookup else None
  *             if word is None:             # <<<<<<<<<<<<<<
@@ -5894,7 +5894,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
       __pyx_t_6 = (__pyx_t_7 != 0);
       if (__pyx_t_6) {
 
-        /* "word2vec_inner.pyx":633
+        /* "ms2vec_inner.pyx":633
  *             word = vlookup[token] if token in vlookup else None
  *             if word is None:
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window             # <<<<<<<<<<<<<<
@@ -5903,7 +5903,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
         goto __pyx_L6_continue;
 
-        /* "word2vec_inner.pyx":632
+        /* "ms2vec_inner.pyx":632
  *         for token in sent:
  *             word = vlookup[token] if token in vlookup else None
  *             if word is None:             # <<<<<<<<<<<<<<
@@ -5912,7 +5912,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
       }
 
-      /* "word2vec_inner.pyx":634
+      /* "ms2vec_inner.pyx":634
  *             if word is None:
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
  *             if c.sample and word.sample_int < random_int32(&c.next_random):             # <<<<<<<<<<<<<<
@@ -5927,7 +5927,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
       }
       __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_word, __pyx_n_s_sample_int); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 634, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_11 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_f_14word2vec_inner_random_int32((&__pyx_v_c.next_random))); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 634, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_From_unsigned_PY_LONG_LONG(__pyx_f_12ms2vec_inner_random_int32((&__pyx_v_c.next_random))); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 634, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __pyx_t_12 = PyObject_RichCompare(__pyx_t_10, __pyx_t_11, Py_LT); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 634, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -5938,7 +5938,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
       __pyx_L10_bool_binop_done:;
       if (__pyx_t_6) {
 
-        /* "word2vec_inner.pyx":635
+        /* "ms2vec_inner.pyx":635
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
  *             if c.sample and word.sample_int < random_int32(&c.next_random):
  *                 continue             # <<<<<<<<<<<<<<
@@ -5947,7 +5947,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
         goto __pyx_L6_continue;
 
-        /* "word2vec_inner.pyx":634
+        /* "ms2vec_inner.pyx":634
  *             if word is None:
  *                 continue  # leaving `effective_words` unchanged = shortening the sentence = expanding the window
  *             if c.sample and word.sample_int < random_int32(&c.next_random):             # <<<<<<<<<<<<<<
@@ -5956,7 +5956,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
       }
 
-      /* "word2vec_inner.pyx":636
+      /* "ms2vec_inner.pyx":636
  *             if c.sample and word.sample_int < random_int32(&c.next_random):
  *                 continue
  *             c.indexes[effective_words] = word.index             # <<<<<<<<<<<<<<
@@ -5969,7 +5969,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       (__pyx_v_c.indexes[__pyx_v_effective_words]) = __pyx_t_13;
 
-      /* "word2vec_inner.pyx":637
+      /* "ms2vec_inner.pyx":637
  *                 continue
  *             c.indexes[effective_words] = word.index
  *             if c.hs:             # <<<<<<<<<<<<<<
@@ -5979,7 +5979,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
       __pyx_t_6 = (__pyx_v_c.hs != 0);
       if (__pyx_t_6) {
 
-        /* "word2vec_inner.pyx":638
+        /* "ms2vec_inner.pyx":638
  *             c.indexes[effective_words] = word.index
  *             if c.hs:
  *                 c.codelens[effective_words] = <int>len(word.code)             # <<<<<<<<<<<<<<
@@ -5992,7 +5992,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         (__pyx_v_c.codelens[__pyx_v_effective_words]) = ((int)__pyx_t_14);
 
-        /* "word2vec_inner.pyx":639
+        /* "ms2vec_inner.pyx":639
  *             if c.hs:
  *                 c.codelens[effective_words] = <int>len(word.code)
  *                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)             # <<<<<<<<<<<<<<
@@ -6005,7 +6005,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
         (__pyx_v_c.codes[__pyx_v_effective_words]) = ((__pyx_t_5numpy_uint8_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_12)));
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-        /* "word2vec_inner.pyx":640
+        /* "ms2vec_inner.pyx":640
  *                 c.codelens[effective_words] = <int>len(word.code)
  *                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)             # <<<<<<<<<<<<<<
@@ -6018,7 +6018,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
         (__pyx_v_c.points[__pyx_v_effective_words]) = ((__pyx_t_5numpy_uint32_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_12)));
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-        /* "word2vec_inner.pyx":637
+        /* "ms2vec_inner.pyx":637
  *                 continue
  *             c.indexes[effective_words] = word.index
  *             if c.hs:             # <<<<<<<<<<<<<<
@@ -6027,7 +6027,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
       }
 
-      /* "word2vec_inner.pyx":641
+      /* "ms2vec_inner.pyx":641
  *                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *             effective_words += 1             # <<<<<<<<<<<<<<
@@ -6036,7 +6036,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
       __pyx_v_effective_words = (__pyx_v_effective_words + 1);
 
-      /* "word2vec_inner.pyx":642
+      /* "ms2vec_inner.pyx":642
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *             effective_words += 1
  *             if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6046,7 +6046,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
       __pyx_t_6 = ((__pyx_v_effective_words == 0x2710) != 0);
       if (__pyx_t_6) {
 
-        /* "word2vec_inner.pyx":643
+        /* "ms2vec_inner.pyx":643
  *             effective_words += 1
  *             if effective_words == MAX_SENTENCE_LEN:
  *                 break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -6055,7 +6055,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
         goto __pyx_L7_break;
 
-        /* "word2vec_inner.pyx":642
+        /* "ms2vec_inner.pyx":642
  *                 c.points[effective_words] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *             effective_words += 1
  *             if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6064,7 +6064,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
       }
 
-      /* "word2vec_inner.pyx":630
+      /* "ms2vec_inner.pyx":630
  *         if not sent:
  *             continue  # ignore empty sentences; leave effective_sentences unchanged
  *         for token in sent:             # <<<<<<<<<<<<<<
@@ -6076,7 +6076,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
     __pyx_L7_break:;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "word2vec_inner.pyx":648
+    /* "ms2vec_inner.pyx":648
  *         # across sentence boundaries.
  *         # indices of sentence number X are between <sentence_idx[X], sentence_idx[X])
  *         effective_sentences += 1             # <<<<<<<<<<<<<<
@@ -6085,7 +6085,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
     __pyx_v_effective_sentences = (__pyx_v_effective_sentences + 1);
 
-    /* "word2vec_inner.pyx":649
+    /* "ms2vec_inner.pyx":649
  *         # indices of sentence number X are between <sentence_idx[X], sentence_idx[X])
  *         effective_sentences += 1
  *         c.sentence_idx[effective_sentences] = effective_words             # <<<<<<<<<<<<<<
@@ -6094,7 +6094,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
     (__pyx_v_c.sentence_idx[__pyx_v_effective_sentences]) = __pyx_v_effective_words;
 
-    /* "word2vec_inner.pyx":651
+    /* "ms2vec_inner.pyx":651
  *         c.sentence_idx[effective_sentences] = effective_words
  * 
  *         if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6104,7 +6104,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
     __pyx_t_6 = ((__pyx_v_effective_words == 0x2710) != 0);
     if (__pyx_t_6) {
 
-      /* "word2vec_inner.pyx":652
+      /* "ms2vec_inner.pyx":652
  * 
  *         if effective_words == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -6113,7 +6113,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
       goto __pyx_L4_break;
 
-      /* "word2vec_inner.pyx":651
+      /* "ms2vec_inner.pyx":651
  *         c.sentence_idx[effective_sentences] = effective_words
  * 
  *         if effective_words == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6122,7 +6122,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
     }
 
-    /* "word2vec_inner.pyx":627
+    /* "ms2vec_inner.pyx":627
  *     vlookup = model.wv.vocab
  *     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
  *     for sent in sentences:             # <<<<<<<<<<<<<<
@@ -6134,7 +6134,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "word2vec_inner.pyx":655
+  /* "ms2vec_inner.pyx":655
  * 
  *     # precompute "reduced window" offsets in a single randint() call
  *     for i, item in enumerate(model.random.randint(0, c.window, effective_words)):             # <<<<<<<<<<<<<<
@@ -6248,7 +6248,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
     __pyx_v_i = __pyx_t_15;
     __pyx_t_15 = (__pyx_t_15 + 1);
 
-    /* "word2vec_inner.pyx":656
+    /* "ms2vec_inner.pyx":656
  *     # precompute "reduced window" offsets in a single randint() call
  *     for i, item in enumerate(model.random.randint(0, c.window, effective_words)):
  *         c.reduced_windows[i] = item             # <<<<<<<<<<<<<<
@@ -6258,7 +6258,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
     __pyx_t_13 = __Pyx_PyInt_As_npy_uint32(__pyx_v_item); if (unlikely((__pyx_t_13 == ((npy_uint32)-1)) && PyErr_Occurred())) __PYX_ERR(0, 656, __pyx_L1_error)
     (__pyx_v_c.reduced_windows[__pyx_v_i]) = __pyx_t_13;
 
-    /* "word2vec_inner.pyx":655
+    /* "ms2vec_inner.pyx":655
  * 
  *     # precompute "reduced window" offsets in a single randint() call
  *     for i, item in enumerate(model.random.randint(0, c.window, effective_words)):             # <<<<<<<<<<<<<<
@@ -6268,7 +6268,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
   }
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "word2vec_inner.pyx":659
+  /* "ms2vec_inner.pyx":659
  * 
  *     # release GIL & train on all sentences
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -6283,7 +6283,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
       #endif
       /*try:*/ {
 
-        /* "word2vec_inner.pyx":660
+        /* "ms2vec_inner.pyx":660
  *     # release GIL & train on all sentences
  *     with nogil:
  *         for sent_idx in range(effective_sentences):             # <<<<<<<<<<<<<<
@@ -6295,7 +6295,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
         for (__pyx_t_18 = 0; __pyx_t_18 < __pyx_t_16; __pyx_t_18+=1) {
           __pyx_v_sent_idx = __pyx_t_18;
 
-          /* "word2vec_inner.pyx":661
+          /* "ms2vec_inner.pyx":661
  *     with nogil:
  *         for sent_idx in range(effective_sentences):
  *             idx_start = c.sentence_idx[sent_idx]             # <<<<<<<<<<<<<<
@@ -6304,7 +6304,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
           __pyx_v_idx_start = (__pyx_v_c.sentence_idx[__pyx_v_sent_idx]);
 
-          /* "word2vec_inner.pyx":662
+          /* "ms2vec_inner.pyx":662
  *         for sent_idx in range(effective_sentences):
  *             idx_start = c.sentence_idx[sent_idx]
  *             idx_end = c.sentence_idx[sent_idx + 1]             # <<<<<<<<<<<<<<
@@ -6313,7 +6313,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
           __pyx_v_idx_end = (__pyx_v_c.sentence_idx[(__pyx_v_sent_idx + 1)]);
 
-          /* "word2vec_inner.pyx":663
+          /* "ms2vec_inner.pyx":663
  *             idx_start = c.sentence_idx[sent_idx]
  *             idx_end = c.sentence_idx[sent_idx + 1]
  *             for i in range(idx_start, idx_end):             # <<<<<<<<<<<<<<
@@ -6325,7 +6325,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
           for (__pyx_t_21 = __pyx_v_idx_start; __pyx_t_21 < __pyx_t_20; __pyx_t_21+=1) {
             __pyx_v_i = __pyx_t_21;
 
-            /* "word2vec_inner.pyx":664
+            /* "ms2vec_inner.pyx":664
  *             idx_end = c.sentence_idx[sent_idx + 1]
  *             for i in range(idx_start, idx_end):
  *                 j = i - c.window + c.reduced_windows[i]             # <<<<<<<<<<<<<<
@@ -6334,7 +6334,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
             __pyx_v_j = ((__pyx_v_i - __pyx_v_c.window) + (__pyx_v_c.reduced_windows[__pyx_v_i]));
 
-            /* "word2vec_inner.pyx":665
+            /* "ms2vec_inner.pyx":665
  *             for i in range(idx_start, idx_end):
  *                 j = i - c.window + c.reduced_windows[i]
  *                 if j < idx_start:             # <<<<<<<<<<<<<<
@@ -6344,7 +6344,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
             __pyx_t_6 = ((__pyx_v_j < __pyx_v_idx_start) != 0);
             if (__pyx_t_6) {
 
-              /* "word2vec_inner.pyx":666
+              /* "ms2vec_inner.pyx":666
  *                 j = i - c.window + c.reduced_windows[i]
  *                 if j < idx_start:
  *                     j = idx_start             # <<<<<<<<<<<<<<
@@ -6353,7 +6353,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
               __pyx_v_j = __pyx_v_idx_start;
 
-              /* "word2vec_inner.pyx":665
+              /* "ms2vec_inner.pyx":665
  *             for i in range(idx_start, idx_end):
  *                 j = i - c.window + c.reduced_windows[i]
  *                 if j < idx_start:             # <<<<<<<<<<<<<<
@@ -6362,7 +6362,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
             }
 
-            /* "word2vec_inner.pyx":667
+            /* "ms2vec_inner.pyx":667
  *                 if j < idx_start:
  *                     j = idx_start
  *                 k = i + c.window + 1 - c.reduced_windows[i]             # <<<<<<<<<<<<<<
@@ -6371,7 +6371,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
             __pyx_v_k = (((__pyx_v_i + __pyx_v_c.window) + 1) - (__pyx_v_c.reduced_windows[__pyx_v_i]));
 
-            /* "word2vec_inner.pyx":668
+            /* "ms2vec_inner.pyx":668
  *                     j = idx_start
  *                 k = i + c.window + 1 - c.reduced_windows[i]
  *                 if k > idx_end:             # <<<<<<<<<<<<<<
@@ -6381,7 +6381,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
             __pyx_t_6 = ((__pyx_v_k > __pyx_v_idx_end) != 0);
             if (__pyx_t_6) {
 
-              /* "word2vec_inner.pyx":669
+              /* "ms2vec_inner.pyx":669
  *                 k = i + c.window + 1 - c.reduced_windows[i]
  *                 if k > idx_end:
  *                     k = idx_end             # <<<<<<<<<<<<<<
@@ -6390,7 +6390,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
               __pyx_v_k = __pyx_v_idx_end;
 
-              /* "word2vec_inner.pyx":668
+              /* "ms2vec_inner.pyx":668
  *                     j = idx_start
  *                 k = i + c.window + 1 - c.reduced_windows[i]
  *                 if k > idx_end:             # <<<<<<<<<<<<<<
@@ -6399,7 +6399,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
             }
 
-            /* "word2vec_inner.pyx":670
+            /* "ms2vec_inner.pyx":670
  *                 if k > idx_end:
  *                     k = idx_end
  *                 if c.hs:             # <<<<<<<<<<<<<<
@@ -6409,16 +6409,16 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
             __pyx_t_6 = (__pyx_v_c.hs != 0);
             if (__pyx_t_6) {
 
-              /* "word2vec_inner.pyx":671
+              /* "ms2vec_inner.pyx":671
  *                     k = idx_end
  *                 if c.hs:
  *                     w2v_fast_sentence_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.word_locks, c.compute_loss, &c.running_training_loss)             # <<<<<<<<<<<<<<
  *                 if c.negative:
  *                     c.next_random = w2v_fast_sentence_cbow_neg(c.negative, c.cum_table, c.cum_table_len, c.codelens, c.neu1, c.syn0, c.syn1neg, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
  */
-              __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs((__pyx_v_c.points[__pyx_v_i]), (__pyx_v_c.codes[__pyx_v_i]), __pyx_v_c.codelens, __pyx_v_c.neu1, __pyx_v_c.syn0, __pyx_v_c.syn1, __pyx_v_c.size, __pyx_v_c.indexes, __pyx_v_c.alpha, __pyx_v_c.work, __pyx_v_i, __pyx_v_j, __pyx_v_k, __pyx_v_c.cbow_mean, __pyx_v_c.word_locks, __pyx_v_c.compute_loss, (&__pyx_v_c.running_training_loss));
+              __pyx_f_12ms2vec_inner_w2v_fast_sentence_cbow_hs((__pyx_v_c.points[__pyx_v_i]), (__pyx_v_c.codes[__pyx_v_i]), __pyx_v_c.codelens, __pyx_v_c.neu1, __pyx_v_c.syn0, __pyx_v_c.syn1, __pyx_v_c.size, __pyx_v_c.indexes, __pyx_v_c.alpha, __pyx_v_c.work, __pyx_v_i, __pyx_v_j, __pyx_v_k, __pyx_v_c.cbow_mean, __pyx_v_c.word_locks, __pyx_v_c.compute_loss, (&__pyx_v_c.running_training_loss));
 
-              /* "word2vec_inner.pyx":670
+              /* "ms2vec_inner.pyx":670
  *                 if k > idx_end:
  *                     k = idx_end
  *                 if c.hs:             # <<<<<<<<<<<<<<
@@ -6427,7 +6427,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
             }
 
-            /* "word2vec_inner.pyx":672
+            /* "ms2vec_inner.pyx":672
  *                 if c.hs:
  *                     w2v_fast_sentence_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.word_locks, c.compute_loss, &c.running_training_loss)
  *                 if c.negative:             # <<<<<<<<<<<<<<
@@ -6437,16 +6437,16 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
             __pyx_t_6 = (__pyx_v_c.negative != 0);
             if (__pyx_t_6) {
 
-              /* "word2vec_inner.pyx":673
+              /* "ms2vec_inner.pyx":673
  *                     w2v_fast_sentence_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.word_locks, c.compute_loss, &c.running_training_loss)
  *                 if c.negative:
  *                     c.next_random = w2v_fast_sentence_cbow_neg(c.negative, c.cum_table, c.cum_table_len, c.codelens, c.neu1, c.syn0, c.syn1neg, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)             # <<<<<<<<<<<<<<
  * 
  *     model.running_training_loss = c.running_training_loss
  */
-              __pyx_v_c.next_random = __pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg(__pyx_v_c.negative, __pyx_v_c.cum_table, __pyx_v_c.cum_table_len, __pyx_v_c.codelens, __pyx_v_c.neu1, __pyx_v_c.syn0, __pyx_v_c.syn1neg, __pyx_v_c.size, __pyx_v_c.indexes, __pyx_v_c.alpha, __pyx_v_c.work, __pyx_v_i, __pyx_v_j, __pyx_v_k, __pyx_v_c.cbow_mean, __pyx_v_c.next_random, __pyx_v_c.word_locks, __pyx_v_c.compute_loss, (&__pyx_v_c.running_training_loss));
+              __pyx_v_c.next_random = __pyx_f_12ms2vec_inner_w2v_fast_sentence_cbow_neg(__pyx_v_c.negative, __pyx_v_c.cum_table, __pyx_v_c.cum_table_len, __pyx_v_c.codelens, __pyx_v_c.neu1, __pyx_v_c.syn0, __pyx_v_c.syn1neg, __pyx_v_c.size, __pyx_v_c.indexes, __pyx_v_c.alpha, __pyx_v_c.work, __pyx_v_i, __pyx_v_j, __pyx_v_k, __pyx_v_c.cbow_mean, __pyx_v_c.next_random, __pyx_v_c.word_locks, __pyx_v_c.compute_loss, (&__pyx_v_c.running_training_loss));
 
-              /* "word2vec_inner.pyx":672
+              /* "ms2vec_inner.pyx":672
  *                 if c.hs:
  *                     w2v_fast_sentence_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.word_locks, c.compute_loss, &c.running_training_loss)
  *                 if c.negative:             # <<<<<<<<<<<<<<
@@ -6458,7 +6458,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
         }
       }
 
-      /* "word2vec_inner.pyx":659
+      /* "ms2vec_inner.pyx":659
  * 
  *     # release GIL & train on all sentences
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -6477,7 +6477,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
       }
   }
 
-  /* "word2vec_inner.pyx":675
+  /* "ms2vec_inner.pyx":675
  *                     c.next_random = w2v_fast_sentence_cbow_neg(c.negative, c.cum_table, c.cum_table_len, c.codelens, c.neu1, c.syn0, c.syn1neg, c.size, c.indexes, c.alpha, c.work, i, j, k, c.cbow_mean, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
  * 
  *     model.running_training_loss = c.running_training_loss             # <<<<<<<<<<<<<<
@@ -6489,7 +6489,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
   if (__Pyx_PyObject_SetAttrStr(__pyx_v_model, __pyx_n_s_running_training_loss, __pyx_t_12) < 0) __PYX_ERR(0, 675, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "word2vec_inner.pyx":676
+  /* "ms2vec_inner.pyx":676
  * 
  *     model.running_training_loss = c.running_training_loss
  *     return effective_words             # <<<<<<<<<<<<<<
@@ -6503,7 +6503,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
   __pyx_t_12 = 0;
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":591
+  /* "ms2vec_inner.pyx":591
  * 
  * 
  * def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):             # <<<<<<<<<<<<<<
@@ -6519,7 +6519,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
   __Pyx_XDECREF(__pyx_t_11);
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_17);
-  __Pyx_AddTraceback("word2vec_inner.train_batch_cbow", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ms2vec_inner.train_batch_cbow", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_vlookup);
@@ -6532,7 +6532,7 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":679
+/* "ms2vec_inner.pyx":679
  * 
  * 
  * def score_sentence_sg(model, sentence, _work):             # <<<<<<<<<<<<<<
@@ -6541,10 +6541,10 @@ static PyObject *__pyx_pf_14word2vec_inner_2train_batch_cbow(CYTHON_UNUSED PyObj
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14word2vec_inner_5score_sentence_sg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_14word2vec_inner_4score_sentence_sg[] = "score_sentence_sg(model, sentence, _work)\nObtain likelihood score for a single sentence in a fitted skip-gram representation.\n\n    Notes\n    -----\n    This scoring function is only implemented for hierarchical softmax (`model.hs == 1`).\n    The model should have been trained using the skip-gram model (`model.sg` == 1`).\n\n    Parameters\n    ----------\n    model : :class:`~gensim.models.word2vec.Word2Vec`\n        The trained model. It **MUST** have been trained using hierarchical softmax and the skip-gram algorithm.\n    sentence : list of str\n        The words comprising the sentence to be scored.\n    _work : np.ndarray\n        Private working memory for each worker.\n\n    Returns\n    -------\n    float\n        The probability assigned to this sentence by the Skip-Gram model.\n\n    ";
-static PyMethodDef __pyx_mdef_14word2vec_inner_5score_sentence_sg = {"score_sentence_sg", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14word2vec_inner_5score_sentence_sg, METH_VARARGS|METH_KEYWORDS, __pyx_doc_14word2vec_inner_4score_sentence_sg};
-static PyObject *__pyx_pw_14word2vec_inner_5score_sentence_sg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12ms2vec_inner_5score_sentence_sg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_12ms2vec_inner_4score_sentence_sg[] = "score_sentence_sg(model, sentence, _work)\nObtain likelihood score for a single sentence in a fitted skip-gram representation.\n\n    Notes\n    -----\n    This scoring function is only implemented for hierarchical softmax (`model.hs == 1`).\n    The model should have been trained using the skip-gram model (`model.sg` == 1`).\n\n    Parameters\n    ----------\n    model : :class:`~gensim.models.word2vec.Word2Vec`\n        The trained model. It **MUST** have been trained using hierarchical softmax and the skip-gram algorithm.\n    sentence : list of str\n        The words comprising the sentence to be scored.\n    _work : np.ndarray\n        Private working memory for each worker.\n\n    Returns\n    -------\n    float\n        The probability assigned to this sentence by the Skip-Gram model.\n\n    ";
+static PyMethodDef __pyx_mdef_12ms2vec_inner_5score_sentence_sg = {"score_sentence_sg", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_12ms2vec_inner_5score_sentence_sg, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12ms2vec_inner_4score_sentence_sg};
+static PyObject *__pyx_pw_12ms2vec_inner_5score_sentence_sg(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_model = 0;
   PyObject *__pyx_v_sentence = 0;
   PyObject *__pyx_v__work = 0;
@@ -6603,19 +6603,19 @@ static PyObject *__pyx_pw_14word2vec_inner_5score_sentence_sg(PyObject *__pyx_se
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("score_sentence_sg", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 679, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("word2vec_inner.score_sentence_sg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ms2vec_inner.score_sentence_sg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14word2vec_inner_4score_sentence_sg(__pyx_self, __pyx_v_model, __pyx_v_sentence, __pyx_v__work);
+  __pyx_r = __pyx_pf_12ms2vec_inner_4score_sentence_sg(__pyx_self, __pyx_v_model, __pyx_v_sentence, __pyx_v__work);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentence, PyObject *__pyx_v__work) {
-  struct __pyx_t_14word2vec_inner_Word2VecConfig __pyx_v_c;
+static PyObject *__pyx_pf_12ms2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentence, PyObject *__pyx_v__work) {
+  struct __pyx_t_12ms2vec_inner_Word2VecConfig __pyx_v_c;
   int __pyx_v_i;
   int __pyx_v_j;
   int __pyx_v_k;
@@ -6643,7 +6643,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
   int __pyx_t_15;
   __Pyx_RefNannySetupContext("score_sentence_sg", 0);
 
-  /* "word2vec_inner.pyx":703
+  /* "ms2vec_inner.pyx":703
  *     """
  *     cdef Word2VecConfig c
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))             # <<<<<<<<<<<<<<
@@ -6656,10 +6656,10 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 703, __pyx_L1_error)
-  __pyx_v_c.syn0 = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_2)));
+  __pyx_v_c.syn0 = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_2)));
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "word2vec_inner.pyx":704
+  /* "ms2vec_inner.pyx":704
  *     cdef Word2VecConfig c
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))
  *     c.size = model.wv.vector_size             # <<<<<<<<<<<<<<
@@ -6675,7 +6675,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c.size = __pyx_t_3;
 
-  /* "word2vec_inner.pyx":706
+  /* "ms2vec_inner.pyx":706
  *     c.size = model.wv.vector_size
  * 
  *     c.window = model.window             # <<<<<<<<<<<<<<
@@ -6688,7 +6688,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c.window = __pyx_t_3;
 
-  /* "word2vec_inner.pyx":709
+  /* "ms2vec_inner.pyx":709
  * 
  *     cdef int i, j, k
  *     cdef long result = 0             # <<<<<<<<<<<<<<
@@ -6697,7 +6697,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
   __pyx_v_result = 0;
 
-  /* "word2vec_inner.pyx":712
+  /* "ms2vec_inner.pyx":712
  *     cdef int sentence_len
  * 
  *     c.syn1 = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1))             # <<<<<<<<<<<<<<
@@ -6710,10 +6710,10 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 712, __pyx_L1_error)
-  __pyx_v_c.syn1 = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_2)));
+  __pyx_v_c.syn1 = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_2)));
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "word2vec_inner.pyx":715
+  /* "ms2vec_inner.pyx":715
  * 
  *     # convert Python structures to primitive types, so we can release the GIL
  *     c.work = <REAL_t *>np.PyArray_DATA(_work)             # <<<<<<<<<<<<<<
@@ -6721,9 +6721,9 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  *     vlookup = model.wv.vocab
  */
   if (!(likely(((__pyx_v__work) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__work, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 715, __pyx_L1_error)
-  __pyx_v_c.work = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__work)));
+  __pyx_v_c.work = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__work)));
 
-  /* "word2vec_inner.pyx":717
+  /* "ms2vec_inner.pyx":717
  *     c.work = <REAL_t *>np.PyArray_DATA(_work)
  * 
  *     vlookup = model.wv.vocab             # <<<<<<<<<<<<<<
@@ -6738,7 +6738,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
   __pyx_v_vlookup = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":718
+  /* "ms2vec_inner.pyx":718
  * 
  *     vlookup = model.wv.vocab
  *     i = 0             # <<<<<<<<<<<<<<
@@ -6747,7 +6747,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
   __pyx_v_i = 0;
 
-  /* "word2vec_inner.pyx":719
+  /* "ms2vec_inner.pyx":719
  *     vlookup = model.wv.vocab
  *     i = 0
  *     for token in sentence:             # <<<<<<<<<<<<<<
@@ -6796,7 +6796,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
     __Pyx_XDECREF_SET(__pyx_v_token, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "word2vec_inner.pyx":720
+    /* "ms2vec_inner.pyx":720
  *     i = 0
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None             # <<<<<<<<<<<<<<
@@ -6816,7 +6816,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
     __Pyx_XDECREF_SET(__pyx_v_word, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "word2vec_inner.pyx":721
+    /* "ms2vec_inner.pyx":721
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:             # <<<<<<<<<<<<<<
@@ -6827,7 +6827,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
     __pyx_t_8 = (__pyx_t_6 != 0);
     if (__pyx_t_8) {
 
-      /* "word2vec_inner.pyx":722
+      /* "ms2vec_inner.pyx":722
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:
  *             continue  # should drop the             # <<<<<<<<<<<<<<
@@ -6836,7 +6836,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
       goto __pyx_L3_continue;
 
-      /* "word2vec_inner.pyx":721
+      /* "ms2vec_inner.pyx":721
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:             # <<<<<<<<<<<<<<
@@ -6845,7 +6845,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
     }
 
-    /* "word2vec_inner.pyx":723
+    /* "ms2vec_inner.pyx":723
  *         if word is None:
  *             continue  # should drop the
  *         c.indexes[i] = word.index             # <<<<<<<<<<<<<<
@@ -6858,7 +6858,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     (__pyx_v_c.indexes[__pyx_v_i]) = __pyx_t_9;
 
-    /* "word2vec_inner.pyx":724
+    /* "ms2vec_inner.pyx":724
  *             continue  # should drop the
  *         c.indexes[i] = word.index
  *         c.codelens[i] = <int>len(word.code)             # <<<<<<<<<<<<<<
@@ -6871,7 +6871,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     (__pyx_v_c.codelens[__pyx_v_i]) = ((int)__pyx_t_10);
 
-    /* "word2vec_inner.pyx":725
+    /* "ms2vec_inner.pyx":725
  *         c.indexes[i] = word.index
  *         c.codelens[i] = <int>len(word.code)
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)             # <<<<<<<<<<<<<<
@@ -6884,7 +6884,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
     (__pyx_v_c.codes[__pyx_v_i]) = ((__pyx_t_5numpy_uint8_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_2)));
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "word2vec_inner.pyx":726
+    /* "ms2vec_inner.pyx":726
  *         c.codelens[i] = <int>len(word.code)
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)             # <<<<<<<<<<<<<<
@@ -6897,7 +6897,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
     (__pyx_v_c.points[__pyx_v_i]) = ((__pyx_t_5numpy_uint32_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_2)));
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "word2vec_inner.pyx":727
+    /* "ms2vec_inner.pyx":727
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *         result += 1             # <<<<<<<<<<<<<<
@@ -6906,7 +6906,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
     __pyx_v_result = (__pyx_v_result + 1);
 
-    /* "word2vec_inner.pyx":728
+    /* "ms2vec_inner.pyx":728
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *         result += 1
  *         i += 1             # <<<<<<<<<<<<<<
@@ -6915,7 +6915,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
     __pyx_v_i = (__pyx_v_i + 1);
 
-    /* "word2vec_inner.pyx":729
+    /* "ms2vec_inner.pyx":729
  *         result += 1
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6925,7 +6925,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
     __pyx_t_8 = ((__pyx_v_i == 0x2710) != 0);
     if (__pyx_t_8) {
 
-      /* "word2vec_inner.pyx":730
+      /* "ms2vec_inner.pyx":730
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -6934,7 +6934,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
       goto __pyx_L4_break;
 
-      /* "word2vec_inner.pyx":729
+      /* "ms2vec_inner.pyx":729
  *         result += 1
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -6943,7 +6943,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
     }
 
-    /* "word2vec_inner.pyx":719
+    /* "ms2vec_inner.pyx":719
  *     vlookup = model.wv.vocab
  *     i = 0
  *     for token in sentence:             # <<<<<<<<<<<<<<
@@ -6955,7 +6955,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":731
+  /* "ms2vec_inner.pyx":731
  *         if i == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?
  *     sentence_len = i             # <<<<<<<<<<<<<<
@@ -6964,7 +6964,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
   __pyx_v_sentence_len = __pyx_v_i;
 
-  /* "word2vec_inner.pyx":734
+  /* "ms2vec_inner.pyx":734
  * 
  *     # release GIL & train on the sentence
  *     c.work[0] = 0.0             # <<<<<<<<<<<<<<
@@ -6973,7 +6973,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
   (__pyx_v_c.work[0]) = 0.0;
 
-  /* "word2vec_inner.pyx":736
+  /* "ms2vec_inner.pyx":736
  *     c.work[0] = 0.0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -6988,7 +6988,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
       #endif
       /*try:*/ {
 
-        /* "word2vec_inner.pyx":737
+        /* "ms2vec_inner.pyx":737
  * 
  *     with nogil:
  *         for i in range(sentence_len):             # <<<<<<<<<<<<<<
@@ -7000,7 +7000,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
         for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
           __pyx_v_i = __pyx_t_12;
 
-          /* "word2vec_inner.pyx":738
+          /* "ms2vec_inner.pyx":738
  *     with nogil:
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:             # <<<<<<<<<<<<<<
@@ -7010,7 +7010,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
           __pyx_t_8 = (((__pyx_v_c.codelens[__pyx_v_i]) == 0) != 0);
           if (__pyx_t_8) {
 
-            /* "word2vec_inner.pyx":739
+            /* "ms2vec_inner.pyx":739
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:
  *                 continue             # <<<<<<<<<<<<<<
@@ -7019,7 +7019,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
             goto __pyx_L10_continue;
 
-            /* "word2vec_inner.pyx":738
+            /* "ms2vec_inner.pyx":738
  *     with nogil:
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:             # <<<<<<<<<<<<<<
@@ -7028,7 +7028,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
           }
 
-          /* "word2vec_inner.pyx":740
+          /* "ms2vec_inner.pyx":740
  *             if c.codelens[i] == 0:
  *                 continue
  *             j = i - c.window             # <<<<<<<<<<<<<<
@@ -7037,7 +7037,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
           __pyx_v_j = (__pyx_v_i - __pyx_v_c.window);
 
-          /* "word2vec_inner.pyx":741
+          /* "ms2vec_inner.pyx":741
  *                 continue
  *             j = i - c.window
  *             if j < 0:             # <<<<<<<<<<<<<<
@@ -7047,7 +7047,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
           __pyx_t_8 = ((__pyx_v_j < 0) != 0);
           if (__pyx_t_8) {
 
-            /* "word2vec_inner.pyx":742
+            /* "ms2vec_inner.pyx":742
  *             j = i - c.window
  *             if j < 0:
  *                 j = 0             # <<<<<<<<<<<<<<
@@ -7056,7 +7056,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
             __pyx_v_j = 0;
 
-            /* "word2vec_inner.pyx":741
+            /* "ms2vec_inner.pyx":741
  *                 continue
  *             j = i - c.window
  *             if j < 0:             # <<<<<<<<<<<<<<
@@ -7065,7 +7065,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
           }
 
-          /* "word2vec_inner.pyx":743
+          /* "ms2vec_inner.pyx":743
  *             if j < 0:
  *                 j = 0
  *             k = i + c.window + 1             # <<<<<<<<<<<<<<
@@ -7074,7 +7074,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
           __pyx_v_k = ((__pyx_v_i + __pyx_v_c.window) + 1);
 
-          /* "word2vec_inner.pyx":744
+          /* "ms2vec_inner.pyx":744
  *                 j = 0
  *             k = i + c.window + 1
  *             if k > sentence_len:             # <<<<<<<<<<<<<<
@@ -7084,7 +7084,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
           __pyx_t_8 = ((__pyx_v_k > __pyx_v_sentence_len) != 0);
           if (__pyx_t_8) {
 
-            /* "word2vec_inner.pyx":745
+            /* "ms2vec_inner.pyx":745
  *             k = i + c.window + 1
  *             if k > sentence_len:
  *                 k = sentence_len             # <<<<<<<<<<<<<<
@@ -7093,7 +7093,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
             __pyx_v_k = __pyx_v_sentence_len;
 
-            /* "word2vec_inner.pyx":744
+            /* "ms2vec_inner.pyx":744
  *                 j = 0
  *             k = i + c.window + 1
  *             if k > sentence_len:             # <<<<<<<<<<<<<<
@@ -7102,7 +7102,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
           }
 
-          /* "word2vec_inner.pyx":746
+          /* "ms2vec_inner.pyx":746
  *             if k > sentence_len:
  *                 k = sentence_len
  *             for j in range(j, k):             # <<<<<<<<<<<<<<
@@ -7114,7 +7114,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
           for (__pyx_t_15 = __pyx_v_j; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
             __pyx_v_j = __pyx_t_15;
 
-            /* "word2vec_inner.pyx":747
+            /* "ms2vec_inner.pyx":747
  *                 k = sentence_len
  *             for j in range(j, k):
  *                 if j == i or c.codelens[j] == 0:             # <<<<<<<<<<<<<<
@@ -7132,7 +7132,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
             __pyx_L18_bool_binop_done:;
             if (__pyx_t_8) {
 
-              /* "word2vec_inner.pyx":748
+              /* "ms2vec_inner.pyx":748
  *             for j in range(j, k):
  *                 if j == i or c.codelens[j] == 0:
  *                     continue             # <<<<<<<<<<<<<<
@@ -7141,7 +7141,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
               goto __pyx_L15_continue;
 
-              /* "word2vec_inner.pyx":747
+              /* "ms2vec_inner.pyx":747
  *                 k = sentence_len
  *             for j in range(j, k):
  *                 if j == i or c.codelens[j] == 0:             # <<<<<<<<<<<<<<
@@ -7150,21 +7150,21 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  */
             }
 
-            /* "word2vec_inner.pyx":749
+            /* "ms2vec_inner.pyx":749
  *                 if j == i or c.codelens[j] == 0:
  *                     continue
  *                 score_pair_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.work)             # <<<<<<<<<<<<<<
  * 
  *     return c.work[0]
  */
-            __pyx_f_14word2vec_inner_score_pair_sg_hs((__pyx_v_c.points[__pyx_v_i]), (__pyx_v_c.codes[__pyx_v_i]), (__pyx_v_c.codelens[__pyx_v_i]), __pyx_v_c.syn0, __pyx_v_c.syn1, __pyx_v_c.size, (__pyx_v_c.indexes[__pyx_v_j]), __pyx_v_c.work);
+            __pyx_f_12ms2vec_inner_score_pair_sg_hs((__pyx_v_c.points[__pyx_v_i]), (__pyx_v_c.codes[__pyx_v_i]), (__pyx_v_c.codelens[__pyx_v_i]), __pyx_v_c.syn0, __pyx_v_c.syn1, __pyx_v_c.size, (__pyx_v_c.indexes[__pyx_v_j]), __pyx_v_c.work);
             __pyx_L15_continue:;
           }
           __pyx_L10_continue:;
         }
       }
 
-      /* "word2vec_inner.pyx":736
+      /* "ms2vec_inner.pyx":736
  *     c.work[0] = 0.0
  * 
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -7183,7 +7183,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
       }
   }
 
-  /* "word2vec_inner.pyx":751
+  /* "ms2vec_inner.pyx":751
  *                 score_pair_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.work)
  * 
  *     return c.work[0]             # <<<<<<<<<<<<<<
@@ -7197,7 +7197,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":679
+  /* "ms2vec_inner.pyx":679
  * 
  * 
  * def score_sentence_sg(model, sentence, _work):             # <<<<<<<<<<<<<<
@@ -7210,7 +7210,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("word2vec_inner.score_sentence_sg", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ms2vec_inner.score_sentence_sg", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_vlookup);
@@ -7221,7 +7221,7 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":753
+/* "ms2vec_inner.pyx":753
  *     return c.work[0]
  * 
  * cdef void score_pair_sg_hs(             # <<<<<<<<<<<<<<
@@ -7229,12 +7229,12 @@ static PyObject *__pyx_pf_14word2vec_inner_4score_sentence_sg(CYTHON_UNUSED PyOb
  *     REAL_t *syn0, REAL_t *syn1, const int size,
  */
 
-static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t const *__pyx_v_word_point, __pyx_t_5numpy_uint8_t const *__pyx_v_word_code, int const __pyx_v_codelen, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn1, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const __pyx_v_word2_index, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_work) {
+static void __pyx_f_12ms2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t const *__pyx_v_word_point, __pyx_t_5numpy_uint8_t const *__pyx_v_word_code, int const __pyx_v_codelen, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn1, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const __pyx_v_word2_index, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_work) {
   PY_LONG_LONG __pyx_v_b;
   PY_LONG_LONG __pyx_v_row1;
   PY_LONG_LONG __pyx_v_row2;
   PY_LONG_LONG __pyx_v_sgn;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_f;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_f;
   int __pyx_t_1;
   int __pyx_t_2;
   PY_LONG_LONG __pyx_t_3;
@@ -7242,7 +7242,7 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
   int __pyx_t_5;
   long __pyx_t_6;
 
-  /* "word2vec_inner.pyx":759
+  /* "ms2vec_inner.pyx":759
  * 
  *     cdef long long b
  *     cdef long long row1 = word2_index * size, row2, sgn             # <<<<<<<<<<<<<<
@@ -7251,7 +7251,7 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
  */
   __pyx_v_row1 = (__pyx_v_word2_index * __pyx_v_size);
 
-  /* "word2vec_inner.pyx":762
+  /* "ms2vec_inner.pyx":762
  *     cdef REAL_t f
  * 
  *     for b in range(codelen):             # <<<<<<<<<<<<<<
@@ -7263,7 +7263,7 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_b = __pyx_t_3;
 
-    /* "word2vec_inner.pyx":763
+    /* "ms2vec_inner.pyx":763
  * 
  *     for b in range(codelen):
  *         row2 = word_point[b] * size             # <<<<<<<<<<<<<<
@@ -7272,16 +7272,16 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
  */
     __pyx_v_row2 = ((__pyx_v_word_point[__pyx_v_b]) * __pyx_v_size);
 
-    /* "word2vec_inner.pyx":764
+    /* "ms2vec_inner.pyx":764
  *     for b in range(codelen):
  *         row2 = word_point[b] * size
  *         f = our_dot(&size, &syn0[row1], &ONE, &syn1[row2], &ONE)             # <<<<<<<<<<<<<<
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn
  */
-    __pyx_v_f = __pyx_v_14word2vec_inner_our_dot((&__pyx_v_size), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_f = __pyx_v_12ms2vec_inner_our_dot((&__pyx_v_size), (&(__pyx_v_syn0[__pyx_v_row1])), (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":765
+    /* "ms2vec_inner.pyx":765
  *         row2 = word_point[b] * size
  *         f = our_dot(&size, &syn0[row1], &ONE, &syn1[row2], &ONE)
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1             # <<<<<<<<<<<<<<
@@ -7290,7 +7290,7 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
  */
     __pyx_v_sgn = __Pyx_pow_long(-1L, ((long)(__pyx_v_word_code[__pyx_v_b])));
 
-    /* "word2vec_inner.pyx":766
+    /* "ms2vec_inner.pyx":766
  *         f = our_dot(&size, &syn0[row1], &ONE, &syn1[row2], &ONE)
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn             # <<<<<<<<<<<<<<
@@ -7299,7 +7299,7 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
  */
     __pyx_v_f = (__pyx_v_f * __pyx_v_sgn);
 
-    /* "word2vec_inner.pyx":767
+    /* "ms2vec_inner.pyx":767
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -7317,7 +7317,7 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":768
+      /* "ms2vec_inner.pyx":768
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:
  *             continue             # <<<<<<<<<<<<<<
@@ -7326,7 +7326,7 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
  */
       goto __pyx_L3_continue;
 
-      /* "word2vec_inner.pyx":767
+      /* "ms2vec_inner.pyx":767
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -7335,16 +7335,16 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
  */
     }
 
-    /* "word2vec_inner.pyx":769
+    /* "ms2vec_inner.pyx":769
  *         if f <= -MAX_EXP or f >= MAX_EXP:
  *             continue
  *         f = LOG_TABLE[<int>((f + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
  *         work[0] += f
  * 
  */
-    __pyx_v_f = (__pyx_v_14word2vec_inner_LOG_TABLE[((int)((__pyx_v_f + 6.0) * ((0x3E8 / 6) / 2)))]);
+    __pyx_v_f = (__pyx_v_12ms2vec_inner_LOG_TABLE[((int)((__pyx_v_f + 6.0) * ((0x3E8 / 6) / 2)))]);
 
-    /* "word2vec_inner.pyx":770
+    /* "ms2vec_inner.pyx":770
  *             continue
  *         f = LOG_TABLE[<int>((f + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *         work[0] += f             # <<<<<<<<<<<<<<
@@ -7356,7 +7356,7 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
     __pyx_L3_continue:;
   }
 
-  /* "word2vec_inner.pyx":753
+  /* "ms2vec_inner.pyx":753
  *     return c.work[0]
  * 
  * cdef void score_pair_sg_hs(             # <<<<<<<<<<<<<<
@@ -7367,7 +7367,7 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
   /* function exit code */
 }
 
-/* "word2vec_inner.pyx":772
+/* "ms2vec_inner.pyx":772
  *         work[0] += f
  * 
  * def score_sentence_cbow(model, sentence, _work, _neu1):             # <<<<<<<<<<<<<<
@@ -7376,10 +7376,10 @@ static void __pyx_f_14word2vec_inner_score_pair_sg_hs(__pyx_t_5numpy_uint32_t co
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14word2vec_inner_7score_sentence_cbow(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_14word2vec_inner_6score_sentence_cbow[] = "score_sentence_cbow(model, sentence, _work, _neu1)\nObtain likelihood score for a single sentence in a fitted CBOW representation.\n\n    Notes\n    -----\n    This scoring function is only implemented for hierarchical softmax (`model.hs == 1`).\n    The model should have been trained using the skip-gram model (`model.cbow` == 1`).\n\n    Parameters\n    ----------\n    model : :class:`~gensim.models.word2vec.Word2Vec`\n        The trained model. It **MUST** have been trained using hierarchical softmax and the CBOW algorithm.\n    sentence : list of str\n        The words comprising the sentence to be scored.\n    _work : np.ndarray\n        Private working memory for each worker.\n    _neu1 : np.ndarray\n        Private working memory for each worker.\n\n    Returns\n    -------\n    float\n        The probability assigned to this sentence by the Skip-Gram model.\n\n    ";
-static PyMethodDef __pyx_mdef_14word2vec_inner_7score_sentence_cbow = {"score_sentence_cbow", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_14word2vec_inner_7score_sentence_cbow, METH_VARARGS|METH_KEYWORDS, __pyx_doc_14word2vec_inner_6score_sentence_cbow};
-static PyObject *__pyx_pw_14word2vec_inner_7score_sentence_cbow(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_12ms2vec_inner_7score_sentence_cbow(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_12ms2vec_inner_6score_sentence_cbow[] = "score_sentence_cbow(model, sentence, _work, _neu1)\nObtain likelihood score for a single sentence in a fitted CBOW representation.\n\n    Notes\n    -----\n    This scoring function is only implemented for hierarchical softmax (`model.hs == 1`).\n    The model should have been trained using the skip-gram model (`model.cbow` == 1`).\n\n    Parameters\n    ----------\n    model : :class:`~gensim.models.word2vec.Word2Vec`\n        The trained model. It **MUST** have been trained using hierarchical softmax and the CBOW algorithm.\n    sentence : list of str\n        The words comprising the sentence to be scored.\n    _work : np.ndarray\n        Private working memory for each worker.\n    _neu1 : np.ndarray\n        Private working memory for each worker.\n\n    Returns\n    -------\n    float\n        The probability assigned to this sentence by the Skip-Gram model.\n\n    ";
+static PyMethodDef __pyx_mdef_12ms2vec_inner_7score_sentence_cbow = {"score_sentence_cbow", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_12ms2vec_inner_7score_sentence_cbow, METH_VARARGS|METH_KEYWORDS, __pyx_doc_12ms2vec_inner_6score_sentence_cbow};
+static PyObject *__pyx_pw_12ms2vec_inner_7score_sentence_cbow(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_model = 0;
   PyObject *__pyx_v_sentence = 0;
   PyObject *__pyx_v__work = 0;
@@ -7449,19 +7449,19 @@ static PyObject *__pyx_pw_14word2vec_inner_7score_sentence_cbow(PyObject *__pyx_
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("score_sentence_cbow", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 772, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("word2vec_inner.score_sentence_cbow", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ms2vec_inner.score_sentence_cbow", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_14word2vec_inner_6score_sentence_cbow(__pyx_self, __pyx_v_model, __pyx_v_sentence, __pyx_v__work, __pyx_v__neu1);
+  __pyx_r = __pyx_pf_12ms2vec_inner_6score_sentence_cbow(__pyx_self, __pyx_v_model, __pyx_v_sentence, __pyx_v__work, __pyx_v__neu1);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentence, PyObject *__pyx_v__work, PyObject *__pyx_v__neu1) {
-  struct __pyx_t_14word2vec_inner_Word2VecConfig __pyx_v_c;
+static PyObject *__pyx_pf_12ms2vec_inner_6score_sentence_cbow(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_model, PyObject *__pyx_v_sentence, PyObject *__pyx_v__work, PyObject *__pyx_v__neu1) {
+  struct __pyx_t_12ms2vec_inner_Word2VecConfig __pyx_v_c;
   int __pyx_v_i;
   int __pyx_v_j;
   int __pyx_v_k;
@@ -7486,7 +7486,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   int __pyx_t_12;
   __Pyx_RefNannySetupContext("score_sentence_cbow", 0);
 
-  /* "word2vec_inner.pyx":799
+  /* "ms2vec_inner.pyx":799
  *     cdef Word2VecConfig c
  * 
  *     c.cbow_mean = model.cbow_mean             # <<<<<<<<<<<<<<
@@ -7499,7 +7499,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c.cbow_mean = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":800
+  /* "ms2vec_inner.pyx":800
  * 
  *     c.cbow_mean = model.cbow_mean
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))             # <<<<<<<<<<<<<<
@@ -7512,10 +7512,10 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 800, __pyx_L1_error)
-  __pyx_v_c.syn0 = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
+  __pyx_v_c.syn0 = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "word2vec_inner.pyx":801
+  /* "ms2vec_inner.pyx":801
  *     c.cbow_mean = model.cbow_mean
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))
  *     c.size = model.wv.vector_size             # <<<<<<<<<<<<<<
@@ -7531,7 +7531,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c.size = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":802
+  /* "ms2vec_inner.pyx":802
  *     c.syn0 = <REAL_t *>(np.PyArray_DATA(model.wv.vectors))
  *     c.size = model.wv.vector_size
  *     c.window = model.window             # <<<<<<<<<<<<<<
@@ -7544,7 +7544,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_c.window = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":805
+  /* "ms2vec_inner.pyx":805
  * 
  *     cdef int i, j, k
  *     cdef long result = 0             # <<<<<<<<<<<<<<
@@ -7553,7 +7553,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
   __pyx_v_result = 0;
 
-  /* "word2vec_inner.pyx":807
+  /* "ms2vec_inner.pyx":807
  *     cdef long result = 0
  * 
  *     c.syn1 = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1))             # <<<<<<<<<<<<<<
@@ -7566,10 +7566,10 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 807, __pyx_L1_error)
-  __pyx_v_c.syn1 = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
+  __pyx_v_c.syn1 = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "word2vec_inner.pyx":810
+  /* "ms2vec_inner.pyx":810
  * 
  *     # convert Python structures to primitive types, so we can release the GIL
  *     c.work = <REAL_t *>np.PyArray_DATA(_work)             # <<<<<<<<<<<<<<
@@ -7577,9 +7577,9 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  * 
  */
   if (!(likely(((__pyx_v__work) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__work, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 810, __pyx_L1_error)
-  __pyx_v_c.work = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__work)));
+  __pyx_v_c.work = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__work)));
 
-  /* "word2vec_inner.pyx":811
+  /* "ms2vec_inner.pyx":811
  *     # convert Python structures to primitive types, so we can release the GIL
  *     c.work = <REAL_t *>np.PyArray_DATA(_work)
  *     c.neu1 = <REAL_t *>np.PyArray_DATA(_neu1)             # <<<<<<<<<<<<<<
@@ -7587,9 +7587,9 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  *     vlookup = model.wv.vocab
  */
   if (!(likely(((__pyx_v__neu1) == Py_None) || likely(__Pyx_TypeTest(__pyx_v__neu1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 811, __pyx_L1_error)
-  __pyx_v_c.neu1 = ((__pyx_t_14word2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__neu1)));
+  __pyx_v_c.neu1 = ((__pyx_t_12ms2vec_inner_REAL_t *)PyArray_DATA(((PyArrayObject *)__pyx_v__neu1)));
 
-  /* "word2vec_inner.pyx":813
+  /* "ms2vec_inner.pyx":813
  *     c.neu1 = <REAL_t *>np.PyArray_DATA(_neu1)
  * 
  *     vlookup = model.wv.vocab             # <<<<<<<<<<<<<<
@@ -7604,7 +7604,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   __pyx_v_vlookup = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":814
+  /* "ms2vec_inner.pyx":814
  * 
  *     vlookup = model.wv.vocab
  *     i = 0             # <<<<<<<<<<<<<<
@@ -7613,7 +7613,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
   __pyx_v_i = 0;
 
-  /* "word2vec_inner.pyx":815
+  /* "ms2vec_inner.pyx":815
  *     vlookup = model.wv.vocab
  *     i = 0
  *     for token in sentence:             # <<<<<<<<<<<<<<
@@ -7662,7 +7662,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
     __Pyx_XDECREF_SET(__pyx_v_token, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "word2vec_inner.pyx":816
+    /* "ms2vec_inner.pyx":816
  *     i = 0
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None             # <<<<<<<<<<<<<<
@@ -7682,7 +7682,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
     __Pyx_XDECREF_SET(__pyx_v_word, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "word2vec_inner.pyx":817
+    /* "ms2vec_inner.pyx":817
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:             # <<<<<<<<<<<<<<
@@ -7693,7 +7693,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
     __pyx_t_8 = (__pyx_t_6 != 0);
     if (__pyx_t_8) {
 
-      /* "word2vec_inner.pyx":818
+      /* "ms2vec_inner.pyx":818
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:
  *             continue  # for score, should this be a default negative value?             # <<<<<<<<<<<<<<
@@ -7702,7 +7702,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
       goto __pyx_L3_continue;
 
-      /* "word2vec_inner.pyx":817
+      /* "ms2vec_inner.pyx":817
  *     for token in sentence:
  *         word = vlookup[token] if token in vlookup else None
  *         if word is None:             # <<<<<<<<<<<<<<
@@ -7711,7 +7711,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
     }
 
-    /* "word2vec_inner.pyx":819
+    /* "ms2vec_inner.pyx":819
  *         if word is None:
  *             continue  # for score, should this be a default negative value?
  *         c.indexes[i] = word.index             # <<<<<<<<<<<<<<
@@ -7724,7 +7724,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     (__pyx_v_c.indexes[__pyx_v_i]) = __pyx_t_9;
 
-    /* "word2vec_inner.pyx":820
+    /* "ms2vec_inner.pyx":820
  *             continue  # for score, should this be a default negative value?
  *         c.indexes[i] = word.index
  *         c.codelens[i] = <int>len(word.code)             # <<<<<<<<<<<<<<
@@ -7737,7 +7737,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     (__pyx_v_c.codelens[__pyx_v_i]) = ((int)__pyx_t_10);
 
-    /* "word2vec_inner.pyx":821
+    /* "ms2vec_inner.pyx":821
  *         c.indexes[i] = word.index
  *         c.codelens[i] = <int>len(word.code)
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)             # <<<<<<<<<<<<<<
@@ -7750,7 +7750,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
     (__pyx_v_c.codes[__pyx_v_i]) = ((__pyx_t_5numpy_uint8_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "word2vec_inner.pyx":822
+    /* "ms2vec_inner.pyx":822
  *         c.codelens[i] = <int>len(word.code)
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)             # <<<<<<<<<<<<<<
@@ -7763,7 +7763,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
     (__pyx_v_c.points[__pyx_v_i]) = ((__pyx_t_5numpy_uint32_t *)PyArray_DATA(((PyArrayObject *)__pyx_t_3)));
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "word2vec_inner.pyx":823
+    /* "ms2vec_inner.pyx":823
  *         c.codes[i] = <np.uint8_t *>np.PyArray_DATA(word.code)
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *         result += 1             # <<<<<<<<<<<<<<
@@ -7772,7 +7772,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
     __pyx_v_result = (__pyx_v_result + 1);
 
-    /* "word2vec_inner.pyx":824
+    /* "ms2vec_inner.pyx":824
  *         c.points[i] = <np.uint32_t *>np.PyArray_DATA(word.point)
  *         result += 1
  *         i += 1             # <<<<<<<<<<<<<<
@@ -7781,7 +7781,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
     __pyx_v_i = (__pyx_v_i + 1);
 
-    /* "word2vec_inner.pyx":825
+    /* "ms2vec_inner.pyx":825
  *         result += 1
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -7791,7 +7791,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
     __pyx_t_8 = ((__pyx_v_i == 0x2710) != 0);
     if (__pyx_t_8) {
 
-      /* "word2vec_inner.pyx":826
+      /* "ms2vec_inner.pyx":826
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?             # <<<<<<<<<<<<<<
@@ -7800,7 +7800,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
       goto __pyx_L4_break;
 
-      /* "word2vec_inner.pyx":825
+      /* "ms2vec_inner.pyx":825
  *         result += 1
  *         i += 1
  *         if i == MAX_SENTENCE_LEN:             # <<<<<<<<<<<<<<
@@ -7809,7 +7809,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
     }
 
-    /* "word2vec_inner.pyx":815
+    /* "ms2vec_inner.pyx":815
  *     vlookup = model.wv.vocab
  *     i = 0
  *     for token in sentence:             # <<<<<<<<<<<<<<
@@ -7821,7 +7821,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   __pyx_L4_break:;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":827
+  /* "ms2vec_inner.pyx":827
  *         if i == MAX_SENTENCE_LEN:
  *             break  # TODO: log warning, tally overflow?
  *     sentence_len = i             # <<<<<<<<<<<<<<
@@ -7830,7 +7830,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
   __pyx_v_sentence_len = __pyx_v_i;
 
-  /* "word2vec_inner.pyx":830
+  /* "ms2vec_inner.pyx":830
  * 
  *     # release GIL & train on the sentence
  *     c.work[0] = 0.0             # <<<<<<<<<<<<<<
@@ -7839,7 +7839,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
   (__pyx_v_c.work[0]) = 0.0;
 
-  /* "word2vec_inner.pyx":831
+  /* "ms2vec_inner.pyx":831
  *     # release GIL & train on the sentence
  *     c.work[0] = 0.0
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -7854,7 +7854,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
       #endif
       /*try:*/ {
 
-        /* "word2vec_inner.pyx":832
+        /* "ms2vec_inner.pyx":832
  *     c.work[0] = 0.0
  *     with nogil:
  *         for i in range(sentence_len):             # <<<<<<<<<<<<<<
@@ -7866,7 +7866,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
         for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
           __pyx_v_i = __pyx_t_12;
 
-          /* "word2vec_inner.pyx":833
+          /* "ms2vec_inner.pyx":833
  *     with nogil:
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:             # <<<<<<<<<<<<<<
@@ -7876,7 +7876,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
           __pyx_t_8 = (((__pyx_v_c.codelens[__pyx_v_i]) == 0) != 0);
           if (__pyx_t_8) {
 
-            /* "word2vec_inner.pyx":834
+            /* "ms2vec_inner.pyx":834
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:
  *                 continue             # <<<<<<<<<<<<<<
@@ -7885,7 +7885,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
             goto __pyx_L10_continue;
 
-            /* "word2vec_inner.pyx":833
+            /* "ms2vec_inner.pyx":833
  *     with nogil:
  *         for i in range(sentence_len):
  *             if c.codelens[i] == 0:             # <<<<<<<<<<<<<<
@@ -7894,7 +7894,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
           }
 
-          /* "word2vec_inner.pyx":835
+          /* "ms2vec_inner.pyx":835
  *             if c.codelens[i] == 0:
  *                 continue
  *             j = i - c.window             # <<<<<<<<<<<<<<
@@ -7903,7 +7903,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
           __pyx_v_j = (__pyx_v_i - __pyx_v_c.window);
 
-          /* "word2vec_inner.pyx":836
+          /* "ms2vec_inner.pyx":836
  *                 continue
  *             j = i - c.window
  *             if j < 0:             # <<<<<<<<<<<<<<
@@ -7913,7 +7913,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
           __pyx_t_8 = ((__pyx_v_j < 0) != 0);
           if (__pyx_t_8) {
 
-            /* "word2vec_inner.pyx":837
+            /* "ms2vec_inner.pyx":837
  *             j = i - c.window
  *             if j < 0:
  *                 j = 0             # <<<<<<<<<<<<<<
@@ -7922,7 +7922,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
             __pyx_v_j = 0;
 
-            /* "word2vec_inner.pyx":836
+            /* "ms2vec_inner.pyx":836
  *                 continue
  *             j = i - c.window
  *             if j < 0:             # <<<<<<<<<<<<<<
@@ -7931,7 +7931,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
           }
 
-          /* "word2vec_inner.pyx":838
+          /* "ms2vec_inner.pyx":838
  *             if j < 0:
  *                 j = 0
  *             k = i + c.window + 1             # <<<<<<<<<<<<<<
@@ -7940,7 +7940,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
           __pyx_v_k = ((__pyx_v_i + __pyx_v_c.window) + 1);
 
-          /* "word2vec_inner.pyx":839
+          /* "ms2vec_inner.pyx":839
  *                 j = 0
  *             k = i + c.window + 1
  *             if k > sentence_len:             # <<<<<<<<<<<<<<
@@ -7950,7 +7950,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
           __pyx_t_8 = ((__pyx_v_k > __pyx_v_sentence_len) != 0);
           if (__pyx_t_8) {
 
-            /* "word2vec_inner.pyx":840
+            /* "ms2vec_inner.pyx":840
  *             k = i + c.window + 1
  *             if k > sentence_len:
  *                 k = sentence_len             # <<<<<<<<<<<<<<
@@ -7959,7 +7959,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
             __pyx_v_k = __pyx_v_sentence_len;
 
-            /* "word2vec_inner.pyx":839
+            /* "ms2vec_inner.pyx":839
  *                 j = 0
  *             k = i + c.window + 1
  *             if k > sentence_len:             # <<<<<<<<<<<<<<
@@ -7968,19 +7968,19 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  */
           }
 
-          /* "word2vec_inner.pyx":841
+          /* "ms2vec_inner.pyx":841
  *             if k > sentence_len:
  *                 k = sentence_len
  *             score_pair_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.work, i, j, k, c.cbow_mean)             # <<<<<<<<<<<<<<
  * 
  *     return c.work[0]
  */
-          __pyx_f_14word2vec_inner_score_pair_cbow_hs((__pyx_v_c.points[__pyx_v_i]), (__pyx_v_c.codes[__pyx_v_i]), __pyx_v_c.codelens, __pyx_v_c.neu1, __pyx_v_c.syn0, __pyx_v_c.syn1, __pyx_v_c.size, __pyx_v_c.indexes, __pyx_v_c.work, __pyx_v_i, __pyx_v_j, __pyx_v_k, __pyx_v_c.cbow_mean);
+          __pyx_f_12ms2vec_inner_score_pair_cbow_hs((__pyx_v_c.points[__pyx_v_i]), (__pyx_v_c.codes[__pyx_v_i]), __pyx_v_c.codelens, __pyx_v_c.neu1, __pyx_v_c.syn0, __pyx_v_c.syn1, __pyx_v_c.size, __pyx_v_c.indexes, __pyx_v_c.work, __pyx_v_i, __pyx_v_j, __pyx_v_k, __pyx_v_c.cbow_mean);
           __pyx_L10_continue:;
         }
       }
 
-      /* "word2vec_inner.pyx":831
+      /* "ms2vec_inner.pyx":831
  *     # release GIL & train on the sentence
  *     c.work[0] = 0.0
  *     with nogil:             # <<<<<<<<<<<<<<
@@ -7999,7 +7999,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
       }
   }
 
-  /* "word2vec_inner.pyx":843
+  /* "ms2vec_inner.pyx":843
  *             score_pair_cbow_hs(c.points[i], c.codes[i], c.codelens, c.neu1, c.syn0, c.syn1, c.size, c.indexes, c.work, i, j, k, c.cbow_mean)
  * 
  *     return c.work[0]             # <<<<<<<<<<<<<<
@@ -8013,7 +8013,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "word2vec_inner.pyx":772
+  /* "ms2vec_inner.pyx":772
  *         work[0] += f
  * 
  * def score_sentence_cbow(model, sentence, _work, _neu1):             # <<<<<<<<<<<<<<
@@ -8026,7 +8026,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_7);
-  __Pyx_AddTraceback("word2vec_inner.score_sentence_cbow", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("ms2vec_inner.score_sentence_cbow", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_vlookup);
@@ -8037,7 +8037,7 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
   return __pyx_r;
 }
 
-/* "word2vec_inner.pyx":845
+/* "ms2vec_inner.pyx":845
  *     return c.work[0]
  * 
  * cdef void score_pair_cbow_hs(             # <<<<<<<<<<<<<<
@@ -8045,13 +8045,13 @@ static PyObject *__pyx_pf_14word2vec_inner_6score_sentence_cbow(CYTHON_UNUSED Py
  *     REAL_t *neu1, REAL_t *syn0, REAL_t *syn1, const int size,
  */
 
-static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t const *__pyx_v_word_point, __pyx_t_5numpy_uint8_t const *__pyx_v_word_code, int *__pyx_v_codelens, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_neu1, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_syn1, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const *__pyx_v_indexes, __pyx_t_14word2vec_inner_REAL_t *__pyx_v_work, int __pyx_v_i, int __pyx_v_j, int __pyx_v_k, int __pyx_v_cbow_mean) {
+static void __pyx_f_12ms2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t const *__pyx_v_word_point, __pyx_t_5numpy_uint8_t const *__pyx_v_word_code, int *__pyx_v_codelens, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_neu1, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn0, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_syn1, int const __pyx_v_size, __pyx_t_5numpy_uint32_t const *__pyx_v_indexes, __pyx_t_12ms2vec_inner_REAL_t *__pyx_v_work, int __pyx_v_i, int __pyx_v_j, int __pyx_v_k, int __pyx_v_cbow_mean) {
   PY_LONG_LONG __pyx_v_b;
   PY_LONG_LONG __pyx_v_row2;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_f;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_count;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_inv_count;
-  __pyx_t_14word2vec_inner_REAL_t __pyx_v_sgn;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_f;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_count;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_inv_count;
+  __pyx_t_12ms2vec_inner_REAL_t __pyx_v_sgn;
   int __pyx_v_m;
   int __pyx_t_1;
   int __pyx_t_2;
@@ -8061,25 +8061,25 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
   PY_LONG_LONG __pyx_t_6;
   long __pyx_t_7;
 
-  /* "word2vec_inner.pyx":856
+  /* "ms2vec_inner.pyx":856
  *     cdef int m
  * 
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))             # <<<<<<<<<<<<<<
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  */
-  (void)(memset(__pyx_v_neu1, 0, (__pyx_v_size * (sizeof(__pyx_t_14word2vec_inner_REAL_t)))));
+  (void)(memset(__pyx_v_neu1, 0, (__pyx_v_size * (sizeof(__pyx_t_12ms2vec_inner_REAL_t)))));
 
-  /* "word2vec_inner.pyx":857
+  /* "ms2vec_inner.pyx":857
  * 
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))
  *     count = <REAL_t>0.0             # <<<<<<<<<<<<<<
  *     for m in range(j, k):
  *         if m == i or codelens[m] == 0:
  */
-  __pyx_v_count = ((__pyx_t_14word2vec_inner_REAL_t)0.0);
+  __pyx_v_count = ((__pyx_t_12ms2vec_inner_REAL_t)0.0);
 
-  /* "word2vec_inner.pyx":858
+  /* "ms2vec_inner.pyx":858
  *     memset(neu1, 0, size * cython.sizeof(REAL_t))
  *     count = <REAL_t>0.0
  *     for m in range(j, k):             # <<<<<<<<<<<<<<
@@ -8091,7 +8091,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
   for (__pyx_t_3 = __pyx_v_j; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_m = __pyx_t_3;
 
-    /* "word2vec_inner.pyx":859
+    /* "ms2vec_inner.pyx":859
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  *         if m == i or codelens[m] == 0:             # <<<<<<<<<<<<<<
@@ -8109,7 +8109,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
     __pyx_L6_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":860
+      /* "ms2vec_inner.pyx":860
  *     for m in range(j, k):
  *         if m == i or codelens[m] == 0:
  *             continue             # <<<<<<<<<<<<<<
@@ -8118,7 +8118,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  */
       goto __pyx_L3_continue;
 
-      /* "word2vec_inner.pyx":859
+      /* "ms2vec_inner.pyx":859
  *     count = <REAL_t>0.0
  *     for m in range(j, k):
  *         if m == i or codelens[m] == 0:             # <<<<<<<<<<<<<<
@@ -8127,7 +8127,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  */
     }
 
-    /* "word2vec_inner.pyx":862
+    /* "ms2vec_inner.pyx":862
  *             continue
  *         else:
  *             count += ONEF             # <<<<<<<<<<<<<<
@@ -8135,40 +8135,40 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  *     if count > (<REAL_t>0.5):
  */
     /*else*/ {
-      __pyx_v_count = (__pyx_v_count + __pyx_v_14word2vec_inner_ONEF);
+      __pyx_v_count = (__pyx_v_count + __pyx_v_12ms2vec_inner_ONEF);
 
-      /* "word2vec_inner.pyx":863
+      /* "ms2vec_inner.pyx":863
  *         else:
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)             # <<<<<<<<<<<<<<
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  */
-      __pyx_v_14word2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_14word2vec_inner_ONEF), (&(__pyx_v_syn0[((__pyx_v_indexes[__pyx_v_m]) * __pyx_v_size)])), (&__pyx_v_14word2vec_inner_ONE), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE));
+      __pyx_v_12ms2vec_inner_our_saxpy((&__pyx_v_size), (&__pyx_v_12ms2vec_inner_ONEF), (&(__pyx_v_syn0[((__pyx_v_indexes[__pyx_v_m]) * __pyx_v_size)])), (&__pyx_v_12ms2vec_inner_ONE), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE));
     }
     __pyx_L3_continue:;
   }
 
-  /* "word2vec_inner.pyx":864
+  /* "ms2vec_inner.pyx":864
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):             # <<<<<<<<<<<<<<
  *         inv_count = ONEF/count
  *     if cbow_mean:
  */
-  __pyx_t_4 = ((__pyx_v_count > ((__pyx_t_14word2vec_inner_REAL_t)0.5)) != 0);
+  __pyx_t_4 = ((__pyx_v_count > ((__pyx_t_12ms2vec_inner_REAL_t)0.5)) != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":865
+    /* "ms2vec_inner.pyx":865
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count             # <<<<<<<<<<<<<<
  *     if cbow_mean:
  *         sscal(&size, &inv_count, neu1, &ONE)
  */
-    __pyx_v_inv_count = (__pyx_v_14word2vec_inner_ONEF / __pyx_v_count);
+    __pyx_v_inv_count = (__pyx_v_12ms2vec_inner_ONEF / __pyx_v_count);
 
-    /* "word2vec_inner.pyx":864
+    /* "ms2vec_inner.pyx":864
  *             count += ONEF
  *             our_saxpy(&size, &ONEF, &syn0[indexes[m] * size], &ONE, neu1, &ONE)
  *     if count > (<REAL_t>0.5):             # <<<<<<<<<<<<<<
@@ -8177,7 +8177,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  */
   }
 
-  /* "word2vec_inner.pyx":866
+  /* "ms2vec_inner.pyx":866
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  *     if cbow_mean:             # <<<<<<<<<<<<<<
@@ -8187,16 +8187,16 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
   __pyx_t_4 = (__pyx_v_cbow_mean != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":867
+    /* "ms2vec_inner.pyx":867
  *         inv_count = ONEF/count
  *     if cbow_mean:
  *         sscal(&size, &inv_count, neu1, &ONE)             # <<<<<<<<<<<<<<
  * 
  *     for b in range(codelens[i]):
  */
-    __pyx_v_14word2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_12ms2vec_inner_sscal((&__pyx_v_size), (&__pyx_v_inv_count), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":866
+    /* "ms2vec_inner.pyx":866
  *     if count > (<REAL_t>0.5):
  *         inv_count = ONEF/count
  *     if cbow_mean:             # <<<<<<<<<<<<<<
@@ -8205,7 +8205,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  */
   }
 
-  /* "word2vec_inner.pyx":869
+  /* "ms2vec_inner.pyx":869
  *         sscal(&size, &inv_count, neu1, &ONE)
  * 
  *     for b in range(codelens[i]):             # <<<<<<<<<<<<<<
@@ -8217,7 +8217,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_2; __pyx_t_6+=1) {
     __pyx_v_b = __pyx_t_6;
 
-    /* "word2vec_inner.pyx":870
+    /* "ms2vec_inner.pyx":870
  * 
  *     for b in range(codelens[i]):
  *         row2 = word_point[b] * size             # <<<<<<<<<<<<<<
@@ -8226,16 +8226,16 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  */
     __pyx_v_row2 = ((__pyx_v_word_point[__pyx_v_b]) * __pyx_v_size);
 
-    /* "word2vec_inner.pyx":871
+    /* "ms2vec_inner.pyx":871
  *     for b in range(codelens[i]):
  *         row2 = word_point[b] * size
  *         f = our_dot(&size, neu1, &ONE, &syn1[row2], &ONE)             # <<<<<<<<<<<<<<
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn
  */
-    __pyx_v_f = __pyx_v_14word2vec_inner_our_dot((&__pyx_v_size), __pyx_v_neu1, (&__pyx_v_14word2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_14word2vec_inner_ONE));
+    __pyx_v_f = __pyx_v_12ms2vec_inner_our_dot((&__pyx_v_size), __pyx_v_neu1, (&__pyx_v_12ms2vec_inner_ONE), (&(__pyx_v_syn1[__pyx_v_row2])), (&__pyx_v_12ms2vec_inner_ONE));
 
-    /* "word2vec_inner.pyx":872
+    /* "ms2vec_inner.pyx":872
  *         row2 = word_point[b] * size
  *         f = our_dot(&size, neu1, &ONE, &syn1[row2], &ONE)
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1             # <<<<<<<<<<<<<<
@@ -8244,7 +8244,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  */
     __pyx_v_sgn = __Pyx_pow_long(-1L, ((long)(__pyx_v_word_code[__pyx_v_b])));
 
-    /* "word2vec_inner.pyx":873
+    /* "ms2vec_inner.pyx":873
  *         f = our_dot(&size, neu1, &ONE, &syn1[row2], &ONE)
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn             # <<<<<<<<<<<<<<
@@ -8253,7 +8253,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  */
     __pyx_v_f = (__pyx_v_f * __pyx_v_sgn);
 
-    /* "word2vec_inner.pyx":874
+    /* "ms2vec_inner.pyx":874
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -8271,7 +8271,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
     __pyx_L13_bool_binop_done:;
     if (__pyx_t_4) {
 
-      /* "word2vec_inner.pyx":875
+      /* "ms2vec_inner.pyx":875
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:
  *             continue             # <<<<<<<<<<<<<<
@@ -8280,7 +8280,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  */
       goto __pyx_L10_continue;
 
-      /* "word2vec_inner.pyx":874
+      /* "ms2vec_inner.pyx":874
  *         sgn = (-1)**word_code[b] # ch function: 0-> 1, 1 -> -1
  *         f *= sgn
  *         if f <= -MAX_EXP or f >= MAX_EXP:             # <<<<<<<<<<<<<<
@@ -8289,16 +8289,16 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  */
     }
 
-    /* "word2vec_inner.pyx":876
+    /* "ms2vec_inner.pyx":876
  *         if f <= -MAX_EXP or f >= MAX_EXP:
  *             continue
  *         f = LOG_TABLE[<int>((f + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]             # <<<<<<<<<<<<<<
  *         work[0] += f
  * 
  */
-    __pyx_v_f = (__pyx_v_14word2vec_inner_LOG_TABLE[((int)((__pyx_v_f + 6.0) * ((0x3E8 / 6) / 2)))]);
+    __pyx_v_f = (__pyx_v_12ms2vec_inner_LOG_TABLE[((int)((__pyx_v_f + 6.0) * ((0x3E8 / 6) / 2)))]);
 
-    /* "word2vec_inner.pyx":877
+    /* "ms2vec_inner.pyx":877
  *             continue
  *         f = LOG_TABLE[<int>((f + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
  *         work[0] += f             # <<<<<<<<<<<<<<
@@ -8310,7 +8310,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
     __pyx_L10_continue:;
   }
 
-  /* "word2vec_inner.pyx":845
+  /* "ms2vec_inner.pyx":845
  *     return c.work[0]
  * 
  * cdef void score_pair_cbow_hs(             # <<<<<<<<<<<<<<
@@ -8321,7 +8321,7 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
   /* function exit code */
 }
 
-/* "word2vec_inner.pyx":880
+/* "ms2vec_inner.pyx":880
  * 
  * 
  * def init():             # <<<<<<<<<<<<<<
@@ -8330,21 +8330,21 @@ static void __pyx_f_14word2vec_inner_score_pair_cbow_hs(__pyx_t_5numpy_uint32_t 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_14word2vec_inner_9init(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_14word2vec_inner_8init[] = "init()\nPrecompute function `sigmoid(x) = 1 / (1 + exp(-x))`, for x values discretized into table EXP_TABLE.\n     Also calculate log(sigmoid(x)) into LOG_TABLE.\n\n    Returns\n    -------\n    {0, 1, 2}\n        Enumeration to signify underlying data type returned by the BLAS dot product calculation.\n        0 signifies double, 1 signifies double, and 2 signifies that custom cython loops were used\n        instead of BLAS.\n\n    ";
-static PyMethodDef __pyx_mdef_14word2vec_inner_9init = {"init", (PyCFunction)__pyx_pw_14word2vec_inner_9init, METH_NOARGS, __pyx_doc_14word2vec_inner_8init};
-static PyObject *__pyx_pw_14word2vec_inner_9init(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_12ms2vec_inner_9init(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_12ms2vec_inner_8init[] = "init()\nPrecompute function `sigmoid(x) = 1 / (1 + exp(-x))`, for x values discretized into table EXP_TABLE.\n     Also calculate log(sigmoid(x)) into LOG_TABLE.\n\n    Returns\n    -------\n    {0, 1, 2}\n        Enumeration to signify underlying data type returned by the BLAS dot product calculation.\n        0 signifies double, 1 signifies double, and 2 signifies that custom cython loops were used\n        instead of BLAS.\n\n    ";
+static PyMethodDef __pyx_mdef_12ms2vec_inner_9init = {"init", (PyCFunction)__pyx_pw_12ms2vec_inner_9init, METH_NOARGS, __pyx_doc_12ms2vec_inner_8init};
+static PyObject *__pyx_pw_12ms2vec_inner_9init(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("init (wrapper)", 0);
-  __pyx_r = __pyx_pf_14word2vec_inner_8init(__pyx_self);
+  __pyx_r = __pyx_pf_12ms2vec_inner_8init(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_12ms2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_self) {
   int __pyx_v_i;
   float *__pyx_v_x;
   float *__pyx_v_y;
@@ -8360,7 +8360,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("init", 0);
 
-  /* "word2vec_inner.pyx":896
+  /* "ms2vec_inner.pyx":896
  * 
  *     cdef int i
  *     cdef float *x = [<float>10.0]             # <<<<<<<<<<<<<<
@@ -8370,7 +8370,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_t_1[0] = ((float)10.0);
   __pyx_v_x = __pyx_t_1;
 
-  /* "word2vec_inner.pyx":897
+  /* "ms2vec_inner.pyx":897
  *     cdef int i
  *     cdef float *x = [<float>10.0]
  *     cdef float *y = [<float>0.01]             # <<<<<<<<<<<<<<
@@ -8380,7 +8380,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_t_2[0] = ((float)0.01);
   __pyx_v_y = __pyx_t_2;
 
-  /* "word2vec_inner.pyx":898
+  /* "ms2vec_inner.pyx":898
  *     cdef float *x = [<float>10.0]
  *     cdef float *y = [<float>0.01]
  *     cdef float expected = <float>0.1             # <<<<<<<<<<<<<<
@@ -8389,7 +8389,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
  */
   __pyx_v_expected = ((float)0.1);
 
-  /* "word2vec_inner.pyx":899
+  /* "ms2vec_inner.pyx":899
  *     cdef float *y = [<float>0.01]
  *     cdef float expected = <float>0.1
  *     cdef int size = 1             # <<<<<<<<<<<<<<
@@ -8398,7 +8398,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
  */
   __pyx_v_size = 1;
 
-  /* "word2vec_inner.pyx":904
+  /* "ms2vec_inner.pyx":904
  * 
  *     # build the sigmoid table
  *     for i in range(EXP_TABLE_SIZE):             # <<<<<<<<<<<<<<
@@ -8408,44 +8408,44 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
   for (__pyx_t_3 = 0; __pyx_t_3 < 0x3E8; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "word2vec_inner.pyx":905
+    /* "ms2vec_inner.pyx":905
  *     # build the sigmoid table
  *     for i in range(EXP_TABLE_SIZE):
  *         EXP_TABLE[i] = <REAL_t>exp((i / <REAL_t>EXP_TABLE_SIZE * 2 - 1) * MAX_EXP)             # <<<<<<<<<<<<<<
  *         EXP_TABLE[i] = <REAL_t>(EXP_TABLE[i] / (EXP_TABLE[i] + 1))
  *         LOG_TABLE[i] = <REAL_t>log( EXP_TABLE[i] )
  */
-    (__pyx_v_14word2vec_inner_EXP_TABLE[__pyx_v_i]) = ((__pyx_t_14word2vec_inner_REAL_t)exp(((((((__pyx_t_14word2vec_inner_REAL_t)__pyx_v_i) / ((__pyx_t_14word2vec_inner_REAL_t)0x3E8)) * 2.0) - 1.0) * 6.0)));
+    (__pyx_v_12ms2vec_inner_EXP_TABLE[__pyx_v_i]) = ((__pyx_t_12ms2vec_inner_REAL_t)exp(((((((__pyx_t_12ms2vec_inner_REAL_t)__pyx_v_i) / ((__pyx_t_12ms2vec_inner_REAL_t)0x3E8)) * 2.0) - 1.0) * 6.0)));
 
-    /* "word2vec_inner.pyx":906
+    /* "ms2vec_inner.pyx":906
  *     for i in range(EXP_TABLE_SIZE):
  *         EXP_TABLE[i] = <REAL_t>exp((i / <REAL_t>EXP_TABLE_SIZE * 2 - 1) * MAX_EXP)
  *         EXP_TABLE[i] = <REAL_t>(EXP_TABLE[i] / (EXP_TABLE[i] + 1))             # <<<<<<<<<<<<<<
  *         LOG_TABLE[i] = <REAL_t>log( EXP_TABLE[i] )
  * 
  */
-    (__pyx_v_14word2vec_inner_EXP_TABLE[__pyx_v_i]) = ((__pyx_t_14word2vec_inner_REAL_t)((__pyx_v_14word2vec_inner_EXP_TABLE[__pyx_v_i]) / ((__pyx_v_14word2vec_inner_EXP_TABLE[__pyx_v_i]) + 1.0)));
+    (__pyx_v_12ms2vec_inner_EXP_TABLE[__pyx_v_i]) = ((__pyx_t_12ms2vec_inner_REAL_t)((__pyx_v_12ms2vec_inner_EXP_TABLE[__pyx_v_i]) / ((__pyx_v_12ms2vec_inner_EXP_TABLE[__pyx_v_i]) + 1.0)));
 
-    /* "word2vec_inner.pyx":907
+    /* "ms2vec_inner.pyx":907
  *         EXP_TABLE[i] = <REAL_t>exp((i / <REAL_t>EXP_TABLE_SIZE * 2 - 1) * MAX_EXP)
  *         EXP_TABLE[i] = <REAL_t>(EXP_TABLE[i] / (EXP_TABLE[i] + 1))
  *         LOG_TABLE[i] = <REAL_t>log( EXP_TABLE[i] )             # <<<<<<<<<<<<<<
  * 
  *     # check whether sdot returns double or float
  */
-    (__pyx_v_14word2vec_inner_LOG_TABLE[__pyx_v_i]) = ((__pyx_t_14word2vec_inner_REAL_t)log((__pyx_v_14word2vec_inner_EXP_TABLE[__pyx_v_i])));
+    (__pyx_v_12ms2vec_inner_LOG_TABLE[__pyx_v_i]) = ((__pyx_t_12ms2vec_inner_REAL_t)log((__pyx_v_12ms2vec_inner_EXP_TABLE[__pyx_v_i])));
   }
 
-  /* "word2vec_inner.pyx":910
+  /* "ms2vec_inner.pyx":910
  * 
  *     # check whether sdot returns double or float
  *     d_res = dsdot(&size, x, &ONE, y, &ONE)             # <<<<<<<<<<<<<<
  *     p_res = <float *>&d_res
  *     if abs(d_res - expected) < 0.0001:
  */
-  __pyx_v_d_res = __pyx_v_14word2vec_inner_dsdot((&__pyx_v_size), __pyx_v_x, (&__pyx_v_14word2vec_inner_ONE), __pyx_v_y, (&__pyx_v_14word2vec_inner_ONE));
+  __pyx_v_d_res = __pyx_v_12ms2vec_inner_dsdot((&__pyx_v_size), __pyx_v_x, (&__pyx_v_12ms2vec_inner_ONE), __pyx_v_y, (&__pyx_v_12ms2vec_inner_ONE));
 
-  /* "word2vec_inner.pyx":911
+  /* "ms2vec_inner.pyx":911
  *     # check whether sdot returns double or float
  *     d_res = dsdot(&size, x, &ONE, y, &ONE)
  *     p_res = <float *>&d_res             # <<<<<<<<<<<<<<
@@ -8454,7 +8454,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
  */
   __pyx_v_p_res = ((float *)(&__pyx_v_d_res));
 
-  /* "word2vec_inner.pyx":912
+  /* "ms2vec_inner.pyx":912
  *     d_res = dsdot(&size, x, &ONE, y, &ONE)
  *     p_res = <float *>&d_res
  *     if abs(d_res - expected) < 0.0001:             # <<<<<<<<<<<<<<
@@ -8464,25 +8464,25 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_t_4 = ((fabs((__pyx_v_d_res - __pyx_v_expected)) < 0.0001) != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":913
+    /* "ms2vec_inner.pyx":913
  *     p_res = <float *>&d_res
  *     if abs(d_res - expected) < 0.0001:
  *         our_dot = our_dot_double             # <<<<<<<<<<<<<<
  *         our_saxpy = saxpy
  *         return 0  # double
  */
-    __pyx_v_14word2vec_inner_our_dot = __pyx_f_14word2vec_inner_our_dot_double;
+    __pyx_v_12ms2vec_inner_our_dot = __pyx_f_12ms2vec_inner_our_dot_double;
 
-    /* "word2vec_inner.pyx":914
+    /* "ms2vec_inner.pyx":914
  *     if abs(d_res - expected) < 0.0001:
  *         our_dot = our_dot_double
  *         our_saxpy = saxpy             # <<<<<<<<<<<<<<
  *         return 0  # double
  *     elif abs(p_res[0] - expected) < 0.0001:
  */
-    __pyx_v_14word2vec_inner_our_saxpy = __pyx_v_14word2vec_inner_saxpy;
+    __pyx_v_12ms2vec_inner_our_saxpy = __pyx_v_12ms2vec_inner_saxpy;
 
-    /* "word2vec_inner.pyx":915
+    /* "ms2vec_inner.pyx":915
  *         our_dot = our_dot_double
  *         our_saxpy = saxpy
  *         return 0  # double             # <<<<<<<<<<<<<<
@@ -8494,7 +8494,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
     __pyx_r = __pyx_int_0;
     goto __pyx_L0;
 
-    /* "word2vec_inner.pyx":912
+    /* "ms2vec_inner.pyx":912
  *     d_res = dsdot(&size, x, &ONE, y, &ONE)
  *     p_res = <float *>&d_res
  *     if abs(d_res - expected) < 0.0001:             # <<<<<<<<<<<<<<
@@ -8503,7 +8503,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
  */
   }
 
-  /* "word2vec_inner.pyx":916
+  /* "ms2vec_inner.pyx":916
  *         our_saxpy = saxpy
  *         return 0  # double
  *     elif abs(p_res[0] - expected) < 0.0001:             # <<<<<<<<<<<<<<
@@ -8513,25 +8513,25 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
   __pyx_t_4 = ((fabsf(((__pyx_v_p_res[0]) - __pyx_v_expected)) < 0.0001) != 0);
   if (__pyx_t_4) {
 
-    /* "word2vec_inner.pyx":917
+    /* "ms2vec_inner.pyx":917
  *         return 0  # double
  *     elif abs(p_res[0] - expected) < 0.0001:
  *         our_dot = our_dot_float             # <<<<<<<<<<<<<<
  *         our_saxpy = saxpy
  *         return 1  # float
  */
-    __pyx_v_14word2vec_inner_our_dot = __pyx_f_14word2vec_inner_our_dot_float;
+    __pyx_v_12ms2vec_inner_our_dot = __pyx_f_12ms2vec_inner_our_dot_float;
 
-    /* "word2vec_inner.pyx":918
+    /* "ms2vec_inner.pyx":918
  *     elif abs(p_res[0] - expected) < 0.0001:
  *         our_dot = our_dot_float
  *         our_saxpy = saxpy             # <<<<<<<<<<<<<<
  *         return 1  # float
  *     else:
  */
-    __pyx_v_14word2vec_inner_our_saxpy = __pyx_v_14word2vec_inner_saxpy;
+    __pyx_v_12ms2vec_inner_our_saxpy = __pyx_v_12ms2vec_inner_saxpy;
 
-    /* "word2vec_inner.pyx":919
+    /* "ms2vec_inner.pyx":919
  *         our_dot = our_dot_float
  *         our_saxpy = saxpy
  *         return 1  # float             # <<<<<<<<<<<<<<
@@ -8543,7 +8543,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
     __pyx_r = __pyx_int_1;
     goto __pyx_L0;
 
-    /* "word2vec_inner.pyx":916
+    /* "ms2vec_inner.pyx":916
  *         our_saxpy = saxpy
  *         return 0  # double
  *     elif abs(p_res[0] - expected) < 0.0001:             # <<<<<<<<<<<<<<
@@ -8552,7 +8552,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
  */
   }
 
-  /* "word2vec_inner.pyx":923
+  /* "ms2vec_inner.pyx":923
  *         # neither => use cython loops, no BLAS
  *         # actually, the BLAS is so messed up we'll probably have segfaulted above and never even reach here
  *         our_dot = our_dot_noblas             # <<<<<<<<<<<<<<
@@ -8560,18 +8560,18 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
  *         return 2
  */
   /*else*/ {
-    __pyx_v_14word2vec_inner_our_dot = __pyx_f_14word2vec_inner_our_dot_noblas;
+    __pyx_v_12ms2vec_inner_our_dot = __pyx_f_12ms2vec_inner_our_dot_noblas;
 
-    /* "word2vec_inner.pyx":924
+    /* "ms2vec_inner.pyx":924
  *         # actually, the BLAS is so messed up we'll probably have segfaulted above and never even reach here
  *         our_dot = our_dot_noblas
  *         our_saxpy = our_saxpy_noblas             # <<<<<<<<<<<<<<
  *         return 2
  * 
  */
-    __pyx_v_14word2vec_inner_our_saxpy = __pyx_f_14word2vec_inner_our_saxpy_noblas;
+    __pyx_v_12ms2vec_inner_our_saxpy = __pyx_f_12ms2vec_inner_our_saxpy_noblas;
 
-    /* "word2vec_inner.pyx":925
+    /* "ms2vec_inner.pyx":925
  *         our_dot = our_dot_noblas
  *         our_saxpy = our_saxpy_noblas
  *         return 2             # <<<<<<<<<<<<<<
@@ -8584,7 +8584,7 @@ static PyObject *__pyx_pf_14word2vec_inner_8init(CYTHON_UNUSED PyObject *__pyx_s
     goto __pyx_L0;
   }
 
-  /* "word2vec_inner.pyx":880
+  /* "ms2vec_inner.pyx":880
  * 
  * 
  * def init():             # <<<<<<<<<<<<<<
@@ -11024,17 +11024,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_word2vec_inner(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_ms2vec_inner(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_word2vec_inner},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_ms2vec_inner},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "word2vec_inner",
+    "ms2vec_inner",
     __pyx_k_Optimized_cython_functions_for_t, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -11102,7 +11102,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_k, __pyx_k_k, sizeof(__pyx_k_k), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_model, __pyx_k_model, sizeof(__pyx_k_model), 0, 0, 1, 1},
-  {&__pyx_kp_s_ms2vec_word2vec_inner_pyx, __pyx_k_ms2vec_word2vec_inner_pyx, sizeof(__pyx_k_ms2vec_word2vec_inner_pyx), 0, 0, 1, 0},
+  {&__pyx_n_s_ms2vec_inner, __pyx_k_ms2vec_inner, sizeof(__pyx_k_ms2vec_inner), 0, 0, 1, 1},
+  {&__pyx_kp_s_ms2vec_ms2vec_inner_pyx, __pyx_k_ms2vec_ms2vec_inner_pyx, sizeof(__pyx_k_ms2vec_ms2vec_inner_pyx), 0, 0, 1, 0},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_kp_u_ndarray_is_not_C_contiguous, __pyx_k_ndarray_is_not_C_contiguous, sizeof(__pyx_k_ndarray_is_not_C_contiguous), 0, 1, 0, 0},
   {&__pyx_kp_u_ndarray_is_not_Fortran_contiguou, __pyx_k_ndarray_is_not_Fortran_contiguou, sizeof(__pyx_k_ndarray_is_not_Fortran_contiguou), 0, 1, 0, 0},
@@ -11154,7 +11155,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_vocabulary, __pyx_k_vocabulary, sizeof(__pyx_k_vocabulary), 0, 0, 1, 1},
   {&__pyx_n_s_window, __pyx_k_window, sizeof(__pyx_k_window), 0, 0, 1, 1},
   {&__pyx_n_s_word, __pyx_k_word, sizeof(__pyx_k_word), 0, 0, 1, 1},
-  {&__pyx_n_s_word2vec_inner, __pyx_k_word2vec_inner, sizeof(__pyx_k_word2vec_inner), 0, 0, 1, 1},
   {&__pyx_n_s_work, __pyx_k_work, sizeof(__pyx_k_work), 0, 0, 1, 1},
   {&__pyx_n_s_workers, __pyx_k_workers, sizeof(__pyx_k_workers), 0, 0, 1, 1},
   {&__pyx_n_s_wv, __pyx_k_wv, sizeof(__pyx_k_wv), 0, 0, 1, 1},
@@ -11177,7 +11177,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "word2vec_inner.pyx":491
+  /* "ms2vec_inner.pyx":491
  *         c[0].cum_table_len = len(model.vocabulary.cum_table)
  *     if c[0].negative or c[0].sample:
  *         c[0].next_random = (2**24) * model.random.randint(0, 2**24) + model.random.randint(0, 2**24)             # <<<<<<<<<<<<<<
@@ -11265,7 +11265,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "word2vec_inner.pyx":500
+  /* "ms2vec_inner.pyx":500
  * 
  * 
  * def train_batch_sg(model, sentences, alpha, _work, compute_loss):             # <<<<<<<<<<<<<<
@@ -11275,9 +11275,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__10 = PyTuple_Pack(19, __pyx_n_s_model, __pyx_n_s_sentences, __pyx_n_s_alpha, __pyx_n_s_work, __pyx_n_s_compute_loss, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_effective_words, __pyx_n_s_effective_sentences, __pyx_n_s_sent_idx, __pyx_n_s_idx_start, __pyx_n_s_idx_end, __pyx_n_s_vlookup, __pyx_n_s_sent, __pyx_n_s_token, __pyx_n_s_word, __pyx_n_s_item); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 500, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
-  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(5, 0, 19, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ms2vec_word2vec_inner_pyx, __pyx_n_s_train_batch_sg, 500, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 500, __pyx_L1_error)
+  __pyx_codeobj__11 = (PyObject*)__Pyx_PyCode_New(5, 0, 19, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__10, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ms2vec_ms2vec_inner_pyx, __pyx_n_s_train_batch_sg, 500, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__11)) __PYX_ERR(0, 500, __pyx_L1_error)
 
-  /* "word2vec_inner.pyx":591
+  /* "ms2vec_inner.pyx":591
  * 
  * 
  * def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):             # <<<<<<<<<<<<<<
@@ -11287,9 +11287,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__12 = PyTuple_Pack(20, __pyx_n_s_model, __pyx_n_s_sentences, __pyx_n_s_alpha, __pyx_n_s_work, __pyx_n_s_neu1, __pyx_n_s_compute_loss, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_effective_words, __pyx_n_s_effective_sentences, __pyx_n_s_sent_idx, __pyx_n_s_idx_start, __pyx_n_s_idx_end, __pyx_n_s_vlookup, __pyx_n_s_sent, __pyx_n_s_token, __pyx_n_s_word, __pyx_n_s_item); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(6, 0, 20, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ms2vec_word2vec_inner_pyx, __pyx_n_s_train_batch_cbow, 591, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(6, 0, 20, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ms2vec_ms2vec_inner_pyx, __pyx_n_s_train_batch_cbow, 591, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 591, __pyx_L1_error)
 
-  /* "word2vec_inner.pyx":679
+  /* "ms2vec_inner.pyx":679
  * 
  * 
  * def score_sentence_sg(model, sentence, _work):             # <<<<<<<<<<<<<<
@@ -11299,9 +11299,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__14 = PyTuple_Pack(12, __pyx_n_s_model, __pyx_n_s_sentence, __pyx_n_s_work, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_result, __pyx_n_s_sentence_len, __pyx_n_s_vlookup, __pyx_n_s_token, __pyx_n_s_word); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ms2vec_word2vec_inner_pyx, __pyx_n_s_score_sentence_sg, 679, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 679, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(3, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ms2vec_ms2vec_inner_pyx, __pyx_n_s_score_sentence_sg, 679, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 679, __pyx_L1_error)
 
-  /* "word2vec_inner.pyx":772
+  /* "ms2vec_inner.pyx":772
  *         work[0] += f
  * 
  * def score_sentence_cbow(model, sentence, _work, _neu1):             # <<<<<<<<<<<<<<
@@ -11311,9 +11311,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__16 = PyTuple_Pack(13, __pyx_n_s_model, __pyx_n_s_sentence, __pyx_n_s_work, __pyx_n_s_neu1, __pyx_n_s_c, __pyx_n_s_i, __pyx_n_s_j, __pyx_n_s_k, __pyx_n_s_result, __pyx_n_s_vlookup, __pyx_n_s_token, __pyx_n_s_word, __pyx_n_s_sentence_len); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 772, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(4, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ms2vec_word2vec_inner_pyx, __pyx_n_s_score_sentence_cbow, 772, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(4, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ms2vec_ms2vec_inner_pyx, __pyx_n_s_score_sentence_cbow, 772, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 772, __pyx_L1_error)
 
-  /* "word2vec_inner.pyx":880
+  /* "ms2vec_inner.pyx":880
  * 
  * 
  * def init():             # <<<<<<<<<<<<<<
@@ -11323,7 +11323,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __pyx_tuple__18 = PyTuple_Pack(7, __pyx_n_s_i, __pyx_n_s_x, __pyx_n_s_y, __pyx_n_s_expected, __pyx_n_s_size, __pyx_n_s_d_res, __pyx_n_s_p_res); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 880, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ms2vec_word2vec_inner_pyx, __pyx_n_s_init, 880, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 880, __pyx_L1_error)
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_ms2vec_ms2vec_inner_pyx, __pyx_n_s_init, 880, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 880, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -11363,15 +11363,15 @@ static int __Pyx_modinit_variable_export_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_variable_export_code", 0);
   /*--- Variable export code ---*/
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_scopy, (void *)&__pyx_v_14word2vec_inner_scopy, "__pyx_t_14word2vec_inner_scopy_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_saxpy, (void *)&__pyx_v_14word2vec_inner_saxpy, "__pyx_t_14word2vec_inner_saxpy_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_sdot, (void *)&__pyx_v_14word2vec_inner_sdot, "__pyx_t_14word2vec_inner_sdot_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_dsdot, (void *)&__pyx_v_14word2vec_inner_dsdot, "__pyx_t_14word2vec_inner_dsdot_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_snrm2, (void *)&__pyx_v_14word2vec_inner_snrm2, "__pyx_t_14word2vec_inner_snrm2_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_sscal, (void *)&__pyx_v_14word2vec_inner_sscal, "__pyx_t_14word2vec_inner_sscal_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_EXP_TABLE, (void *)&__pyx_v_14word2vec_inner_EXP_TABLE, "__pyx_t_14word2vec_inner_REAL_t [0x3E8]") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_our_dot, (void *)&__pyx_v_14word2vec_inner_our_dot, "__pyx_t_14word2vec_inner_our_dot_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportVoidPtr(__pyx_n_s_our_saxpy, (void *)&__pyx_v_14word2vec_inner_our_saxpy, "__pyx_t_14word2vec_inner_our_saxpy_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_scopy, (void *)&__pyx_v_12ms2vec_inner_scopy, "__pyx_t_12ms2vec_inner_scopy_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_saxpy, (void *)&__pyx_v_12ms2vec_inner_saxpy, "__pyx_t_12ms2vec_inner_saxpy_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_sdot, (void *)&__pyx_v_12ms2vec_inner_sdot, "__pyx_t_12ms2vec_inner_sdot_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_dsdot, (void *)&__pyx_v_12ms2vec_inner_dsdot, "__pyx_t_12ms2vec_inner_dsdot_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_snrm2, (void *)&__pyx_v_12ms2vec_inner_snrm2, "__pyx_t_12ms2vec_inner_snrm2_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_sscal, (void *)&__pyx_v_12ms2vec_inner_sscal, "__pyx_t_12ms2vec_inner_sscal_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_EXP_TABLE, (void *)&__pyx_v_12ms2vec_inner_EXP_TABLE, "__pyx_t_12ms2vec_inner_REAL_t [0x3E8]") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_our_dot, (void *)&__pyx_v_12ms2vec_inner_our_dot, "__pyx_t_12ms2vec_inner_our_dot_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportVoidPtr(__pyx_n_s_our_saxpy, (void *)&__pyx_v_12ms2vec_inner_our_saxpy, "__pyx_t_12ms2vec_inner_our_saxpy_ptr") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -11383,17 +11383,17 @@ static int __Pyx_modinit_function_export_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_function_export_code", 0);
   /*--- Function export code ---*/
-  if (__Pyx_ExportFunction("our_dot_double", (void (*)(void))__pyx_f_14word2vec_inner_our_dot_double, "__pyx_t_14word2vec_inner_REAL_t (int const *, float const *, int const *, float const *, int const *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("our_dot_float", (void (*)(void))__pyx_f_14word2vec_inner_our_dot_float, "__pyx_t_14word2vec_inner_REAL_t (int const *, float const *, int const *, float const *, int const *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("our_dot_noblas", (void (*)(void))__pyx_f_14word2vec_inner_our_dot_noblas, "__pyx_t_14word2vec_inner_REAL_t (int const *, float const *, int const *, float const *, int const *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("our_saxpy_noblas", (void (*)(void))__pyx_f_14word2vec_inner_our_saxpy_noblas, "void (int const *, float const *, float const *, int const *, float *, int const *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("bisect_left", (void (*)(void))__pyx_f_14word2vec_inner_bisect_left, "unsigned PY_LONG_LONG (__pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, unsigned PY_LONG_LONG, unsigned PY_LONG_LONG)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("random_int32", (void (*)(void))__pyx_f_14word2vec_inner_random_int32, "unsigned PY_LONG_LONG (unsigned PY_LONG_LONG *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("w2v_fast_sentence_sg_hs", (void (*)(void))__pyx_f_14word2vec_inner_w2v_fast_sentence_sg_hs, "void (__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int const , __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const , __pyx_t_14word2vec_inner_REAL_t const , __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_14word2vec_inner_REAL_t *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("w2v_fast_sentence_sg_neg", (void (*)(void))__pyx_f_14word2vec_inner_w2v_fast_sentence_sg_neg, "unsigned PY_LONG_LONG (int const , __pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const , __pyx_t_5numpy_uint32_t const , __pyx_t_14word2vec_inner_REAL_t const , __pyx_t_14word2vec_inner_REAL_t *, unsigned PY_LONG_LONG, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_14word2vec_inner_REAL_t *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("w2v_fast_sentence_cbow_hs", (void (*)(void))__pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_hs, "void (__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int *, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const *, __pyx_t_14word2vec_inner_REAL_t const , __pyx_t_14word2vec_inner_REAL_t *, int, int, int, int, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_14word2vec_inner_REAL_t *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("w2v_fast_sentence_cbow_neg", (void (*)(void))__pyx_f_14word2vec_inner_w2v_fast_sentence_cbow_neg, "unsigned PY_LONG_LONG (int const , __pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, int *, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const *, __pyx_t_14word2vec_inner_REAL_t const , __pyx_t_14word2vec_inner_REAL_t *, int, int, int, int, unsigned PY_LONG_LONG, __pyx_t_14word2vec_inner_REAL_t *, int const , __pyx_t_14word2vec_inner_REAL_t *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ExportFunction("init_w2v_config", (void (*)(void))__pyx_f_14word2vec_inner_init_w2v_config, "PyObject *(struct __pyx_t_14word2vec_inner_Word2VecConfig *, PyObject *, PyObject *, PyObject *, PyObject *, struct __pyx_opt_args_14word2vec_inner_init_w2v_config *__pyx_optional_args)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("our_dot_double", (void (*)(void))__pyx_f_12ms2vec_inner_our_dot_double, "__pyx_t_12ms2vec_inner_REAL_t (int const *, float const *, int const *, float const *, int const *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("our_dot_float", (void (*)(void))__pyx_f_12ms2vec_inner_our_dot_float, "__pyx_t_12ms2vec_inner_REAL_t (int const *, float const *, int const *, float const *, int const *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("our_dot_noblas", (void (*)(void))__pyx_f_12ms2vec_inner_our_dot_noblas, "__pyx_t_12ms2vec_inner_REAL_t (int const *, float const *, int const *, float const *, int const *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("our_saxpy_noblas", (void (*)(void))__pyx_f_12ms2vec_inner_our_saxpy_noblas, "void (int const *, float const *, float const *, int const *, float *, int const *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("bisect_left", (void (*)(void))__pyx_f_12ms2vec_inner_bisect_left, "unsigned PY_LONG_LONG (__pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, unsigned PY_LONG_LONG, unsigned PY_LONG_LONG)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("random_int32", (void (*)(void))__pyx_f_12ms2vec_inner_random_int32, "unsigned PY_LONG_LONG (unsigned PY_LONG_LONG *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("w2v_fast_sentence_sg_hs", (void (*)(void))__pyx_f_12ms2vec_inner_w2v_fast_sentence_sg_hs, "void (__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int const , __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const , __pyx_t_12ms2vec_inner_REAL_t const , __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_12ms2vec_inner_REAL_t *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("w2v_fast_sentence_sg_neg", (void (*)(void))__pyx_f_12ms2vec_inner_w2v_fast_sentence_sg_neg, "unsigned PY_LONG_LONG (int const , __pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const , __pyx_t_5numpy_uint32_t const , __pyx_t_12ms2vec_inner_REAL_t const , __pyx_t_12ms2vec_inner_REAL_t *, unsigned PY_LONG_LONG, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_12ms2vec_inner_REAL_t *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("w2v_fast_sentence_cbow_hs", (void (*)(void))__pyx_f_12ms2vec_inner_w2v_fast_sentence_cbow_hs, "void (__pyx_t_5numpy_uint32_t const *, __pyx_t_5numpy_uint8_t const *, int *, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const *, __pyx_t_12ms2vec_inner_REAL_t const , __pyx_t_12ms2vec_inner_REAL_t *, int, int, int, int, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_12ms2vec_inner_REAL_t *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("w2v_fast_sentence_cbow_neg", (void (*)(void))__pyx_f_12ms2vec_inner_w2v_fast_sentence_cbow_neg, "unsigned PY_LONG_LONG (int const , __pyx_t_5numpy_uint32_t *, unsigned PY_LONG_LONG, int *, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_5numpy_uint32_t const *, __pyx_t_12ms2vec_inner_REAL_t const , __pyx_t_12ms2vec_inner_REAL_t *, int, int, int, int, unsigned PY_LONG_LONG, __pyx_t_12ms2vec_inner_REAL_t *, int const , __pyx_t_12ms2vec_inner_REAL_t *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("init_w2v_config", (void (*)(void))__pyx_f_12ms2vec_inner_init_w2v_config, "PyObject *(struct __pyx_t_12ms2vec_inner_Word2VecConfig *, PyObject *, PyObject *, PyObject *, PyObject *, struct __pyx_opt_args_12ms2vec_inner_init_w2v_config *__pyx_optional_args)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -11479,11 +11479,11 @@ static int __Pyx_modinit_function_import_code(void) {
 
 
 #if PY_MAJOR_VERSION < 3
-__Pyx_PyMODINIT_FUNC initword2vec_inner(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC initword2vec_inner(void)
+__Pyx_PyMODINIT_FUNC initms2vec_inner(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC initms2vec_inner(void)
 #else
-__Pyx_PyMODINIT_FUNC PyInit_word2vec_inner(void) CYTHON_SMALL_CODE; /*proto*/
-__Pyx_PyMODINIT_FUNC PyInit_word2vec_inner(void)
+__Pyx_PyMODINIT_FUNC PyInit_ms2vec_inner(void) CYTHON_SMALL_CODE; /*proto*/
+__Pyx_PyMODINIT_FUNC PyInit_ms2vec_inner(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -11550,7 +11550,7 @@ bad:
 }
 
 
-static CYTHON_SMALL_CODE int __pyx_pymod_exec_word2vec_inner(PyObject *__pyx_pyinit_module)
+static CYTHON_SMALL_CODE int __pyx_pymod_exec_ms2vec_inner(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -11567,7 +11567,7 @@ static CYTHON_SMALL_CODE int __pyx_pymod_exec_word2vec_inner(PyObject *__pyx_pyi
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   if (__pyx_m) {
     if (__pyx_m == __pyx_pyinit_module) return 0;
-    PyErr_SetString(PyExc_RuntimeError, "Module 'word2vec_inner' has already been imported. Re-initialisation is not supported.");
+    PyErr_SetString(PyExc_RuntimeError, "Module 'ms2vec_inner' has already been imported. Re-initialisation is not supported.");
     return -1;
   }
   #elif PY_MAJOR_VERSION >= 3
@@ -11582,7 +11582,7 @@ if (!__Pyx_RefNanny) {
       Py_FatalError("failed to import 'refnanny' module");
 }
 #endif
-  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_word2vec_inner(void)", 0);
+  __Pyx_RefNannySetupContext("__Pyx_PyMODINIT_FUNC PyInit_ms2vec_inner(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #ifdef __Pxy_PyFrame_Initialize_Offsets
   __Pxy_PyFrame_Initialize_Offsets();
@@ -11621,7 +11621,7 @@ if (!__Pyx_RefNanny) {
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("word2vec_inner", __pyx_methods, __pyx_k_Optimized_cython_functions_for_t, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("ms2vec_inner", __pyx_methods, __pyx_k_Optimized_cython_functions_for_t, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -11639,14 +11639,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_word2vec_inner) {
+  if (__pyx_module_is_main_ms2vec_inner) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "word2vec_inner")) {
-      if (unlikely(PyDict_SetItemString(modules, "word2vec_inner", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "ms2vec_inner")) {
+      if (unlikely(PyDict_SetItemString(modules, "ms2vec_inner", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -11667,7 +11667,7 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "word2vec_inner.pyx":14
+  /* "ms2vec_inner.pyx":14
  * 
  * import cython
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -11679,7 +11679,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":23
+  /* "ms2vec_inner.pyx":23
  * 
  * # scipy <= 0.15
  * try:             # <<<<<<<<<<<<<<
@@ -11695,7 +11695,7 @@ if (!__Pyx_RefNanny) {
     __Pyx_XGOTREF(__pyx_t_4);
     /*try:*/ {
 
-      /* "word2vec_inner.pyx":24
+      /* "ms2vec_inner.pyx":24
  * # scipy <= 0.15
  * try:
  *     from scipy.linalg.blas import fblas             # <<<<<<<<<<<<<<
@@ -11716,7 +11716,7 @@ if (!__Pyx_RefNanny) {
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "word2vec_inner.pyx":23
+      /* "ms2vec_inner.pyx":23
  * 
  * # scipy <= 0.15
  * try:             # <<<<<<<<<<<<<<
@@ -11732,7 +11732,7 @@ if (!__Pyx_RefNanny) {
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-    /* "word2vec_inner.pyx":25
+    /* "ms2vec_inner.pyx":25
  * try:
  *     from scipy.linalg.blas import fblas
  * except ImportError:             # <<<<<<<<<<<<<<
@@ -11741,13 +11741,13 @@ if (!__Pyx_RefNanny) {
  */
     __pyx_t_6 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ImportError);
     if (__pyx_t_6) {
-      __Pyx_AddTraceback("word2vec_inner", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("ms2vec_inner", __pyx_clineno, __pyx_lineno, __pyx_filename);
       if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_1, &__pyx_t_7) < 0) __PYX_ERR(0, 25, __pyx_L4_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "word2vec_inner.pyx":27
+      /* "ms2vec_inner.pyx":27
  * except ImportError:
  *     # in scipy > 0.15, fblas function has been removed
  *     import scipy.linalg.blas as fblas             # <<<<<<<<<<<<<<
@@ -11772,7 +11772,7 @@ if (!__Pyx_RefNanny) {
     goto __pyx_L4_except_error;
     __pyx_L4_except_error:;
 
-    /* "word2vec_inner.pyx":23
+    /* "ms2vec_inner.pyx":23
  * 
  * # scipy <= 0.15
  * try:             # <<<<<<<<<<<<<<
@@ -11792,7 +11792,7 @@ if (!__Pyx_RefNanny) {
     __pyx_L7_try_end:;
   }
 
-  /* "word2vec_inner.pyx":29
+  /* "ms2vec_inner.pyx":29
  *     import scipy.linalg.blas as fblas
  * 
  * REAL = np.float32             # <<<<<<<<<<<<<<
@@ -11807,7 +11807,7 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_REAL, __pyx_t_1) < 0) __PYX_ERR(0, 29, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":33
+  /* "ms2vec_inner.pyx":33
  * DEF MAX_SENTENCE_LEN = 10000
  * 
  * cdef scopy_ptr scopy=<scopy_ptr>PyCObject_AsVoidPtr(fblas.scopy._cpointer)  # y = x             # <<<<<<<<<<<<<<
@@ -11822,10 +11822,10 @@ if (!__Pyx_RefNanny) {
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_cpointer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_v_14word2vec_inner_scopy = ((__pyx_t_14word2vec_inner_scopy_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
+  __pyx_v_12ms2vec_inner_scopy = ((__pyx_t_12ms2vec_inner_scopy_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":34
+  /* "ms2vec_inner.pyx":34
  * 
  * cdef scopy_ptr scopy=<scopy_ptr>PyCObject_AsVoidPtr(fblas.scopy._cpointer)  # y = x
  * cdef saxpy_ptr saxpy=<saxpy_ptr>PyCObject_AsVoidPtr(fblas.saxpy._cpointer)  # y += alpha * x             # <<<<<<<<<<<<<<
@@ -11840,10 +11840,10 @@ if (!__Pyx_RefNanny) {
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_cpointer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 34, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_v_14word2vec_inner_saxpy = ((__pyx_t_14word2vec_inner_saxpy_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
+  __pyx_v_12ms2vec_inner_saxpy = ((__pyx_t_12ms2vec_inner_saxpy_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":35
+  /* "ms2vec_inner.pyx":35
  * cdef scopy_ptr scopy=<scopy_ptr>PyCObject_AsVoidPtr(fblas.scopy._cpointer)  # y = x
  * cdef saxpy_ptr saxpy=<saxpy_ptr>PyCObject_AsVoidPtr(fblas.saxpy._cpointer)  # y += alpha * x
  * cdef sdot_ptr sdot=<sdot_ptr>PyCObject_AsVoidPtr(fblas.sdot._cpointer)  # float = dot(x, y)             # <<<<<<<<<<<<<<
@@ -11858,10 +11858,10 @@ if (!__Pyx_RefNanny) {
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_cpointer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 35, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_v_14word2vec_inner_sdot = ((__pyx_t_14word2vec_inner_sdot_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
+  __pyx_v_12ms2vec_inner_sdot = ((__pyx_t_12ms2vec_inner_sdot_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":36
+  /* "ms2vec_inner.pyx":36
  * cdef saxpy_ptr saxpy=<saxpy_ptr>PyCObject_AsVoidPtr(fblas.saxpy._cpointer)  # y += alpha * x
  * cdef sdot_ptr sdot=<sdot_ptr>PyCObject_AsVoidPtr(fblas.sdot._cpointer)  # float = dot(x, y)
  * cdef dsdot_ptr dsdot=<dsdot_ptr>PyCObject_AsVoidPtr(fblas.sdot._cpointer)  # double = dot(x, y)             # <<<<<<<<<<<<<<
@@ -11876,10 +11876,10 @@ if (!__Pyx_RefNanny) {
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_cpointer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_v_14word2vec_inner_dsdot = ((__pyx_t_14word2vec_inner_dsdot_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
+  __pyx_v_12ms2vec_inner_dsdot = ((__pyx_t_12ms2vec_inner_dsdot_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":37
+  /* "ms2vec_inner.pyx":37
  * cdef sdot_ptr sdot=<sdot_ptr>PyCObject_AsVoidPtr(fblas.sdot._cpointer)  # float = dot(x, y)
  * cdef dsdot_ptr dsdot=<dsdot_ptr>PyCObject_AsVoidPtr(fblas.sdot._cpointer)  # double = dot(x, y)
  * cdef snrm2_ptr snrm2=<snrm2_ptr>PyCObject_AsVoidPtr(fblas.snrm2._cpointer)  # sqrt(x^2)             # <<<<<<<<<<<<<<
@@ -11894,10 +11894,10 @@ if (!__Pyx_RefNanny) {
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_cpointer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_v_14word2vec_inner_snrm2 = ((__pyx_t_14word2vec_inner_snrm2_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
+  __pyx_v_12ms2vec_inner_snrm2 = ((__pyx_t_12ms2vec_inner_snrm2_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":38
+  /* "ms2vec_inner.pyx":38
  * cdef dsdot_ptr dsdot=<dsdot_ptr>PyCObject_AsVoidPtr(fblas.sdot._cpointer)  # double = dot(x, y)
  * cdef snrm2_ptr snrm2=<snrm2_ptr>PyCObject_AsVoidPtr(fblas.snrm2._cpointer)  # sqrt(x^2)
  * cdef sscal_ptr sscal=<sscal_ptr>PyCObject_AsVoidPtr(fblas.sscal._cpointer) # x = alpha * x             # <<<<<<<<<<<<<<
@@ -11912,88 +11912,88 @@ if (!__Pyx_RefNanny) {
   __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_cpointer); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __pyx_v_14word2vec_inner_sscal = ((__pyx_t_14word2vec_inner_sscal_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
+  __pyx_v_12ms2vec_inner_sscal = ((__pyx_t_12ms2vec_inner_sscal_ptr)PyCObject_AsVoidPtr(__pyx_t_1));
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":46
+  /* "ms2vec_inner.pyx":46
  * cdef REAL_t[EXP_TABLE_SIZE] LOG_TABLE
  * 
  * cdef int ONE = 1             # <<<<<<<<<<<<<<
  * cdef REAL_t ONEF = <REAL_t>1.0
  * 
  */
-  __pyx_v_14word2vec_inner_ONE = 1;
+  __pyx_v_12ms2vec_inner_ONE = 1;
 
-  /* "word2vec_inner.pyx":47
+  /* "ms2vec_inner.pyx":47
  * 
  * cdef int ONE = 1
  * cdef REAL_t ONEF = <REAL_t>1.0             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_v_14word2vec_inner_ONEF = ((__pyx_t_14word2vec_inner_REAL_t)1.0);
+  __pyx_v_12ms2vec_inner_ONEF = ((__pyx_t_12ms2vec_inner_REAL_t)1.0);
 
-  /* "word2vec_inner.pyx":500
+  /* "ms2vec_inner.pyx":500
  * 
  * 
  * def train_batch_sg(model, sentences, alpha, _work, compute_loss):             # <<<<<<<<<<<<<<
  *     """Update skip-gram model by training on a batch of sentences.
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14word2vec_inner_1train_batch_sg, NULL, __pyx_n_s_word2vec_inner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 500, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_12ms2vec_inner_1train_batch_sg, NULL, __pyx_n_s_ms2vec_inner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 500, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_train_batch_sg, __pyx_t_1) < 0) __PYX_ERR(0, 500, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":591
+  /* "ms2vec_inner.pyx":591
  * 
  * 
  * def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):             # <<<<<<<<<<<<<<
  *     """Update CBOW model by training on a batch of sentences.
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14word2vec_inner_3train_batch_cbow, NULL, __pyx_n_s_word2vec_inner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 591, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_12ms2vec_inner_3train_batch_cbow, NULL, __pyx_n_s_ms2vec_inner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_train_batch_cbow, __pyx_t_1) < 0) __PYX_ERR(0, 591, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":679
+  /* "ms2vec_inner.pyx":679
  * 
  * 
  * def score_sentence_sg(model, sentence, _work):             # <<<<<<<<<<<<<<
  *     """Obtain likelihood score for a single sentence in a fitted skip-gram representation.
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14word2vec_inner_5score_sentence_sg, NULL, __pyx_n_s_word2vec_inner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 679, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_12ms2vec_inner_5score_sentence_sg, NULL, __pyx_n_s_ms2vec_inner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_score_sentence_sg, __pyx_t_1) < 0) __PYX_ERR(0, 679, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":772
+  /* "ms2vec_inner.pyx":772
  *         work[0] += f
  * 
  * def score_sentence_cbow(model, sentence, _work, _neu1):             # <<<<<<<<<<<<<<
  *     """Obtain likelihood score for a single sentence in a fitted CBOW representation.
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14word2vec_inner_7score_sentence_cbow, NULL, __pyx_n_s_word2vec_inner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_12ms2vec_inner_7score_sentence_cbow, NULL, __pyx_n_s_ms2vec_inner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 772, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_score_sentence_cbow, __pyx_t_1) < 0) __PYX_ERR(0, 772, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":880
+  /* "ms2vec_inner.pyx":880
  * 
  * 
  * def init():             # <<<<<<<<<<<<<<
  *     """Precompute function `sigmoid(x) = 1 / (1 + exp(-x))`, for x values discretized into table EXP_TABLE.
  *      Also calculate log(sigmoid(x)) into LOG_TABLE.
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_14word2vec_inner_9init, NULL, __pyx_n_s_word2vec_inner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 880, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_12ms2vec_inner_9init, NULL, __pyx_n_s_ms2vec_inner); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 880, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_init, __pyx_t_1) < 0) __PYX_ERR(0, 880, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "word2vec_inner.pyx":927
+  /* "ms2vec_inner.pyx":927
  *         return 2
  * 
  * FAST_VERSION = init()  # initialize the module             # <<<<<<<<<<<<<<
@@ -12007,14 +12007,14 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_FAST_VERSION, __pyx_t_7) < 0) __PYX_ERR(0, 927, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "word2vec_inner.pyx":928
+  /* "ms2vec_inner.pyx":928
  * 
  * FAST_VERSION = init()  # initialize the module
  * MAX_WORDS_IN_BATCH = MAX_SENTENCE_LEN             # <<<<<<<<<<<<<<
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_MAX_WORDS_IN_BATCH, __pyx_int_10000) < 0) __PYX_ERR(0, 928, __pyx_L1_error)
 
-  /* "word2vec_inner.pyx":1
+  /* "ms2vec_inner.pyx":1
  * #!/usr/bin/env cython             # <<<<<<<<<<<<<<
  * # cython: boundscheck=False
  * # cython: wraparound=False
@@ -12043,11 +12043,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_9);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init word2vec_inner", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init ms2vec_inner", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init word2vec_inner");
+    PyErr_SetString(PyExc_ImportError, "init ms2vec_inner");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
