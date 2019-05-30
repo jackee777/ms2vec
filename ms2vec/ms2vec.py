@@ -1321,7 +1321,7 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
         """
         # don't bother storing the cached normalized vectors, recalculable table
         kwargs['ignore'] = kwargs.get('ignore', ['vectors_norm', 'cum_table'])
-        super(Word2Vec, self).save(*args, **kwargs)
+        super(MultiSense2Vec, self).save(*args, **kwargs)
 
     def get_latest_training_loss(self):
         """Get current value of the training loss.
@@ -1383,7 +1383,7 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
 
         """
         try:
-            model = super(Word2Vec, cls).load(*args, **kwargs)
+            model = super(MultiSense2Vec, cls).load(*args, **kwargs)
 
             # for backward compatibility for `max_final_vocab` feature
             if not hasattr(model, 'max_final_vocab'):
