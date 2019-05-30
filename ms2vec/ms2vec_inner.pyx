@@ -21,6 +21,7 @@ from libc.math cimport log
 from libc.string cimport memset
 
 # scipy <= 0.15
+from libc.math cimport sqrt
 try:
     from scipy.linalg.blas import fblas
 except ImportError:
@@ -47,7 +48,6 @@ cdef REAL_t[EXP_TABLE_SIZE] LOG_TABLE
 cdef int ONE = 1
 cdef REAL_t ONEF = <REAL_t>1.0
 
-
 # for when fblas.sdot returns a double
 cdef REAL_t our_dot_double(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:
     return <REAL_t>dsdot(N, X, incX, Y, incY)
@@ -71,6 +71,22 @@ cdef void our_saxpy_noblas(const int *N, const float *alpha, const float *X, con
     cdef int i
     for i from 0 <= i < N[0] by 1:
         Y[i * (incY[0])] = (alpha[0]) * X[i * (incX[0])] + Y[i * (incY[0])]
+
+# For MultiSense2Vec to select sense cluster
+cdef REAL_t my_cos_sim(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:
+    cdef int i
+    cdef REAL_t num, denom_X, denom_Y
+    cdef REAL_t a
+    num = our_dot(N, X, incX, Y, incY)
+    denom_X = <REAL_t>0.0
+    denom_Y = <REAL_t>0.0
+    for i from 0 <= i < N[0] by 1:
+        denom_X += X[i] * X[i]
+        denom_Y += Y[i] * Y[i]
+    #printf("num %f denom %f\n", num, sqrt(denom_X * denom_Y))
+    if denom_X == 0 or denom_Y == 0:
+        return -1
+    return num / sqrt(denom_X * denom_Y)
 
 cdef void w2v_fast_sentence_sg_hs(
     const np.uint32_t *word_point, const np.uint8_t *word_code, const int codelen,
@@ -227,7 +243,7 @@ cdef unsigned long long w2v_fast_sentence_sg_neg(
             label = <REAL_t>0.0
 
         row2 = target_index * size
-        f_dot = our_dot(&size, &syn0[row1], &ONE, &syn1neg[row2], &ONE)
+        f_dot = our_dot(&size, &syn0[row1], &ONE, &syn0[row2], &ONE)
         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
             continue
         f = EXP_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
@@ -240,8 +256,8 @@ cdef unsigned long long w2v_fast_sentence_sg_neg(
             log_e_f_dot = LOG_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
             _running_training_loss_param[0] = _running_training_loss_param[0] - log_e_f_dot
 
-        our_saxpy(&size, &g, &syn1neg[row2], &ONE, work, &ONE)
-        our_saxpy(&size, &g, &syn0[row1], &ONE, &syn1neg[row2], &ONE)
+        our_saxpy(&size, &g, &syn0[row2], &ONE, work, &ONE)
+        our_saxpy(&size, &g, &syn0[row1], &ONE, &syn0[row2], &ONE)
 
     our_saxpy(&size, &word_locks[word2_index], work, &ONE, &syn0[row1], &ONE)
 
@@ -465,7 +481,7 @@ cdef unsigned long long w2v_fast_sentence_cbow_neg(
     return next_random
 
 
-cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1=None):
+cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1=None, _window_vector=None):
     c[0].hs = model.hs
     c[0].negative = model.negative
     c[0].sample = (model.vocabulary.sample != 0)
@@ -480,6 +496,12 @@ cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1
     c[0].word_locks = <REAL_t *>(np.PyArray_DATA(model.trainables.vectors_lockf))
     c[0].alpha = alpha
     c[0].size = model.wv.vector_size
+
+    c[0].cluster_vectors = <REAL_t *>(np.PyArray_DATA(model.wv.cluster_vectors))
+    c[0].window_vector = <REAL_t *>(np.PyArray_DATA(_window_vector))
+    c[0].max_sense_num = model.wv.max_sense_num
+    c[0].is_global = <np.uint8_t *>(np.PyArray_DATA(model.wv.is_global))
+    c[0].is_global_len = len(model.wv.is_global)
 
     if c[0].hs:
         c[0].syn1 = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1))
@@ -498,7 +520,7 @@ cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1
         c[0].neu1 = <REAL_t *>np.PyArray_DATA(_neu1)
 
 
-def train_batch_sg(model, sentences, alpha, _work, compute_loss):
+def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss):
     """Update skip-gram model by training on a batch of sentences.
 
     Called internally from :meth:`~gensim.models.word2vec.Word2Vec.train`.
@@ -524,13 +546,14 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
 
     """
     cdef Word2VecConfig c
-    cdef int i, j, k
+    cdef int i, j, k, c_i, c_j
     cdef int effective_words = 0, effective_sentences = 0
     cdef int sent_idx, idx_start, idx_end
-    cdef center_cluster, cluster_index
+    cdef int center_cluster, cluster_index
+    cdef REAL_t cos_sim, max_cos_sim
+    cdef REAL_t g = 1.0
 
-    init_w2v_config(&c, model, alpha, compute_loss, _work)
-
+    init_w2v_config(&c, model, alpha, compute_loss, _work, _neu1=None, _window_vector=_window_vector)
 
     # prepare C structures so we can go "full C" and release the Python GIL
     vlookup = model.wv.vocab
@@ -572,7 +595,6 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
             idx_start = c.sentence_idx[sent_idx]
             idx_end = c.sentence_idx[sent_idx + 1]
 
-            printf("%d", c.indexes[idx_start])
             for i in range(idx_start, idx_end):
                 j = i - c.window + c.reduced_windows[i]
                 if j < idx_start:
@@ -580,25 +602,47 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
                 k = i + c.window + 1 - c.reduced_windows[i]
                 if k > idx_end:
                     k = idx_end
-                for j in range(j, k):
-                    if j == i:
-                        continue
-                    cluster_center = -1
 
-            for i in range(idx_start, idx_end):
-                j = i - c.window + c.reduced_windows[i]
-                if j < idx_start:
-                    j = idx_start
-                k = i + c.window + 1 - c.reduced_windows[i]
-                if k > idx_end:
-                    k = idx_end
+                #printf("idx start %d indexes %d\n", i, c.indexes[i])
+                cluster_index = 0
+                for c_i in range(1, c.max_sense_num + 1):
+                    if c.indexes[i] + c_i >= c.is_global_len or \
+                        c.is_global[c.indexes[i] + c_i] == c.max_sense_num:
+                        break
+                    cluster_index = c_i
+                #printf("cluster index %d\n", cluster_index)
+                if cluster_index != 0:
+                    memset(c.window_vector, 0, c.size * cython.sizeof(REAL_t))
+                    for c_j in range(j, k):
+                        if c_j == i:
+                            continue
+                        our_saxpy(&c.size, &g, &c.syn0[c.size*c.indexes[c_j]], &ONE,
+                                  c.window_vector, &ONE)
+                    center_cluster = 0
+                    max_cos_sim = -1
+                    for c_i in range(1, cluster_index + 1):
+                        cos_sim = my_cos_sim(&c.size, &c.cluster_vectors[c.size*(c.indexes[i] + c_i)], &ONE,
+                                          c.window_vector, &ONE)
+                        #printf("cos %f max %f\n", cos_sim, max_cos_sim)
+                        if cos_sim > max_cos_sim:
+                            max_cos_sim = cos_sim
+                            center_cluster = c_i
+                    if center_cluster != 0:
+                        our_saxpy(&c.size, &g, &c.syn0[c.size*c.indexes[c_j]], &ONE,
+                                  &c.cluster_vectors[c.size*(c.indexes[i] + center_cluster)], &ONE)
+                else:
+                    center_cluster = 0
+                #printf("center cluster %d\n", center_cluster)
+
                 for j in range(j, k):
                     if j == i:
                         continue
                     if c.hs:
                         w2v_fast_sentence_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.alpha, c.work, c.word_locks, c.compute_loss, &c.running_training_loss)
                     if c.negative:
-                        c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg, c.size, c.indexes[i], c.indexes[j], c.alpha, c.work, c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
+                        c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg,
+                                                                 c.size, c.indexes[i]+center_cluster, c.indexes[j], c.alpha, c.work,
+                                                                 c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
 
     model.running_training_loss = c.running_training_loss
     return effective_words
@@ -635,7 +679,7 @@ def train_batch_cbow(model, sentences, alpha, _work, _neu1, compute_loss):
     cdef int effective_words = 0, effective_sentences = 0
     cdef int sent_idx, idx_start, idx_end
 
-    init_w2v_config(&c, model, alpha, compute_loss, _work, _neu1)
+    init_w2v_config(&c, model, alpha, compute_loss, _work, _neu1=_neu1)
 
     # prepare C structures so we can go "full C" and release the Python GIL
     vlookup = model.wv.vocab

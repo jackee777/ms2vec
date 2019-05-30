@@ -1142,7 +1142,8 @@ class BaseWordEmbeddingsModel(BaseAny2VecModel):
         """
         work = matutils.zeros_aligned(self.trainables.layer1_size, dtype=REAL)  # per-thread private work memory
         neu1 = matutils.zeros_aligned(self.trainables.layer1_size, dtype=REAL)
-        return work, neu1
+        window_vector = matutils.zeros_aligned(self.trainables.layer1_size, dtype=REAL)
+        return work, neu1, window_vector
 
     def _raw_word_count(self, job):
         """Get the number of words in a given job.

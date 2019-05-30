@@ -382,6 +382,7 @@ class WordEmbeddingsKeyedVectors(BaseKeyedVectors):
             __init__(vector_size=vector_size)
         self.vectors_norm = None
         self.index2word = []
+        self.window_context_vector = zeros((1, vector_size))
         self.is_global = []
         self.max_sense_num = max_sense_num
         self.min_sense_count = min_sense_count

@@ -50,6 +50,7 @@ cdef our_saxpy_ptr our_saxpy
 
 cdef struct Word2VecConfig:
     int hs, negative, sample, compute_loss, size, window, cbow_mean, workers
+    int max_sense_num, is_global_len
     REAL_t running_training_loss, alpha
 
     REAL_t *syn0
@@ -66,6 +67,11 @@ cdef struct Word2VecConfig:
     REAL_t *syn1
     np.uint32_t *points[MAX_SENTENCE_LEN]
     np.uint8_t *codes[MAX_SENTENCE_LEN]
+
+    # For MultiSense2Vec
+    REAL_t *cluster_vectors
+    REAL_t *window_vector
+    np.uint8_t *is_global
 
     # For negative sampling
     REAL_t *syn1neg
@@ -122,4 +128,4 @@ cdef unsigned long long w2v_fast_sentence_cbow_neg(
     const int _compute_loss, REAL_t *_running_training_loss_param) nogil
 
 
-cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1=*)
+cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1=*, _window_vector=*)

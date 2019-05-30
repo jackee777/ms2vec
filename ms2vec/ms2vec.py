@@ -143,7 +143,7 @@ except ImportError:
 from numpy import exp, dot, zeros, random, dtype, float32 as REAL,\
     uint32, seterr, array, uint8, vstack, fromstring, sqrt,\
     empty, sum as np_sum, ones, logaddexp, log, outer, average, \
-    argmax
+    argmax, asarray
 
 from scipy.special import expit
 
@@ -165,7 +165,7 @@ except ImportError:
     FAST_VERSION = -1
     MAX_WORDS_IN_BATCH = 10000
 
-    def train_batch_sg(model, sentences, alpha, work=None, compute_loss=False):
+    def train_batch_sg(model, sentences, alpha, work=None, window_vector=None, compute_loss=False):
         """Update skip-gram model by training on a sequence of sentences.
 
         Called internallyM from :meth:`~gensim.models.word2vec.Word2Vec.train`.
@@ -215,9 +215,9 @@ except ImportError:
                     start = max(0, pos - model.window + reduced_window)
                     for pos2, word2 in enumerate(word_vocabs[start:(pos + model.window + 1 - reduced_window)], start):
                         context_index.append(word2.index)
-                    window_context_vector = average(model.wv.syn0[context_index], axis=0)
+                    window_vector = average(model.wv.syn0[context_index], axis=0)
                     cluster_vector = model.wv.cluster_vectors[cluster_index]
-                    center_cluster = argmax(window_context_vector @ cluster_vector.T)
+                    center_cluster = argmax(window_vector @ cluster_vector.T)
 
                 # update cluster
                 if center_cluster != -1:
@@ -869,10 +869,10 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
              2-tuple (effective word count after ignoring unknown words and sentence length trimming, total word count).
 
         """
-        work, neu1 = inits
+        work, neu1, window_vector = inits
         tally = 0
         if self.sg:
-            tally += train_batch_sg(self, sentences, alpha, work, self.compute_loss)
+            tally += train_batch_sg(self, sentences, alpha, work, window_vector, self.compute_loss)
         else:
             tally += train_batch_cbow(self, sentences, alpha, work, neu1, self.compute_loss)
         return tally, self._raw_word_count(sentences)
@@ -1668,6 +1668,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
                 sense_num = int(wv.max_sense_num)
             wv.is_global.append(sense_num)
             sense_num -= 1
+        wv.is_global = asarray(wv.is_global, dtype=uint8)
 
 
     def prepare_vocab(
