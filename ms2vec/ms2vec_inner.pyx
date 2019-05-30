@@ -15,6 +15,7 @@ import numpy as np
 
 cimport numpy as np
 
+from libc.stdio cimport printf
 from libc.math cimport exp
 from libc.math cimport log
 from libc.string cimport memset
@@ -526,6 +527,7 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
     cdef int i, j, k
     cdef int effective_words = 0, effective_sentences = 0
     cdef int sent_idx, idx_start, idx_end
+    cdef center_cluster, cluster_index
 
     init_w2v_config(&c, model, alpha, compute_loss, _work)
 
@@ -569,6 +571,20 @@ def train_batch_sg(model, sentences, alpha, _work, compute_loss):
         for sent_idx in range(effective_sentences):
             idx_start = c.sentence_idx[sent_idx]
             idx_end = c.sentence_idx[sent_idx + 1]
+
+            printf("%d", c.indexes[idx_start])
+            for i in range(idx_start, idx_end):
+                j = i - c.window + c.reduced_windows[i]
+                if j < idx_start:
+                    j = idx_start
+                k = i + c.window + 1 - c.reduced_windows[i]
+                if k > idx_end:
+                    k = idx_end
+                for j in range(j, k):
+                    if j == i:
+                        continue
+                    cluster_center = -1
+
             for i in range(idx_start, idx_end):
                 j = i - c.window + c.reduced_windows[i]
                 if j < idx_start:
