@@ -628,7 +628,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                             max_cos_sim = cos_sim
                             center_cluster = c_i
                     if center_cluster != 0:
-                        our_saxpy(&c.size, &g, &c.syn0[c.size*c.indexes[c_j]], &ONE,
+                        our_saxpy(&c.size, &g, c.window_vector, &ONE,
                                   &c.cluster_vectors[c.size*(c.indexes[i] + center_cluster)], &ONE)
                 else:
                     center_cluster = 0
