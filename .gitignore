@@ -1,9 +1,11 @@
 vec.txt
-gensim/
 globalvec.txt
 normal_word2vec.model*
 result
 text8
+enwiki_*
+gensim/
+check_program/mssg*
 .idea
 .ipynb_checkpoints
 __pycache__

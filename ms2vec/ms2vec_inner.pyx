@@ -243,7 +243,7 @@ cdef unsigned long long w2v_fast_sentence_sg_neg(
             label = <REAL_t>0.0
 
         row2 = target_index * size
-        f_dot = our_dot(&size, &syn0[row1], &ONE, &syn0[row2], &ONE)
+        f_dot = our_dot(&size, &syn0[row1], &ONE, &syn1neg[row2], &ONE)
         if f_dot <= -MAX_EXP or f_dot >= MAX_EXP:
             continue
         f = EXP_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
@@ -256,8 +256,8 @@ cdef unsigned long long w2v_fast_sentence_sg_neg(
             log_e_f_dot = LOG_TABLE[<int>((f_dot + MAX_EXP) * (EXP_TABLE_SIZE / MAX_EXP / 2))]
             _running_training_loss_param[0] = _running_training_loss_param[0] - log_e_f_dot
 
-        our_saxpy(&size, &g, &syn0[row2], &ONE, work, &ONE)
-        our_saxpy(&size, &g, &syn0[row1], &ONE, &syn0[row2], &ONE)
+        our_saxpy(&size, &g, &syn1neg[row2], &ONE, work, &ONE)
+        our_saxpy(&size, &g, &syn0[row1], &ONE, &syn1neg[row2], &ONE)
 
     our_saxpy(&size, &word_locks[word2_index], work, &ONE, &syn0[row1], &ONE)
 
@@ -498,7 +498,7 @@ cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1
     c[0].size = model.wv.vector_size
 
     c[0].cluster_vectors = <REAL_t *>(np.PyArray_DATA(model.wv.cluster_vectors))
-    c[0].cluster_count = <np.uint64_t *>(np.PyArray_DATA(model.wv.cluster_count))
+    c[0].cluster_count = <REAL_t *>(np.PyArray_DATA(model.wv.cluster_count))
     c[0].window_vector = <REAL_t *>(np.PyArray_DATA(_window_vector))
     c[0].max_sense_num = model.wv.max_sense_num
     c[0].is_global = <np.uint8_t *>(np.PyArray_DATA(model.wv.is_global))
@@ -612,16 +612,17 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                         break
                     cluster_index = c_i
                 #printf("cluster index %d\n", cluster_index)
+                #printf("cluster vec %f\n", c.cluster_vectors[c.size*(c.indexes[i] + 0)])
                 if cluster_index != 0:
                     memset(c.window_vector, 0, c.size * cython.sizeof(REAL_t))
                     for c_j in range(j, k):
                         if c_j == i:
                             continue
-                        our_saxpy(&c.size, &g, &c.syn0[c.size*c.indexes[c_j]], &ONE,
+                        our_saxpy(&c.size, &g, &c.syn1neg[c.size*c.indexes[c_j]], &ONE,
                                   c.window_vector, &ONE)
                     center_cluster = 0
                     max_cos_sim = -1
-                    for c_i in range(1, cluster_index + 1):
+                    for c_i in range(cluster_index + 1):
                         cos_sim = my_cos_sim(&c.size, &c.cluster_vectors[c.size*(c.indexes[i] + c_i)], &ONE,
                                           c.window_vector, &ONE)
                         cos_sim /= c.cluster_count[c.indexes[i] + c_i]
@@ -629,12 +630,12 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                         if cos_sim > max_cos_sim:
                             max_cos_sim = cos_sim
                             center_cluster = c_i
-                    if center_cluster != 0:
-                        c.cluster_count[c.indexes[i] + center_cluster] += 1
-                        our_saxpy(&c.size, &g, c.window_vector, &ONE,
-                                  &c.cluster_vectors[c.size*(c.indexes[i] + center_cluster)], &ONE)
                 else:
                     center_cluster = 0
+
+                c.cluster_count[c.indexes[i] + center_cluster] += 1
+                our_saxpy(&c.size, &g, c.window_vector, &ONE,
+                          &c.cluster_vectors[c.size*(c.indexes[i] + center_cluster)], &ONE)
                 #printf("center cluster %d\n", center_cluster)
 
                 for j in range(j, k):

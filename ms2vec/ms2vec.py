@@ -1664,7 +1664,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
         sense_num = int(wv.max_sense_num)
         for i, word in enumerate(wv.index2word):
             wv.vocab[word].index = i
-            if wv.vocab[word].count < wv.min_sense_count or sense_num == -1:
+            if wv.vocab[word].count < wv.min_sense_count or sense_num == 0:
                 sense_num = int(wv.max_sense_num)
             wv.is_global.append(sense_num)
             sense_num -= 1
@@ -1727,7 +1727,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
                         wv.vocab[word] = Vocab(count=v, index=len(wv.index2word))
                         wv.index2word.append(word)
                         if v >= wv.min_sense_count:
-                            for sense_num in range(wv.max_sense_num):
+                            for sense_num in range(1, wv.max_sense_num):
                                 wv.vocab[word+wv.delimiter+str(sense_num)] = Vocab(count=v, index=len(wv.index2word))
                                 wv.index2word.append(word+wv.delimiter+str(sense_num))
                 else:
@@ -1874,7 +1874,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
             else:
                 self.cum_table[word_index] = 0
 
-        if len(self.cum_table) > 0:
+        if len(self.cum_table) > 0 and self.cum_table[-1] != 0:
             assert self.cum_table[-1] == domain
 
 
@@ -1974,6 +1974,11 @@ class MultiSense2VecTrainables(utils.SaveLoad):
             self.syn1 = zeros((len(wv.vocab), self.layer1_size), dtype=REAL)
         if negative:
             self.syn1neg = zeros((len(wv.vocab), self.layer1_size), dtype=REAL)
+            #self.syn1neg = empty((len(wv.vocab), self.layer1_size), dtype=REAL)
+            # For multisense (global vector)
+            #for i in range(len(wv.vocab)):
+                # construct deterministic seed from word AND seed argument
+            #    self.syn1neg[i] = self.seeded_vector(wv.index2word[i]  + "global"+  str(self.seed), wv.vector_size)
         wv.vectors_norm = None
 
         self.vectors_lockf = ones(len(wv.vocab), dtype=REAL)  # zeros suppress learning
