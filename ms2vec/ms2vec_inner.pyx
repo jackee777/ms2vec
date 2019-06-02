@@ -498,6 +498,7 @@ cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1
     c[0].size = model.wv.vector_size
 
     c[0].cluster_vectors = <REAL_t *>(np.PyArray_DATA(model.wv.cluster_vectors))
+    c[0].cluster_count = <np.uint64_t *>(np.PyArray_DATA(model.wv.cluster_count))
     c[0].window_vector = <REAL_t *>(np.PyArray_DATA(_window_vector))
     c[0].max_sense_num = model.wv.max_sense_num
     c[0].is_global = <np.uint8_t *>(np.PyArray_DATA(model.wv.is_global))
@@ -623,11 +624,13 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                     for c_i in range(1, cluster_index + 1):
                         cos_sim = my_cos_sim(&c.size, &c.cluster_vectors[c.size*(c.indexes[i] + c_i)], &ONE,
                                           c.window_vector, &ONE)
+                        cos_sim /= c.cluster_count[c.indexes[i] + c_i]
                         #printf("cos %f max %f\n", cos_sim, max_cos_sim)
                         if cos_sim > max_cos_sim:
                             max_cos_sim = cos_sim
                             center_cluster = c_i
                     if center_cluster != 0:
+                        c.cluster_count[c.indexes[i] + center_cluster] += 1
                         our_saxpy(&c.size, &g, c.window_vector, &ONE,
                                   &c.cluster_vectors[c.size*(c.indexes[i] + center_cluster)], &ONE)
                 else:
@@ -641,7 +644,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                         w2v_fast_sentence_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.alpha, c.work, c.word_locks, c.compute_loss, &c.running_training_loss)
                     if c.negative:
                         c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg,
-                                                                 c.size, c.indexes[i]+center_cluster, c.indexes[j], c.alpha, c.work,
+                                                                 c.size, c.indexes[j], c.indexes[i]+center_cluster, c.alpha, c.work,
                                                                  c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
 
     model.running_training_loss = c.running_training_loss

@@ -1830,6 +1830,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
         if negative:
             # build the table for drawing random words (for negative sampling)
             self.make_cum_table(wv)
+        wv.cluster_count = ones(len(wv.index2word))
 
         return report_values
 

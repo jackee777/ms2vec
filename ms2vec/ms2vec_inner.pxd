@@ -70,6 +70,7 @@ cdef struct Word2VecConfig:
 
     # For MultiSense2Vec
     REAL_t *cluster_vectors
+    np.uint64_t *cluster_count
     REAL_t *window_vector
     np.uint8_t *is_global
 
