@@ -1557,7 +1557,7 @@ class MultiSense2VecKeyedVectors(WordEmbeddingsKeyedVectors):
     Used to perform operations on the vectors such as vector lookup, distance, similarity etc.
 
     """
-    def save_word2vec_format(self, fname, sense, max_sense, fvocab=None, binary=False, total_vec=None):
+    def save_word2vec_format(self, fname, fvocab=None, binary=False, total_vec=None):
         """Store the input-hidden weight matrix in the same format used by the original
         C word2vec-tool, for compatibility.
 
@@ -1568,7 +1568,7 @@ class MultiSense2VecKeyedVectors(WordEmbeddingsKeyedVectors):
         fvocab : str, optional
             Optional file path used to save the vocabulary
         binary : bool, optional
-            If True, the data wil be saved in binary word2vec format, else it will be saved in plain text.
+            If True, the data will be saved in binary word2vec format, else it will be saved in plain text.
         total_vec : int, optional
             Optional parameter to explicitly specify total no. of vectors
             (in case word vectors are appended with document vectors afterwards).
@@ -1576,7 +1576,7 @@ class MultiSense2VecKeyedVectors(WordEmbeddingsKeyedVectors):
         """
         # from gensim.models.word2vec import save_word2vec_format
         _save_word2vec_format(
-            fname, self.vocab, self.vectors, sense, max_sense, self.global_vector, fvocab=fvocab, binary=binary, total_vec=total_vec)
+            fname, self.vocab, self.vectors, fvocab=fvocab, binary=binary, total_vec=total_vec)
 
     @classmethod
     def load_word2vec_format(cls, fname, fvocab=None, binary=False, encoding='utf8', unicode_errors='strict',
