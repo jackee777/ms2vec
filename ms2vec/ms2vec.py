@@ -1969,7 +1969,7 @@ class MultiSense2VecTrainables(utils.SaveLoad):
             wv.vectors[i] = self.seeded_vector(wv.index2word[i] + str(self.seed), wv.vector_size)
         for i in range(len(wv.vocab)):
             # construct deterministic seed from word AND seed argument
-            wv.cluster_vectors[i] = self.seeded_vector(wv.index2word[i] + "cluster"+ str(self.seed), wv.vector_size)
+            wv.cluster_vectors[i] = self.seeded_vector(wv.index2word[i] + str(self.seed), wv.vector_size)
         if hs:
             self.syn1 = zeros((len(wv.vocab), self.layer1_size), dtype=REAL)
         if negative:

@@ -5326,21 +5326,12 @@ static PyObject *__pyx_pf_12ms2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject *
  *                     for c_i in range(cluster_index + 1):
  *                         cos_sim = my_cos_sim(&c.size, &c.cluster_vectors[c.size*(c.indexes[i] + c_i)], &ONE,             # <<<<<<<<<<<<<<
  *                                           c.window_vector, &ONE)
- *                         cos_sim /= c.cluster_count[c.indexes[i] + c_i]
+ *                         #cos_sim /= c.cluster_count[c.indexes[i] + c_i]
  */
                 __pyx_v_cos_sim = __pyx_f_12ms2vec_inner_my_cos_sim((&__pyx_v_c.size), (&(__pyx_v_c.cluster_vectors[(__pyx_v_c.size * ((__pyx_v_c.indexes[__pyx_v_i]) + __pyx_v_c_i))])), (&__pyx_v_12ms2vec_inner_ONE), __pyx_v_c.window_vector, (&__pyx_v_12ms2vec_inner_ONE));
 
-                /* "ms2vec_inner.pyx":628
- *                         cos_sim = my_cos_sim(&c.size, &c.cluster_vectors[c.size*(c.indexes[i] + c_i)], &ONE,
- *                                           c.window_vector, &ONE)
- *                         cos_sim /= c.cluster_count[c.indexes[i] + c_i]             # <<<<<<<<<<<<<<
- *                         #printf("cos %f max %f\n", cos_sim, max_cos_sim)
- *                         if cos_sim > max_cos_sim:
- */
-                __pyx_v_cos_sim = (__pyx_v_cos_sim / (__pyx_v_c.cluster_count[((__pyx_v_c.indexes[__pyx_v_i]) + __pyx_v_c_i)]));
-
                 /* "ms2vec_inner.pyx":630
- *                         cos_sim /= c.cluster_count[c.indexes[i] + c_i]
+ *                         #cos_sim /= c.cluster_count[c.indexes[i] + c_i]
  *                         #printf("cos %f max %f\n", cos_sim, max_cos_sim)
  *                         if cos_sim > max_cos_sim:             # <<<<<<<<<<<<<<
  *                             max_cos_sim = cos_sim
@@ -5368,7 +5359,7 @@ static PyObject *__pyx_pf_12ms2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject *
                   __pyx_v_center_cluster = __pyx_v_c_i;
 
                   /* "ms2vec_inner.pyx":630
- *                         cos_sim /= c.cluster_count[c.indexes[i] + c_i]
+ *                         #cos_sim /= c.cluster_count[c.indexes[i] + c_i]
  *                         #printf("cos %f max %f\n", cos_sim, max_cos_sim)
  *                         if cos_sim > max_cos_sim:             # <<<<<<<<<<<<<<
  *                             max_cos_sim = cos_sim
@@ -5392,26 +5383,16 @@ static PyObject *__pyx_pf_12ms2vec_inner_train_batch_sg(CYTHON_UNUSED PyObject *
  *                 else:
  *                     center_cluster = 0             # <<<<<<<<<<<<<<
  * 
- *                 c.cluster_count[c.indexes[i] + center_cluster] += 1
+ *                 #c.cluster_count[c.indexes[i] + center_cluster] += 1
  */
             /*else*/ {
               __pyx_v_center_cluster = 0;
             }
             __pyx_L31:;
 
-            /* "ms2vec_inner.pyx":636
- *                     center_cluster = 0
- * 
- *                 c.cluster_count[c.indexes[i] + center_cluster] += 1             # <<<<<<<<<<<<<<
- *                 our_saxpy(&c.size, &g, c.window_vector, &ONE,
- *                           &c.cluster_vectors[c.size*(c.indexes[i] + center_cluster)], &ONE)
- */
-            __pyx_t_13 = ((__pyx_v_c.indexes[__pyx_v_i]) + __pyx_v_center_cluster);
-            (__pyx_v_c.cluster_count[__pyx_t_13]) = ((__pyx_v_c.cluster_count[__pyx_t_13]) + 1.0);
-
             /* "ms2vec_inner.pyx":637
  * 
- *                 c.cluster_count[c.indexes[i] + center_cluster] += 1
+ *                 #c.cluster_count[c.indexes[i] + center_cluster] += 1
  *                 our_saxpy(&c.size, &g, c.window_vector, &ONE,             # <<<<<<<<<<<<<<
  *                           &c.cluster_vectors[c.size*(c.indexes[i] + center_cluster)], &ONE)
  *                 #printf("center cluster %d\n", center_cluster)

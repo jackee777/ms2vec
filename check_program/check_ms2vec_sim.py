@@ -1,7 +1,7 @@
 import gensim
 
 model = gensim.models.KeyedVectors.load_word2vec_format(
-    "mssg_enwiki_sense_3_neg_5.bin", binary = True)
+    "mssg_enwiki_sense_3_neg_5_min_10000_use_syn1neg.bin", binary = True)
 
 word_list = ["mouse", "announce", "accomplish"]
 delimiter = "--"
