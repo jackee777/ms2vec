@@ -625,7 +625,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                     for c_i in range(cluster_index + 1):
                         cos_sim = my_cos_sim(&c.size, &c.cluster_vectors[c.size*(c.indexes[i] + c_i)], &ONE,
                                           c.window_vector, &ONE)
-                        #cos_sim /= c.cluster_count[c.indexes[i] + c_i]
+                        cos_sim /= c.cluster_count[c.indexes[i] + c_i]
                         #printf("cos %f max %f\n", cos_sim, max_cos_sim)
                         if cos_sim > max_cos_sim:
                             max_cos_sim = cos_sim
@@ -633,7 +633,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                 else:
                     center_cluster = 0
 
-                #c.cluster_count[c.indexes[i] + center_cluster] += 1
+                c.cluster_count[c.indexes[i] + center_cluster] += 1
                 our_saxpy(&c.size, &g, c.window_vector, &ONE,
                           &c.cluster_vectors[c.size*(c.indexes[i] + center_cluster)], &ONE)
                 #printf("center cluster %d\n", center_cluster)

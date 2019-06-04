@@ -3,7 +3,7 @@ from ms2vec.ms2vec import MultiSense2Vec
 
 corpus = LineSentence("../enwiki_cleaning.txt")
 model = MultiSense2Vec(corpus, sg=1, negative=5, workers=4, iter=5, window=5,
-                       min_count=10, min_sense_count=10000, max_sense_num=3, seed=777)
+                       min_count=10, min_sense_count=1000, max_sense_num=3, seed=777)
 
 #print(model.wv.index2word)
 print(model.most_similar("mouse"))
