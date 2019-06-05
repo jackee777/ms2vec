@@ -767,6 +767,24 @@ class BaseWordEmbeddingsModel(BaseAny2VecModel):
                 sentences=sentences, corpus_file=corpus_file, total_examples=self.corpus_count,
                 total_words=self.corpus_total_words, epochs=self.epochs, start_alpha=self.alpha,
                 end_alpha=self.min_alpha, compute_loss=compute_loss)
+            use_index = self.wv.is_global != 0
+            self.wv.index2word = [self.wv.index2word[i] for i in range(len(self.wv.index2word)) \
+                    if self.wv.is_global[i] != 0]
+            #self.wv.index2entity = [self.wv.index2entity[i] for i in range(len(self.wv.index2entity)) \
+            #                      if self.wv.is_global[i] != 0]
+            self.wv.syn0 = self.wv.syn0[self.wv.is_global != 0]
+            self.wv.cluster_count = self.wv.cluster_count[self.wv.is_global != 0]
+            self.wv.cluster_vectors = self.wv.cluster_vectors[self.wv.is_global != 0]
+            self.vocabulary.cum_table = self.vocabulary.cum_table[self.wv.is_global != 0]
+            self.trainables.syn1neg = self.trainables.syn1neg[self.wv.is_global != 0]
+            self.trainables.vectors_lockf = self.trainables.vectors_lockf[self.wv.is_global != 0]
+            vocab_dict = {}
+            for i, key in enumerate(self.wv.index2word):
+                vocab = self.wv.vocab[key]
+                vocab.index = i
+                vocab_dict[key] = vocab
+            self.wv.vocab = vocab_dict
+            self.wv.is_global = self.wv.is_global[self.wv.is_global != 0]
         else:
             if trim_rule is not None:
                 logger.warning(

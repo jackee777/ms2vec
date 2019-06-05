@@ -705,7 +705,7 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
                  max_vocab_size=None, sample=1e-3, seed=1, workers=3, min_alpha=0.0001,
                  sg=0, hs=0, negative=5, ns_exponent=0.75, cbow_mean=1, hashfxn=hash, iter=5, null_word=0,
                  trim_rule=None, sorted_vocab=1, batch_words=MAX_WORDS_IN_BATCH, compute_loss=False, callbacks=(),
-                 max_final_vocab=None, max_sense_num=3, min_sense_count=10, delimiter="--"):
+                 max_final_vocab=None, max_sense_num=3, min_sense_count=10, delimiter="--", np_value=0):
         """
 
         Parameters
@@ -825,7 +825,8 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
         self.load = call_on_class_only
 
         self.wv = MultiSense2VecKeyedVectors(size, max_sense_num=max_sense_num,
-                                             min_sense_count=min_sense_count, delimiter=delimiter)
+                                             min_sense_count=min_sense_count, delimiter=delimiter,
+                                             np_value=np_value)
         self.vocabulary = MultiSense2VecVocab(
             max_vocab_size=max_vocab_size, min_count=min_count, sample=sample, sorted_vocab=bool(sorted_vocab),
             null_word=null_word, max_final_vocab=max_final_vocab, ns_exponent=ns_exponent,
@@ -836,7 +837,8 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
             sentences=sentences, corpus_file=corpus_file, workers=workers, vector_size=size, epochs=iter,
             callbacks=callbacks, batch_words=batch_words, trim_rule=trim_rule, sg=sg, alpha=alpha, window=window,
             seed=seed, hs=hs, negative=negative, cbow_mean=cbow_mean, min_alpha=min_alpha, compute_loss=compute_loss,
-            fast_version=FAST_VERSION, max_sense_num=max_sense_num, min_sense_count=min_sense_count, delimiter=delimiter)
+            fast_version=FAST_VERSION, max_sense_num=max_sense_num, min_sense_count=min_sense_count,
+            delimiter=delimiter)
 
     def _do_train_epoch(self, corpus_file, thread_id, offset, cython_vocab, thread_private_mem, cur_epoch,
                         total_examples=None, total_words=None, **kwargs):
@@ -1666,7 +1668,10 @@ class MultiSense2VecVocab(utils.SaveLoad):
             wv.vocab[word].index = i
             if wv.vocab[word].count < wv.min_sense_count or sense_num == 0:
                 sense_num = int(wv.max_sense_num)
-            wv.is_global.append(sense_num)
+            if wv.np_value == 0 or sense_num == wv.max_sense_num:
+                wv.is_global.append(sense_num)
+            else:
+                wv.is_global.append(0)
             sense_num -= 1
         wv.is_global = asarray(wv.is_global, dtype=uint8)
 

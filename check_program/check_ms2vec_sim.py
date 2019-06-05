@@ -7,7 +7,10 @@ word_list = ["mouse", "announce", "accomplish"]
 delimiter = "--"
 for word in word_list:
     print(word)
-    print(model.most_similar(word))
+    try:
+        print(model.most_similar(word))
+    except:
+        pass
     for i in range(3):
         try:
             print(model.most_similar(word+delimiter+str(i)))

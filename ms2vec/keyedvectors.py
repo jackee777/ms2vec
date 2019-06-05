@@ -377,7 +377,7 @@ class BaseKeyedVectors(utils.SaveLoad):
 class WordEmbeddingsKeyedVectors(BaseKeyedVectors):
     """Class containing common methods for operations over word vectors."""
     def __init__(self, vector_size, max_sense_num=3,
-                 min_sense_count=10, delimiter="--"):
+                 min_sense_count=10, delimiter="--", np_value=0):
         super(WordEmbeddingsKeyedVectors, self).\
             __init__(vector_size=vector_size)
         self.vectors_norm = None
@@ -388,6 +388,7 @@ class WordEmbeddingsKeyedVectors(BaseKeyedVectors):
         self.max_sense_num = max_sense_num
         self.min_sense_count = min_sense_count
         self.delimiter = delimiter
+        self.np_value = np_value
 
     @property
     @deprecated("Attribute will be removed in 4.0.0, use self instead")

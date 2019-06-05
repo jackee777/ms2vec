@@ -75,18 +75,25 @@ cdef void our_saxpy_noblas(const int *N, const float *alpha, const float *X, con
 # For MultiSense2Vec to select sense cluster
 cdef REAL_t my_cos_sim(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:
     cdef int i
-    cdef REAL_t num, denom_X, denom_Y
+    cdef REAL_t num, denom
     cdef REAL_t a
     num = our_dot(N, X, incX, Y, incY)
+    denom = snrm2(N, X, incX) * snrm2(N, Y, incY)
+    if denom == 0:
+        return -1
+    return num / denom
+    """
+    cdef REAL_t num, denom_X, denom_Y
     denom_X = <REAL_t>0.0
     denom_Y = <REAL_t>0.0
     for i from 0 <= i < N[0] by 1:
-        denom_X += X[i] * X[i]
-        denom_Y += Y[i] * Y[i]
+        denom_X += X[i * (incX[0])] * X[i * (incX[0])]
+        denom_Y += Y[i * (incY[0])] * Y[i * (incY[0])]
     #printf("num %f denom %f\n", num, sqrt(denom_X * denom_Y))
     if denom_X == 0 or denom_Y == 0:
         return -1
-    return num / sqrt(denom_X * denom_Y)
+     return num / sqrt(denom_X * denom_Y)
+    """
 
 cdef void w2v_fast_sentence_sg_hs(
     const np.uint32_t *word_point, const np.uint8_t *word_code, const int codelen,
@@ -503,6 +510,7 @@ cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1
     c[0].max_sense_num = model.wv.max_sense_num
     c[0].is_global = <np.uint8_t *>(np.PyArray_DATA(model.wv.is_global))
     c[0].is_global_len = len(model.wv.is_global)
+    c[0].np_value = model.wv.np_value
 
     if c[0].hs:
         c[0].syn1 = <REAL_t *>(np.PyArray_DATA(model.trainables.syn1))
@@ -608,7 +616,8 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                 cluster_index = 0
                 for c_i in range(1, c.max_sense_num + 1):
                     if c.indexes[i] + c_i >= c.is_global_len or \
-                        c.is_global[c.indexes[i] + c_i] == c.max_sense_num:
+                        c.is_global[c.indexes[i] + c_i] == c.max_sense_num or \
+                        c.is_global[c.indexes[i] + c_i] == 0:
                         break
                     cluster_index = c_i
                 #printf("cluster index %d\n", cluster_index)
@@ -625,11 +634,19 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                     for c_i in range(cluster_index + 1):
                         cos_sim = my_cos_sim(&c.size, &c.cluster_vectors[c.size*(c.indexes[i] + c_i)], &ONE,
                                           c.window_vector, &ONE)
-                        cos_sim /= c.cluster_count[c.indexes[i] + c_i]
+                        cos_sim /= sqrt(c.cluster_count[c.indexes[i] + c_i])
+                        #printf("sqrt %f count %f\n", sqrt(c.cluster_count[c.indexes[i] + c_i]), c.cluster_count[c.indexes[i] + c_i])
                         #printf("cos %f max %f\n", cos_sim, max_cos_sim)
                         if cos_sim > max_cos_sim:
                             max_cos_sim = cos_sim
                             center_cluster = c_i
+                    if c.np_value != 0 and \
+                        max_cos_sim < c.np_value:
+                        if c.indexes[i] + cluster_index + 1 < c.is_global_len and \
+                            c.is_global[c.indexes[i] + cluster_index + 1] == 0:
+                            center_cluster = cluster_index + 1
+                            c.is_global[c.indexes[i] + cluster_index + 1] = \
+                                c.max_sense_num - cluster_index
                 else:
                     center_cluster = 0
 

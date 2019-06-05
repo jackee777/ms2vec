@@ -52,6 +52,7 @@ cdef struct Word2VecConfig:
     int hs, negative, sample, compute_loss, size, window, cbow_mean, workers
     int max_sense_num, is_global_len
     REAL_t running_training_loss, alpha
+    REAL_t np_value
 
     REAL_t *syn0
     REAL_t *word_locks
