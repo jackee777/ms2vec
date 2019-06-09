@@ -50,7 +50,8 @@ cdef our_saxpy_ptr our_saxpy
 
 cdef struct Word2VecConfig:
     int hs, negative, sample, compute_loss, size, window, cbow_mean, workers
-    int max_sense_num, is_global_len
+    int max_sense_num
+    unsigned long long is_global_len
     REAL_t running_training_loss, alpha
     REAL_t np_value
 

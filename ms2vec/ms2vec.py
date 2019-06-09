@@ -705,7 +705,7 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
                  max_vocab_size=None, sample=1e-3, seed=1, workers=3, min_alpha=0.0001,
                  sg=0, hs=0, negative=5, ns_exponent=0.75, cbow_mean=1, hashfxn=hash, iter=5, null_word=0,
                  trim_rule=None, sorted_vocab=1, batch_words=MAX_WORDS_IN_BATCH, compute_loss=False, callbacks=(),
-                 max_final_vocab=None, max_sense_num=3, min_sense_count=10, delimiter="--", np_value=0):
+                 max_final_vocab=None, max_sense_num=3, min_sense_count=10, delimiter="--", np_value=-1):
         """
 
         Parameters
@@ -770,6 +770,8 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
             Limits the sense For MultiSense2Vec
         min_sense_count : int, optional
             min_count that words have a sense For MultiSense2Vec
+        min_sense_count : float, optional
+            when np_value is -1, mssg is executed. otherwise, np-mssg is executed
         delimiter : int, optional
             the delimiter For MultiSense2Vec
         sample : float, optional
@@ -1668,7 +1670,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
             wv.vocab[word].index = i
             if wv.vocab[word].count < wv.min_sense_count or sense_num == 0:
                 sense_num = int(wv.max_sense_num)
-            if wv.np_value == 0 or sense_num == wv.max_sense_num:
+            if wv.np_value == -1 or sense_num == wv.max_sense_num:
                 wv.is_global.append(sense_num)
             else:
                 wv.is_global.append(0)

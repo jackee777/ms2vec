@@ -47,6 +47,7 @@ cdef REAL_t[EXP_TABLE_SIZE] LOG_TABLE
 
 cdef int ONE = 1
 cdef REAL_t ONEF = <REAL_t>1.0
+cdef REAL_t small_slice = <REAL_t>0.000001
 
 # for when fblas.sdot returns a double
 cdef REAL_t our_dot_double(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:
@@ -76,11 +77,9 @@ cdef void our_saxpy_noblas(const int *N, const float *alpha, const float *X, con
 cdef REAL_t my_cos_sim(const int *N, const float *X, const int *incX, const float *Y, const int *incY) nogil:
     cdef int i
     cdef REAL_t num, denom
-    cdef REAL_t a
     num = our_dot(N, X, incX, Y, incY)
-    denom = snrm2(N, X, incX) * snrm2(N, Y, incY)
-    if denom == 0:
-        return -1
+    denom = <REAL_t>snrm2(N, X, incX) * <REAL_t>snrm2(N, Y, incY)
+    denom += small_slice
     return num / denom
     """
     cdef REAL_t num, denom_X, denom_Y
@@ -243,7 +242,7 @@ cdef unsigned long long w2v_fast_sentence_sg_neg(
             target_index = word_index
             label = ONEF
         else:
-            target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
+            target_index = <np.uint32_t>bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
             next_random = (next_random * <unsigned long long>25214903917ULL + 11) & modulo
             if target_index == word_index:
                 continue
@@ -453,7 +452,7 @@ cdef unsigned long long w2v_fast_sentence_cbow_neg(
             target_index = word_index
             label = ONEF
         else:
-            target_index = bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
+            target_index = <np.uint32_t>bisect_left(cum_table, (next_random >> 16) % cum_table[cum_table_len-1], 0, cum_table_len)
             next_random = (next_random * <unsigned long long>25214903917ULL + 11) & modulo
             if target_index == word_index:
                 continue
@@ -617,12 +616,14 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                 for c_i in range(1, c.max_sense_num + 1):
                     if c.indexes[i] + c_i >= c.is_global_len or \
                         c.is_global[c.indexes[i] + c_i] == c.max_sense_num or \
-                        c.is_global[c.indexes[i] + c_i] == 0:
+                        c.is_global[c.indexes[i] + c_i] == <np.int8_t>0:
                         break
                     cluster_index = c_i
                 #printf("cluster index %d\n", cluster_index)
                 #printf("cluster vec %f\n", c.cluster_vectors[c.size*(c.indexes[i] + 0)])
-                if cluster_index != 0:
+                if c.np_value == <REAL_t>-1.0 and cluster_index == 0:
+                    center_cluster = 0
+                else:
                     memset(c.window_vector, 0, c.size * cython.sizeof(REAL_t))
                     for c_j in range(j, k):
                         if c_j == i:
@@ -634,23 +635,30 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                     for c_i in range(cluster_index + 1):
                         cos_sim = my_cos_sim(&c.size, &c.cluster_vectors[c.size*(c.indexes[i] + c_i)], &ONE,
                                           c.window_vector, &ONE)
-                        cos_sim /= sqrt(c.cluster_count[c.indexes[i] + c_i])
+                        cos_sim /= (<REAL_t>sqrt(c.cluster_count[c.indexes[i] + c_i]) + small_slice)
                         #printf("sqrt %f count %f\n", sqrt(c.cluster_count[c.indexes[i] + c_i]), c.cluster_count[c.indexes[i] + c_i])
                         #printf("cos %f max %f\n", cos_sim, max_cos_sim)
                         if cos_sim > max_cos_sim:
                             max_cos_sim = cos_sim
                             center_cluster = c_i
-                    if c.np_value != 0 and \
+
+                    if c.np_value != <REAL_t>-1.0 and \
                         max_cos_sim < c.np_value:
+                        #printf("sense candidate\n")
+                        #printf("max %f np value %f\n", max_cos_sim, c.np_value)
+                        #printf("cluster index %d index %d "
+                        #       "is global %d is global %d\n",
+                        #       cluster_index, c.indexes[i] + cluster_index + 1,
+                        #       c.is_global[c.indexes[i] + cluster_index],
+                        #       c.is_global[c.indexes[i] + cluster_index + 1])
                         if c.indexes[i] + cluster_index + 1 < c.is_global_len and \
-                            c.is_global[c.indexes[i] + cluster_index + 1] == 0:
+                            c.is_global[c.indexes[i] + cluster_index + 1] == <np.int8_t>0:
+                            #printf("add sense\n")
                             center_cluster = cluster_index + 1
                             c.is_global[c.indexes[i] + cluster_index + 1] = \
-                                c.max_sense_num - cluster_index
-                else:
-                    center_cluster = 0
+                                c.max_sense_num - cluster_index - 1
 
-                c.cluster_count[c.indexes[i] + center_cluster] += 1
+                c.cluster_count[c.indexes[i] + center_cluster] += <REAL_t>1.0
                 our_saxpy(&c.size, &g, c.window_vector, &ONE,
                           &c.cluster_vectors[c.size*(c.indexes[i] + center_cluster)], &ONE)
                 #printf("center cluster %d\n", center_cluster)

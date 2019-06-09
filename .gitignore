@@ -6,6 +6,7 @@ text8
 enwiki_*
 gensim/
 check_program/mssg*
+check_program/npmssg*
 .idea
 .ipynb_checkpoints
 __pycache__
