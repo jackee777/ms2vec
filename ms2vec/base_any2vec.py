@@ -946,8 +946,8 @@ class BaseWordEmbeddingsModel(BaseAny2VecModel):
         report_values = self.vocabulary.prepare_vocab(
             self.hs, self.negative, self.wv, update=update, keep_raw_vocab=keep_raw_vocab,
             trim_rule=trim_rule, **kwargs)
-        report_values['memory'] = self.estimate_memory(vocab_size=None)
-        #report_values['memory'] = self.estimate_memory(vocab_size=report_values['num_retained_words'])
+        #report_values['memory'] = self.estimate_memory(vocab_size=None)
+        report_values['memory'] = self.estimate_memory(vocab_size=report_values['num_retained_words'])
         self.trainables.prepare_weights(self.hs, self.negative, self.wv, update=update, vocabulary=self.vocabulary)
 
     def build_vocab_from_freq(self, word_freq, keep_raw_vocab=False, corpus_count=None, trim_rule=None, update=False):
@@ -1016,7 +1016,8 @@ class BaseWordEmbeddingsModel(BaseAny2VecModel):
             A dictionary from string representations of the model's memory consuming members to their size in bytes.
 
         """
-        vocab_size = vocab_size or len(self.wv.vocab)
+        global_size = self.wv.global_size
+        vocab_size = len(self.wv.vocab)
         report = report or {}
         report['vocab'] = vocab_size * (700 if self.hs else 500)
         report['vectors'] = vocab_size * self.vector_size * dtype(REAL).itemsize
@@ -1024,7 +1025,7 @@ class BaseWordEmbeddingsModel(BaseAny2VecModel):
         if self.hs:
             report['syn1'] = vocab_size * self.trainables.layer1_size * dtype(REAL).itemsize
         if self.negative:
-            report['syn1neg'] = vocab_size * self.trainables.layer1_size * dtype(REAL).itemsize
+            report['syn1neg'] = global_size * self.trainables.layer1_size * dtype(REAL).itemsize
         report['total'] = sum(report.values())
         logger.info(
             "estimated required memory for %i words and %i dimensions: %i bytes",
@@ -1489,8 +1490,8 @@ class BaseWordEmbeddingsModel(BaseAny2VecModel):
         self.wv.syn0 = self.wv.syn0[self.wv.is_global != 0]
         self.wv.cluster_count = self.wv.cluster_count[self.wv.is_global != 0]
         self.wv.cluster_vectors = self.wv.cluster_vectors[self.wv.is_global != 0]
-        self.vocabulary.cum_table = self.vocabulary.cum_table[self.wv.is_global != 0]
-        self.trainables.syn1neg = self.trainables.syn1neg[self.wv.is_global != 0]
+        # self.vocabulary.cum_table = self.vocabulary.cum_table[self.wv.is_global != 0]
+        # self.trainables.syn1neg = self.trainables.syn1neg[self.wv.is_global != 0]
         self.trainables.vectors_lockf = self.trainables.vectors_lockf[self.wv.is_global != 0]
         vocab_dict = {}
         for i, key in enumerate(self.wv.index2word):

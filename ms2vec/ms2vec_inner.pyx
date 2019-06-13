@@ -565,6 +565,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
 
     # prepare C structures so we can go "full C" and release the Python GIL
     vlookup = model.wv.vocab
+    index2gindex = model.wv.index2gindex
     c.sentence_idx[0] = 0  # indices of the first sentence always start at 0
     for sent in sentences:
         if not sent:
@@ -576,6 +577,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
             if c.sample and word.sample_int < random_int32(&c.next_random):
                 continue
             c.indexes[effective_words] = word.index
+            c.gindexes[effective_words] = index2gindex[word.index]
             if c.hs:
                 c.codelens[effective_words] = <int>len(word.code)
                 c.codes[effective_words] = <np.uint8_t *>np.PyArray_DATA(word.code)
@@ -628,7 +630,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                     for c_j in range(j, k):
                         if c_j == i:
                             continue
-                        our_saxpy(&c.size, &g, &c.syn1neg[c.size*c.indexes[c_j]], &ONE,
+                        our_saxpy(&c.size, &g, &c.syn1neg[c.size*c.gindexes[c_j]], &ONE,
                                   c.window_vector, &ONE)
                     center_cluster = 0
                     max_cos_sim = -1
@@ -670,7 +672,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                         w2v_fast_sentence_sg_hs(c.points[i], c.codes[i], c.codelens[i], c.syn0, c.syn1, c.size, c.indexes[j], c.alpha, c.work, c.word_locks, c.compute_loss, &c.running_training_loss)
                     if c.negative:
                         c.next_random = w2v_fast_sentence_sg_neg(c.negative, c.cum_table, c.cum_table_len, c.syn0, c.syn1neg,
-                                                                 c.size, c.indexes[j], c.indexes[i]+center_cluster, c.alpha, c.work,
+                                                                 c.size, c.gindexes[j], c.indexes[i]+center_cluster, c.alpha, c.work,
                                                                  c.next_random, c.word_locks, c.compute_loss, &c.running_training_loss)
 
     model.running_training_loss = c.running_training_loss

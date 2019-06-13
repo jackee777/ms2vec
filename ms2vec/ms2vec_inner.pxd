@@ -75,6 +75,7 @@ cdef struct Word2VecConfig:
     REAL_t *cluster_count
     REAL_t *window_vector
     np.uint8_t *is_global
+    np.uint32_t gindexes[MAX_SENTENCE_LEN]
 
     # For negative sampling
     REAL_t *syn1neg

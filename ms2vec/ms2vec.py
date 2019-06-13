@@ -831,8 +831,7 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
                                              np_value=np_value)
         self.vocabulary = MultiSense2VecVocab(
             max_vocab_size=max_vocab_size, min_count=min_count, sample=sample, sorted_vocab=bool(sorted_vocab),
-            null_word=null_word, max_final_vocab=max_final_vocab, ns_exponent=ns_exponent,
-            min_sense_count=min_sense_count, delimiter=delimiter) # 不要かも
+            null_word=null_word, max_final_vocab=max_final_vocab, ns_exponent=ns_exponent)
         self.trainables = MultiSense2VecTrainables(seed=seed, vector_size=size, hashfxn=hashfxn)
 
         super(MultiSense2Vec, self).__init__(
@@ -1600,7 +1599,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
     """Vocabulary used by :class:`~gensim.models.word2vec.Word2Vec`."""
     def __init__(
             self, max_vocab_size=None, min_count=5, sample=1e-3, sorted_vocab=True, null_word=0,
-            max_final_vocab=None, ns_exponent=0.75, min_sense_count=10, delimiter="--"):
+            max_final_vocab=None, ns_exponent=0.75):
         self.max_vocab_size = max_vocab_size
         self.min_count = min_count
         self.sample = sample
@@ -1610,8 +1609,6 @@ class MultiSense2VecVocab(utils.SaveLoad):
         self.raw_vocab = None
         self.max_final_vocab = max_final_vocab
         self.ns_exponent = ns_exponent
-        self.min_sense_count=min_sense_count
-        self.delimiter = delimiter
 
     def _scan_vocab(self, sentences, progress_per, trim_rule):
         sentence_no = -1
@@ -1666,14 +1663,18 @@ class MultiSense2VecVocab(utils.SaveLoad):
         wv.index2word.sort(key=lambda word: wv.vocab[word].count, reverse=True)
 
         sense_num = int(wv.max_sense_num)
+        global_index = -1
         for i, word in enumerate(wv.index2word):
             wv.vocab[word].index = i
             if wv.vocab[word].count < wv.min_sense_count or sense_num == 0:
                 sense_num = int(wv.max_sense_num)
             if wv.np_value == -1 or sense_num == wv.max_sense_num:
                 wv.is_global.append(sense_num)
+                if sense_num == wv.max_sense_num:
+                    global_index += 1
             else:
                 wv.is_global.append(0)
+            wv.index2gindex.append(global_index)
             sense_num -= 1
         wv.is_global = asarray(wv.is_global, dtype=uint8)
 
@@ -1829,6 +1830,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
             # this word is only ever input – never predicted – so count, huffman-point, etc doesn't matter
             self.add_null_word(wv)
 
+        wv.global_size = len(retain_words)
         if self.sorted_vocab and not update:
             self.sort_vocab(wv)
         if hs:
@@ -1837,6 +1839,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
         if negative:
             # build the table for drawing random words (for negative sampling)
             self.make_cum_table(wv)
+
         wv.cluster_count = ones(len(wv.index2word))
 
         return report_values
@@ -1867,7 +1870,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
 
         """
         vocab_size = len(wv.index2word)
-        self.cum_table = zeros(vocab_size, dtype=uint32)
+        self.cum_table = zeros(wv.global_size, dtype=uint32)
         # compute sum of all power (Z in paper)
         train_words_pow = 0.0
         for word_index in range(vocab_size):
@@ -1877,11 +1880,9 @@ class MultiSense2VecVocab(utils.SaveLoad):
         for word_index in range(vocab_size):
             if wv.is_global[word_index] == wv.max_sense_num:
                 cumulative += wv.vocab[wv.index2word[word_index]].count**self.ns_exponent
-                self.cum_table[word_index] = round(cumulative / train_words_pow * domain)
-            else:
-                self.cum_table[word_index] = 0
+                self.cum_table[wv.index2gindex[word_index]] = round(cumulative / train_words_pow * domain)
 
-        if len(self.cum_table) > 0 and self.cum_table[-1] != 0:
+        if len(self.cum_table) > 0:
             assert self.cum_table[-1] == domain
 
 
@@ -1980,7 +1981,7 @@ class MultiSense2VecTrainables(utils.SaveLoad):
         if hs:
             self.syn1 = zeros((len(wv.vocab), self.layer1_size), dtype=REAL)
         if negative:
-            self.syn1neg = zeros((len(wv.vocab), self.layer1_size), dtype=REAL)
+            self.syn1neg = zeros((wv.global_size, self.layer1_size), dtype=REAL)
             #self.syn1neg = empty((len(wv.vocab), self.layer1_size), dtype=REAL)
             # For multisense (global vector)
             #for i in range(len(wv.vocab)):
