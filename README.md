@@ -38,7 +38,7 @@ model.wv.save_word2vec_format(model_name+".bin", binary=True)
 ```
 
 ## NP-MSSG
-NP-MSSG is executed if np-value is -1.
+NP-MSSG is executed if np-value is not -1.
 ```angular2html
 from gensim.models.word2vec import LineSentence
 from ms2vec.ms2vec import MultiSense2Vec
