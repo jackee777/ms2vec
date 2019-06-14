@@ -703,7 +703,7 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
 
     def __init__(self, sentences=None, corpus_file=None, size=100, alpha=0.025, window=5, min_count=5,
                  max_vocab_size=None, sample=1e-3, seed=1, workers=3, min_alpha=0.0001,
-                 sg=0, hs=0, negative=5, ns_exponent=0.75, cbow_mean=1, hashfxn=hash, iter=5, null_word=0,
+                 sg=1, hs=0, negative=5, ns_exponent=0.75, cbow_mean=1, hashfxn=hash, iter=5, null_word=0,
                  trim_rule=None, sorted_vocab=1, batch_words=MAX_WORDS_IN_BATCH, compute_loss=False, callbacks=(),
                  max_final_vocab=None, max_sense_num=3, min_sense_count=10, delimiter="--", np_value=-1):
         """
@@ -818,6 +818,8 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
             >>> model = Word2Vec(sentences, min_count=1)
 
         """
+        assert sg==1 and hs==0, "this program only supports skip-gram negative sampling"
+
         self.max_final_vocab = max_final_vocab
         self.max_sense_num = max_sense_num
         self.min_sense_count = min_sense_count
