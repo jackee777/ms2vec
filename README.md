@@ -1,6 +1,8 @@
 # ms2vec
 This is a python package for MSSG and NP-MSSG by Neelakantan. I already checked the score in SimLex-999 and that is almost same in the article.
 
+Perhaps, I can response issuses until 2019/03/31 when I will get Master's degree.
+
 The original information is like this.
 ### NP-MSSG
 the code from research paper ["Efficient Non-parametric Estimation of Multiple Embeddings per Word in Vector Space"](http://arxiv.org/pdf/1504.06654v1.pdf) by Arvind Neelakantan, Jeevan Shankar, Alexandre Passos, Andrew McCallum
@@ -59,3 +61,4 @@ model.wv.save_word2vec_format(model_name+".bin", binary=True)
 I hope that this program works well and word embedding can contribute into NLP.
 
 If this program is helpful for you, I want you to give the star this program for me.
+Have a nice day.

@@ -1,7 +1,0 @@
-#cd ../gensim
-#rd /s build
-cd gensim/models
-python setup.py build
-cd ../..
-python setup.py install
-#cd ../MS2vec
