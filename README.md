@@ -31,7 +31,6 @@ model = MultiSense2Vec(corpus, sg=1, negative=5, workers=4, iter=5, window=5,
                        min_count=10, min_sense_count=5000, max_sense_num=3,
                        size=300, np_value=-1 ,seed=777)
 
-print(model.most_similar("mouse"))
 model_name = "mssg_model"
 model.save(model_name)
 # bin format is available in gensim's KeyedVectors
@@ -49,7 +48,6 @@ model = MultiSense2Vec(corpus, sg=1, negative=5, workers=4, iter=5, window=5,
                        min_count=10, min_sense_count=5000, max_sense_num=10,
                        size=300, np_value=-0.5 ,seed=777)
 
-print(model.most_similar("mouse"))
 model_name = "npmssg_model"
 model.save(model_name)
 # bin format is available in gensim's KeyedVectors
