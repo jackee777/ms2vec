@@ -141,7 +141,7 @@ except ImportError:
     from Queue import Queue, Empty
 
 from numpy import exp, dot, zeros, random, dtype, float32 as REAL,\
-    uint32, seterr, array, uint8, vstack, fromstring, sqrt,\
+    uint64, uint32, seterr, array, uint8, vstack, fromstring, sqrt,\
     empty, sum as np_sum, ones, logaddexp, log, outer, average, \
     argmax, asarray
 
@@ -705,7 +705,8 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
                  max_vocab_size=None, sample=1e-3, seed=1, workers=3, min_alpha=0.0001,
                  sg=1, hs=0, negative=5, ns_exponent=0.75, cbow_mean=1, hashfxn=hash, iter=5, null_word=0,
                  trim_rule=None, sorted_vocab=1, batch_words=MAX_WORDS_IN_BATCH, compute_loss=False, callbacks=(),
-                 max_final_vocab=None, max_sense_num=3, min_sense_count=10, delimiter="--", np_value=-1):
+                 max_final_vocab=None, max_sense_num=3, min_sense_count=10, delimiter="--", np_value=-1,
+                 cv2zero=True, use_all_window=True):
         """
 
         Parameters
@@ -806,6 +807,8 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
             :meth:`~gensim.models.word2vec.Word2Vec.get_latest_training_loss`.
         callbacks : iterable of :class:`~gensim.models.callbacks.CallbackAny2Vec`, optional
             Sequence of callbacks to be executed at specific stages during training.
+        cv2zero: initialize centers of gravities to zero if True. unless randomized vectors are used
+        use_all_window: use all window global vectors not to reduce window when select a cluster.
 
         Examples
         --------
@@ -827,6 +830,8 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
 
         self.callbacks = callbacks
         self.load = call_on_class_only
+        self.cv2zero = cv2zero
+        self.use_all_window = use_all_window
 
         self.wv = MultiSense2VecKeyedVectors(size, max_sense_num=max_sense_num,
                                              min_sense_count=min_sense_count, delimiter=delimiter,
@@ -1842,7 +1847,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
             # build the table for drawing random words (for negative sampling)
             self.make_cum_table(wv)
 
-        wv.cluster_count = ones(len(wv.index2word))
+        wv.cluster_count = ones(len(wv.index2word), dtype=uint64)
 
         return report_values
 
@@ -1979,7 +1984,10 @@ class MultiSense2VecTrainables(utils.SaveLoad):
             wv.vectors[i] = self.seeded_vector(wv.index2word[i] + str(self.seed), wv.vector_size)
         for i in range(len(wv.vocab)):
             # construct deterministic seed from word AND seed argument
-            wv.cluster_vectors[i] = self.seeded_vector(wv.index2word[i] + "cluster" + str(self.seed), wv.vector_size)
+            if self.cv2zero:
+                wv.cluster_vectors[i] = zeros(wv.vector_size, dtype=REAL)
+            else:
+                wv.cluster_vectors[i] = self.seeded_vector(wv.index2word[i] + "cluster" + str(self.seed), wv.vector_size)
         if hs:
             self.syn1 = zeros((len(wv.vocab), self.layer1_size), dtype=REAL)
         if negative:

@@ -1,12 +1,21 @@
+# text files
 vec.txt
 globalvec.txt
-normal_word2vec.model*
-result
 text8
 enwiki_*
+
+# original gensim codes
 gensim/
+
+# resulting models
+mssg*
+npmssg*
+normal_word2vec.model*
+result
 check_program/mssg*
 check_program/npmssg*
+
+# setting
 .idea
 .ipynb_checkpoints
 __pycache__

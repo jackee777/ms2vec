@@ -72,10 +72,11 @@ cdef struct Word2VecConfig:
 
     # For MultiSense2Vec
     REAL_t *cluster_vectors
-    REAL_t *cluster_count
+    np.uint64_t *cluster_count
     REAL_t *window_vector
     np.uint8_t *is_global
     np.uint32_t gindexes[MAX_SENTENCE_LEN]
+    int use_all_window
 
     # For negative sampling
     REAL_t *syn1neg
