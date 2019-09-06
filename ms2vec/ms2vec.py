@@ -839,7 +839,7 @@ class MultiSense2Vec(BaseWordEmbeddingsModel):
         self.vocabulary = MultiSense2VecVocab(
             max_vocab_size=max_vocab_size, min_count=min_count, sample=sample, sorted_vocab=bool(sorted_vocab),
             null_word=null_word, max_final_vocab=max_final_vocab, ns_exponent=ns_exponent)
-        self.trainables = MultiSense2VecTrainables(seed=seed, vector_size=size, hashfxn=hashfxn)
+        self.trainables = MultiSense2VecTrainables(seed=seed, vector_size=size, hashfxn=hashfxn, cv2zero=cv2zero)
 
         super(MultiSense2Vec, self).__init__(
             sentences=sentences, corpus_file=corpus_file, workers=workers, vector_size=size, epochs=iter,
@@ -1954,10 +1954,11 @@ def _assign_binary_codes(vocab):
 
 class MultiSense2VecTrainables(utils.SaveLoad):
     """Represents the inner shallow neural network used to train :class:`~gensim.models.word2vec.Word2Vec`."""
-    def __init__(self, vector_size=100, seed=1, hashfxn=hash):
+    def __init__(self, vector_size=100, seed=1, hashfxn=hash, cv2zero=True):
         self.hashfxn = hashfxn
         self.layer1_size = vector_size
         self.seed = seed
+        self.cv2zero=cv2zero
 
     def prepare_weights(self, hs, negative, wv, update=False, vocabulary=None):
         """Build tables and model weights based on final vocabulary settings."""
