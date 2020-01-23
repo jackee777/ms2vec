@@ -1683,7 +1683,7 @@ class MultiSense2VecVocab(utils.SaveLoad):
                 wv.is_global.append(0)
             wv.index2gindex.append(global_index)
             sense_num -= 1
-        wv.is_global = asarray(wv.is_global, dtype=uint8)
+        wv.is_global = asarray(wv.is_global, dtype=uint32)
 
 
     def prepare_vocab(

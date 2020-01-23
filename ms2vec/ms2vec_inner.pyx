@@ -507,7 +507,7 @@ cdef init_w2v_config(Word2VecConfig *c, model, alpha, compute_loss, _work, _neu1
     c[0].cluster_count = <np.uint64_t *>(np.PyArray_DATA(model.wv.cluster_count))
     c[0].window_vector = <REAL_t *>(np.PyArray_DATA(_window_vector))
     c[0].max_sense_num = model.wv.max_sense_num
-    c[0].is_global = <np.uint8_t *>(np.PyArray_DATA(model.wv.is_global))
+    c[0].is_global = <np.uint32_t *>(np.PyArray_DATA(model.wv.is_global))
     c[0].is_global_len = len(model.wv.is_global)
     c[0].np_value = model.wv.np_value
     c[0].use_all_window = model.use_all_window
@@ -560,7 +560,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
     cdef int sent_idx, idx_start, idx_end
     cdef int center_cluster, cluster_index
     cdef REAL_t cos_sim, max_cos_sim
-    cdef REAL_t g = 1.0
+    cdef REAL_t g = 0.01
 
     init_w2v_config(&c, model, alpha, compute_loss, _work, _neu1=None, _window_vector=_window_vector)
 
@@ -619,7 +619,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                 for c_i in range(1, c.max_sense_num + 1):
                     if c.indexes[i] + c_i >= c.is_global_len or \
                         c.is_global[c.indexes[i] + c_i] == c.max_sense_num or \
-                        c.is_global[c.indexes[i] + c_i] == <np.int8_t>0:
+                        c.is_global[c.indexes[i] + c_i] == 0:
                         break
                     cluster_index = c_i
                 #printf("cluster index %d\n", cluster_index)
@@ -668,7 +668,7 @@ def train_batch_sg(model, sentences, alpha, _work, _window_vector, compute_loss)
                         #       c.is_global[c.indexes[i] + cluster_index],
                         #       c.is_global[c.indexes[i] + cluster_index + 1])
                         if c.indexes[i] + cluster_index + 1 < c.is_global_len and \
-                            c.is_global[c.indexes[i] + cluster_index + 1] == <np.int8_t>0:
+                            c.is_global[c.indexes[i] + cluster_index + 1] == 0:
                             #printf("add sense\n")
                             center_cluster = cluster_index + 1
                             c.is_global[c.indexes[i] + cluster_index + 1] = \
